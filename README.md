@@ -36,7 +36,9 @@ This forms the basis of a much large vector machine storage engine.
 
 ### warning
 
-I do NOT recommend this style for really high velocity distinct time series (aka data that is coming in at less then 1 sec intervals, every second, all the time). 
+I do NOT recommend this style for really high velocity distinct time series (aka data that is coming in at or less then 1 sec intervals, every second, all the time
+things like CPU(s) usage for a given machine). 
+
 For such things I recommend cadent (https://github.com/wyndhblb/cadent).
 
 
