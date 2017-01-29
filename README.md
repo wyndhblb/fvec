@@ -107,7 +107,7 @@ And the tuples of those basic types (9 total permutations)
 
     (string|int64|double, string|int64|double)
     
-The tuple object is a basic 2 element object of "key" and "value" designation `TP`
+The tuple object is a basic 2 element object of "key" and "value" which is designated by `TP`
 
 The labels
 
@@ -117,6 +117,16 @@ The labels
 
 Make up the parts of the object names.  
 
+So a Tuple type looks like `VT{int64|string|double}{int64|string|double}` in the code you see but really is just a two element object
+of the form 
+
+    VT{t1}{t2}{
+        key {t1}
+        vallue {t2}
+    }
+
+where `t[1-2]` are base types.
+
 
 ### Object naming conventions
 
@@ -125,6 +135,7 @@ Each vector object starts with it's root type prefix
     VL -> lists
     VS -> sets
     VM -> map
+    VT -> tuple
 
 ### Lists + Sets
 
@@ -133,8 +144,12 @@ Have 12 variations each
     VL{Int|Str|Dbl} + VL{Int|Str|Dbl}{Int|Str|Dbl}
     VS{Int|Str|Dbl} + VS{Int|Str|Dbl}{Int|Str|Dbl}
 
-*NOTE* a SET is not really a "true set" internal to golang (as there is not a set base type), instead the cassandra `type` is a set, 
-but internal type to go is a simple array/slice.  Basically a cassandra query
+#### A note about `Sets`
+
+a `SET` is not really a "true set" internal to golang (as there is not a `set` base type), instead the cassandra/redis `type` is a set, 
+but internal golang type to go is a simple array/slice. 
+ 
+The Cassandra query
  
     UPDATE {keyspace}.{table}.{column} = {keyspace}.{table}.{column} + {vector_element} 
     
@@ -147,9 +162,12 @@ Same is true for redis where
 won't do anything if the `vector_element` is already there.
 
 
+When reading in a `set type` from cassandra/redis one can save many CPU cycles assuming the underlying database has made the `vector_element`s unique.
+
+
 ### Maps
 
-Have a 3rd dimention the "map key" so they expand larger, but note that json + protobufs do not accept "doubles" so there are no
+Have a 3rd dimension, the `map key`, so they expand larger, but note that json + protobufs cannot encode "doubles" as keys (by their spec), so there are no
 `map[double]stuff` types.
 
     VM{Str|Int}{Str|Int|Dbl} + VM{Str|Int}TP{Str|Int|Dbl}{Str|Int|Dbl}
