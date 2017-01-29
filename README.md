@@ -56,7 +56,6 @@ A rather generic key rep w/ tags resolution
 
     Key string
     Tags = [](key, value)
-    VecType string (see below, a string)
     Resolution 
     TTL
 
