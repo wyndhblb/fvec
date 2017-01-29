@@ -4,7 +4,7 @@
    A Tag is just a tuple of name and value both as strings
 */
 
-package vepr
+package fvec
 
 import (
 	"fmt"

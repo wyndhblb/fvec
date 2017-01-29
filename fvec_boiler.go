@@ -1,170 +1,32 @@
 // GENERATED with python3 genproto.py
 // Edit at your own risk
 
-package vepr
+package fvec
 
 import "reflect"
 import "fmt"
 
-//**************** Tuple: double double VTDblDbl **********************/
+//**************** Tuple: string string VTStrStr **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VTDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VTStrStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrStr ( k varchar, v varchar );"
 }
 
 // CassandraType the matching types in cassandra for the tuple
-func (t *VTDblDbl) CassandraType() string {
-	return "VTDblDbl"
+func (t *VTStrStr) CassandraType() string {
+	return "VTStrStr"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VTDblDbl) RedisInsertCmd(key string) string {
+func (t *VTStrStr) RedisInsertCmd(key string) string {
 	return "LPUSH " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblDbl) RedisValue() string {
-	return fmt.Sprintf("%v %v", t.Key, t.Value)
-}
-
-//**************** Tuple: double int64 VTDblInt **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTDblInt) CassandraType() string {
-	return "VTDblInt"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTDblInt) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblInt) RedisValue() string {
-	return fmt.Sprintf("%v %d", t.Key, t.Value)
-}
-
-//**************** Tuple: double string VTDblStr **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTDblStr) CassandraType() string {
-	return "VTDblStr"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTDblStr) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblStr) RedisValue() string {
-	return fmt.Sprintf("%v %s", t.Key, t.Value)
-}
-
-//**************** Tuple: int64 double VTIntDbl **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTIntDbl) CassandraType() string {
-	return "VTIntDbl"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTIntDbl) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTIntDbl) RedisValue() string {
-	return fmt.Sprintf("%d %v", t.Key, t.Value)
-}
-
-//**************** Tuple: int64 int64 VTIntInt **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTIntInt) CassandraType() string {
-	return "VTIntInt"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTIntInt) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTIntInt) RedisValue() string {
-	return fmt.Sprintf("%d %d", t.Key, t.Value)
-}
-
-//**************** Tuple: int64 string VTIntStr **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTIntStr) CassandraType() string {
-	return "VTIntStr"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTIntStr) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTIntStr) RedisValue() string {
-	return fmt.Sprintf("%d %s", t.Key, t.Value)
-}
-
-//**************** Tuple: string double VTStrDbl **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTStrDbl) CassandraType() string {
-	return "VTStrDbl"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTStrDbl) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTStrDbl) RedisValue() string {
-	return fmt.Sprintf("%s %v", t.Key, t.Value)
+func (t *VTStrStr) RedisValue() string {
+	return fmt.Sprintf("%s %s", t.Key, t.Value)
 }
 
 //**************** Tuple: string int64 VTStrInt **********************/
@@ -190,143 +52,165 @@ func (t *VTStrInt) RedisValue() string {
 	return fmt.Sprintf("%s %d", t.Key, t.Value)
 }
 
-//**************** Tuple: string string VTStrStr **********************/
+//**************** Tuple: string double VTStrDbl **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VTStrStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrStr ( k varchar, v varchar );"
+func (t *VTStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the tuple
-func (t *VTStrStr) CassandraType() string {
-	return "VTStrStr"
+func (t *VTStrDbl) CassandraType() string {
+	return "VTStrDbl"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VTStrStr) RedisInsertCmd(key string) string {
+func (t *VTStrDbl) RedisInsertCmd(key string) string {
 	return "LPUSH " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VTStrStr) RedisValue() string {
-	return fmt.Sprintf("%s %s", t.Key, t.Value)
+func (t *VTStrDbl) RedisValue() string {
+	return fmt.Sprintf("%s %v", t.Key, t.Value)
 }
 
-//**************** Set: double  VSDbl **********************/
-
-// VecType the type of vector (set)
-func (t *VSDbl) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSDbl) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSDbl) TypeName() string {
-	return "VSDbl"
-}
+//**************** Tuple: int64 string VTIntStr **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VSDbl) CassandraCreateType(keyspace string) string {
-	return ""
+func (t *VTIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
 }
 
-// CassandraType the matching types in cassandra for the set
-func (t *VSDbl) CassandraType() string {
-	return "set<double>"
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTIntStr) CassandraType() string {
+	return "VTIntStr"
 }
 
-//**************** Set: int64  VSInt **********************/
-
-// VecType the type of vector (set)
-func (t *VSInt) VecType() string {
-	return "set"
+// RedisInsertCmd returns the redis add command
+func (t *VTIntStr) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
 }
 
-// IsSet is a set type
-func (t *VSInt) IsSet() bool {
-	return true
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTIntStr) RedisValue() string {
+	return fmt.Sprintf("%d %s", t.Key, t.Value)
 }
 
-// GetName returns the Name of the vector
-func (t *VSInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSInt) TypeName() string {
-	return "VSInt"
-}
+//**************** Tuple: int64 int64 VTIntInt **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VSInt) CassandraCreateType(keyspace string) string {
-	return ""
+func (t *VTIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
 }
 
-// CassandraType the matching types in cassandra for the set
-func (t *VSInt) CassandraType() string {
-	return "set<bigint>"
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTIntInt) CassandraType() string {
+	return "VTIntInt"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTIntInt) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTIntInt) RedisValue() string {
+	return fmt.Sprintf("%d %d", t.Key, t.Value)
+}
+
+//**************** Tuple: int64 double VTIntDbl **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTIntDbl) CassandraType() string {
+	return "VTIntDbl"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTIntDbl) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTIntDbl) RedisValue() string {
+	return fmt.Sprintf("%d %v", t.Key, t.Value)
+}
+
+//**************** Tuple: double string VTDblStr **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblStr) CassandraType() string {
+	return "VTDblStr"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTDblStr) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTDblStr) RedisValue() string {
+	return fmt.Sprintf("%v %s", t.Key, t.Value)
+}
+
+//**************** Tuple: double int64 VTDblInt **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblInt) CassandraType() string {
+	return "VTDblInt"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTDblInt) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTDblInt) RedisValue() string {
+	return fmt.Sprintf("%v %d", t.Key, t.Value)
+}
+
+//**************** Tuple: double double VTDblDbl **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblDbl) CassandraType() string {
+	return "VTDblDbl"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTDblDbl) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTDblDbl) RedisValue() string {
+	return fmt.Sprintf("%v %v", t.Key, t.Value)
 }
 
 //**************** Set: string  VSStr **********************/
@@ -387,476 +271,120 @@ func (t *VSStr) CassandraType() string {
 	return "set<varchar>"
 }
 
-//**************** Set: double double VSDblDbl **********************/
+//**************** Set: int64  VSInt **********************/
 
 // VecType the type of vector (set)
-func (t *VSDblDbl) VecType() string {
+func (t *VSInt) VecType() string {
 	return "set"
 }
 
 // IsSet is a set type
-func (t *VSDblDbl) IsSet() bool {
+func (t *VSInt) IsSet() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VSDblDbl) GetName() *VName {
+func (t *VSInt) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VSDblDbl) Key() string {
+func (t *VSInt) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VSDblDbl) Tags() Tags {
+func (t *VSInt) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VSDblDbl) UniqueId() uint64 {
+func (t *VSInt) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VSDblDbl) UniqueIdString() string {
+func (t *VSInt) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VSDblDbl) IsVector() bool {
+func (t *VSInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VSDblDbl) TypeName() string {
-	return "VSDblDbl"
+func (t *VSInt) TypeName() string {
+	return "VSInt"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VSInt) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the set
-func (t *VSDblDbl) CassandraType() string {
-	return "set<frozen<VTDblDbl>>"
+func (t *VSInt) CassandraType() string {
+	return "set<bigint>"
 }
 
-//**************** Set: double int64 VSDblInt **********************/
+//**************** Set: double  VSDbl **********************/
 
 // VecType the type of vector (set)
-func (t *VSDblInt) VecType() string {
+func (t *VSDbl) VecType() string {
 	return "set"
 }
 
 // IsSet is a set type
-func (t *VSDblInt) IsSet() bool {
+func (t *VSDbl) IsSet() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VSDblInt) GetName() *VName {
+func (t *VSDbl) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VSDblInt) Key() string {
+func (t *VSDbl) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VSDblInt) Tags() Tags {
+func (t *VSDbl) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VSDblInt) UniqueId() uint64 {
+func (t *VSDbl) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VSDblInt) UniqueIdString() string {
+func (t *VSDbl) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VSDblInt) IsVector() bool {
+func (t *VSDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VSDblInt) TypeName() string {
-	return "VSDblInt"
+func (t *VSDbl) TypeName() string {
+	return "VSDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+func (t *VSDbl) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the set
-func (t *VSDblInt) CassandraType() string {
-	return "set<frozen<VTDblInt>>"
-}
-
-//**************** Set: double string VSDblStr **********************/
-
-// VecType the type of vector (set)
-func (t *VSDblStr) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSDblStr) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSDblStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSDblStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSDblStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSDblStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSDblStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSDblStr) TypeName() string {
-	return "VSDblStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSDblStr) CassandraType() string {
-	return "set<frozen<VTDblStr>>"
-}
-
-//**************** Set: int64 double VSIntDbl **********************/
-
-// VecType the type of vector (set)
-func (t *VSIntDbl) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSIntDbl) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSIntDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSIntDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSIntDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSIntDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSIntDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSIntDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSIntDbl) TypeName() string {
-	return "VSIntDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSIntDbl) CassandraType() string {
-	return "set<frozen<VTIntDbl>>"
-}
-
-//**************** Set: int64 int64 VSIntInt **********************/
-
-// VecType the type of vector (set)
-func (t *VSIntInt) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSIntInt) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSIntInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSIntInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSIntInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSIntInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSIntInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSIntInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSIntInt) TypeName() string {
-	return "VSIntInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSIntInt) CassandraType() string {
-	return "set<frozen<VTIntInt>>"
-}
-
-//**************** Set: int64 string VSIntStr **********************/
-
-// VecType the type of vector (set)
-func (t *VSIntStr) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSIntStr) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSIntStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSIntStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSIntStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSIntStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSIntStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSIntStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSIntStr) TypeName() string {
-	return "VSIntStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSIntStr) CassandraType() string {
-	return "set<frozen<VTIntStr>>"
-}
-
-//**************** Set: string double VSStrDbl **********************/
-
-// VecType the type of vector (set)
-func (t *VSStrDbl) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSStrDbl) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSStrDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSStrDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSStrDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSStrDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSStrDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSStrDbl) TypeName() string {
-	return "VSStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSStrDbl) CassandraType() string {
-	return "set<frozen<VTStrDbl>>"
-}
-
-//**************** Set: string int64 VSStrInt **********************/
-
-// VecType the type of vector (set)
-func (t *VSStrInt) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSStrInt) IsSet() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VSStrInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VSStrInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VSStrInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VSStrInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VSStrInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VSStrInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSStrInt) TypeName() string {
-	return "VSStrInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSStrInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSStrInt) CassandraType() string {
-	return "set<frozen<VTStrInt>>"
+func (t *VSDbl) CassandraType() string {
+	return "set<double>"
 }
 
 //**************** Set: string string VSStrStr **********************/
@@ -918,120 +446,476 @@ func (t *VSStrStr) CassandraType() string {
 	return "set<frozen<VTStrStr>>"
 }
 
-//**************** List: double  VLDbl **********************/
+//**************** Set: string int64 VSStrInt **********************/
 
-// VecType the type of vector (list)
-func (t *VLDbl) VecType() string {
-	return "list"
+// VecType the type of vector (set)
+func (t *VSStrInt) VecType() string {
+	return "set"
 }
 
-// IsList this is a list type
-func (t *VLDbl) IsList() bool {
+// IsSet is a set type
+func (t *VSStrInt) IsSet() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VLDbl) GetName() *VName {
+func (t *VSStrInt) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VLDbl) Key() string {
+func (t *VSStrInt) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VLDbl) Tags() Tags {
+func (t *VSStrInt) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VLDbl) UniqueId() uint64 {
+func (t *VSStrInt) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VLDbl) UniqueIdString() string {
+func (t *VSStrInt) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VLDbl) IsVector() bool {
+func (t *VSStrInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLDbl) TypeName() string {
-	return "VLDbl"
+func (t *VSStrInt) TypeName() string {
+	return "VSStrInt"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VLDbl) CassandraCreateType(keyspace string) string {
-	return ""
+// the set of of the tpl types
+func (t *VSStrInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
 }
 
-// CassandraType the matching types in cassandra for the list
-func (t *VLDbl) CassandraType() string {
-	return "list<double>"
+// CassandraType the matching types in cassandra for the set
+func (t *VSStrInt) CassandraType() string {
+	return "set<frozen<VTStrInt>>"
 }
 
-//**************** List: int64  VLInt **********************/
+//**************** Set: string double VSStrDbl **********************/
 
-// VecType the type of vector (list)
-func (t *VLInt) VecType() string {
-	return "list"
+// VecType the type of vector (set)
+func (t *VSStrDbl) VecType() string {
+	return "set"
 }
 
-// IsList this is a list type
-func (t *VLInt) IsList() bool {
+// IsSet is a set type
+func (t *VSStrDbl) IsSet() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VLInt) GetName() *VName {
+func (t *VSStrDbl) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VLInt) Key() string {
+func (t *VSStrDbl) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VLInt) Tags() Tags {
+func (t *VSStrDbl) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VLInt) UniqueId() uint64 {
+func (t *VSStrDbl) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VLInt) UniqueIdString() string {
+func (t *VSStrDbl) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VLInt) IsVector() bool {
+func (t *VSStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLInt) TypeName() string {
-	return "VLInt"
+func (t *VSStrDbl) TypeName() string {
+	return "VSStrDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VLInt) CassandraCreateType(keyspace string) string {
-	return ""
+// the set of of the tpl types
+func (t *VSStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
-// CassandraType the matching types in cassandra for the list
-func (t *VLInt) CassandraType() string {
-	return "list<bigint>"
+// CassandraType the matching types in cassandra for the set
+func (t *VSStrDbl) CassandraType() string {
+	return "set<frozen<VTStrDbl>>"
+}
+
+//**************** Set: int64 string VSIntStr **********************/
+
+// VecType the type of vector (set)
+func (t *VSIntStr) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSIntStr) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSIntStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSIntStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSIntStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSIntStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSIntStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSIntStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSIntStr) TypeName() string {
+	return "VSIntStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSIntStr) CassandraType() string {
+	return "set<frozen<VTIntStr>>"
+}
+
+//**************** Set: int64 int64 VSIntInt **********************/
+
+// VecType the type of vector (set)
+func (t *VSIntInt) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSIntInt) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSIntInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSIntInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSIntInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSIntInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSIntInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSIntInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSIntInt) TypeName() string {
+	return "VSIntInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSIntInt) CassandraType() string {
+	return "set<frozen<VTIntInt>>"
+}
+
+//**************** Set: int64 double VSIntDbl **********************/
+
+// VecType the type of vector (set)
+func (t *VSIntDbl) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSIntDbl) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSIntDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSIntDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSIntDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSIntDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSIntDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSIntDbl) TypeName() string {
+	return "VSIntDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSIntDbl) CassandraType() string {
+	return "set<frozen<VTIntDbl>>"
+}
+
+//**************** Set: double string VSDblStr **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblStr) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblStr) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSDblStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSDblStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSDblStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSDblStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSDblStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblStr) TypeName() string {
+	return "VSDblStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblStr) CassandraType() string {
+	return "set<frozen<VTDblStr>>"
+}
+
+//**************** Set: double int64 VSDblInt **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblInt) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblInt) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSDblInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSDblInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSDblInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSDblInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSDblInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblInt) TypeName() string {
+	return "VSDblInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblInt) CassandraType() string {
+	return "set<frozen<VTDblInt>>"
+}
+
+//**************** Set: double double VSDblDbl **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblDbl) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblDbl) IsSet() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VSDblDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VSDblDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VSDblDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VSDblDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VSDblDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblDbl) TypeName() string {
+	return "VSDblDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblDbl) CassandraType() string {
+	return "set<frozen<VTDblDbl>>"
 }
 
 //**************** List: string  VLStr **********************/
@@ -1092,476 +976,120 @@ func (t *VLStr) CassandraType() string {
 	return "list<varchar>"
 }
 
-//**************** List: double double VLDblDbl **********************/
+//**************** List: int64  VLInt **********************/
 
 // VecType the type of vector (list)
-func (t *VLDblDbl) VecType() string {
+func (t *VLInt) VecType() string {
 	return "list"
 }
 
 // IsList this is a list type
-func (t *VLDblDbl) IsList() bool {
+func (t *VLInt) IsList() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VLDblDbl) GetName() *VName {
+func (t *VLInt) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VLDblDbl) Key() string {
+func (t *VLInt) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VLDblDbl) Tags() Tags {
+func (t *VLInt) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VLDblDbl) UniqueId() uint64 {
+func (t *VLInt) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VLDblDbl) UniqueIdString() string {
+func (t *VLInt) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VLDblDbl) IsVector() bool {
+func (t *VLInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLDblDbl) TypeName() string {
-	return "VLDblDbl"
+func (t *VLInt) TypeName() string {
+	return "VLInt"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VLInt) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the list
-func (t *VLDblDbl) CassandraType() string {
-	return "list<frozen<VTDblDbl>>"
+func (t *VLInt) CassandraType() string {
+	return "list<bigint>"
 }
 
-//**************** List: double int64 VLDblInt **********************/
+//**************** List: double  VLDbl **********************/
 
 // VecType the type of vector (list)
-func (t *VLDblInt) VecType() string {
+func (t *VLDbl) VecType() string {
 	return "list"
 }
 
 // IsList this is a list type
-func (t *VLDblInt) IsList() bool {
+func (t *VLDbl) IsList() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VLDblInt) GetName() *VName {
+func (t *VLDbl) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VLDblInt) Key() string {
+func (t *VLDbl) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VLDblInt) Tags() Tags {
+func (t *VLDbl) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VLDblInt) UniqueId() uint64 {
+func (t *VLDbl) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VLDblInt) UniqueIdString() string {
+func (t *VLDbl) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VLDblInt) IsVector() bool {
+func (t *VLDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLDblInt) TypeName() string {
-	return "VLDblInt"
+func (t *VLDbl) TypeName() string {
+	return "VLDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+func (t *VLDbl) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the list
-func (t *VLDblInt) CassandraType() string {
-	return "list<frozen<VTDblInt>>"
-}
-
-//**************** List: double string VLDblStr **********************/
-
-// VecType the type of vector (list)
-func (t *VLDblStr) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLDblStr) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLDblStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLDblStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLDblStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLDblStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLDblStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLDblStr) TypeName() string {
-	return "VLDblStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLDblStr) CassandraType() string {
-	return "list<frozen<VTDblStr>>"
-}
-
-//**************** List: int64 double VLIntDbl **********************/
-
-// VecType the type of vector (list)
-func (t *VLIntDbl) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLIntDbl) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLIntDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLIntDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLIntDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLIntDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLIntDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLIntDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLIntDbl) TypeName() string {
-	return "VLIntDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLIntDbl) CassandraType() string {
-	return "list<frozen<VTIntDbl>>"
-}
-
-//**************** List: int64 int64 VLIntInt **********************/
-
-// VecType the type of vector (list)
-func (t *VLIntInt) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLIntInt) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLIntInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLIntInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLIntInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLIntInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLIntInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLIntInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLIntInt) TypeName() string {
-	return "VLIntInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLIntInt) CassandraType() string {
-	return "list<frozen<VTIntInt>>"
-}
-
-//**************** List: int64 string VLIntStr **********************/
-
-// VecType the type of vector (list)
-func (t *VLIntStr) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLIntStr) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLIntStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLIntStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLIntStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLIntStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLIntStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLIntStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLIntStr) TypeName() string {
-	return "VLIntStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLIntStr) CassandraType() string {
-	return "list<frozen<VTIntStr>>"
-}
-
-//**************** List: string double VLStrDbl **********************/
-
-// VecType the type of vector (list)
-func (t *VLStrDbl) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLStrDbl) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLStrDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLStrDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLStrDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLStrDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLStrDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLStrDbl) TypeName() string {
-	return "VLStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLStrDbl) CassandraType() string {
-	return "list<frozen<VTStrDbl>>"
-}
-
-//**************** List: string int64 VLStrInt **********************/
-
-// VecType the type of vector (list)
-func (t *VLStrInt) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLStrInt) IsList() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VLStrInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VLStrInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VLStrInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VLStrInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VLStrInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VLStrInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLStrInt) TypeName() string {
-	return "VLStrInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLStrInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLStrInt) CassandraType() string {
-	return "list<frozen<VTStrInt>>"
+func (t *VLDbl) CassandraType() string {
+	return "list<double>"
 }
 
 //**************** List: string string VLStrStr **********************/
@@ -1623,299 +1151,476 @@ func (t *VLStrStr) CassandraType() string {
 	return "list<frozen<VTStrStr>>"
 }
 
-//**************** Map: int64 double VMIntDbl **********************/
+//**************** List: string int64 VLStrInt **********************/
 
-// VecType the type of vector (map)
-func (t *VMIntDbl) VecType() string {
-	return "map"
+// VecType the type of vector (list)
+func (t *VLStrInt) VecType() string {
+	return "list"
 }
 
-// IsMap is a set type
-func (t *VMIntDbl) IsMap() bool {
+// IsList this is a list type
+func (t *VLStrInt) IsList() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VMIntDbl) GetName() *VName {
+func (t *VLStrInt) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VMIntDbl) Key() string {
+func (t *VLStrInt) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VMIntDbl) Tags() Tags {
+func (t *VLStrInt) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VMIntDbl) UniqueId() uint64 {
+func (t *VLStrInt) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VMIntDbl) UniqueIdString() string {
+func (t *VLStrInt) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntDbl) IsVector() bool {
+func (t *VLStrInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntDbl) TypeName() string {
-	return "VMIntDbl"
+func (t *VLStrInt) TypeName() string {
+	return "VLStrInt"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntDbl) CassandraType() string {
-	return "map<bigint, frozen<VTIntDbl>>"
-}
-
-//**************** Map: int64 int64 VMIntInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntInt) TypeName() string {
-	return "VMIntInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntInt) CassandraType() string {
-	return "map<bigint, frozen<VTIntInt>>"
-}
-
-//**************** Map: int64 string VMIntStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntStr) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntStr) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntStr) TypeName() string {
-	return "VMIntStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntStr) CassandraType() string {
-	return "map<bigint, frozen<VTIntStr>>"
-}
-
-//**************** Map: string double VMStrDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrDbl) TypeName() string {
-	return "VMStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrDbl) CassandraType() string {
-	return "map<varchar, frozen<VTStrDbl>>"
-}
-
-//**************** Map: string int64 VMStrInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrInt) TypeName() string {
-	return "VMStrInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrInt) CassandraCreateType(keyspace string) string {
+func (t *VLStrInt) CassandraCreateType(keyspace string) string {
 	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
 }
 
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrInt) CassandraType() string {
-	return "map<varchar, frozen<VTStrInt>>"
+// CassandraType the matching types in cassandra for the list
+func (t *VLStrInt) CassandraType() string {
+	return "list<frozen<VTStrInt>>"
+}
+
+//**************** List: string double VLStrDbl **********************/
+
+// VecType the type of vector (list)
+func (t *VLStrDbl) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLStrDbl) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLStrDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLStrDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLStrDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLStrDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLStrDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLStrDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLStrDbl) TypeName() string {
+	return "VLStrDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLStrDbl) CassandraType() string {
+	return "list<frozen<VTStrDbl>>"
+}
+
+//**************** List: int64 string VLIntStr **********************/
+
+// VecType the type of vector (list)
+func (t *VLIntStr) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLIntStr) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLIntStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLIntStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLIntStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLIntStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLIntStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLIntStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLIntStr) TypeName() string {
+	return "VLIntStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLIntStr) CassandraType() string {
+	return "list<frozen<VTIntStr>>"
+}
+
+//**************** List: int64 int64 VLIntInt **********************/
+
+// VecType the type of vector (list)
+func (t *VLIntInt) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLIntInt) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLIntInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLIntInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLIntInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLIntInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLIntInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLIntInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLIntInt) TypeName() string {
+	return "VLIntInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLIntInt) CassandraType() string {
+	return "list<frozen<VTIntInt>>"
+}
+
+//**************** List: int64 double VLIntDbl **********************/
+
+// VecType the type of vector (list)
+func (t *VLIntDbl) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLIntDbl) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLIntDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLIntDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLIntDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLIntDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLIntDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLIntDbl) TypeName() string {
+	return "VLIntDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLIntDbl) CassandraType() string {
+	return "list<frozen<VTIntDbl>>"
+}
+
+//**************** List: double string VLDblStr **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblStr) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblStr) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLDblStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLDblStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLDblStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLDblStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLDblStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblStr) TypeName() string {
+	return "VLDblStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblStr) CassandraType() string {
+	return "list<frozen<VTDblStr>>"
+}
+
+//**************** List: double int64 VLDblInt **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblInt) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblInt) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLDblInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLDblInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLDblInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLDblInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLDblInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblInt) TypeName() string {
+	return "VLDblInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblInt) CassandraType() string {
+	return "list<frozen<VTDblInt>>"
+}
+
+//**************** List: double double VLDblDbl **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblDbl) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblDbl) IsList() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VLDblDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VLDblDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VLDblDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VLDblDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VLDblDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblDbl) TypeName() string {
+	return "VLDblDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblDbl) CassandraType() string {
+	return "list<frozen<VTDblDbl>>"
 }
 
 //**************** Map: string string VMStrStr **********************/
@@ -1977,1007 +1682,299 @@ func (t *VMStrStr) CassandraType() string {
 	return "map<varchar, frozen<VTStrStr>>"
 }
 
-//**************** Map: double double VMIntTPDblDbl **********************/
+//**************** Map: string int64 VMStrInt **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPDblDbl) VecType() string {
+func (t *VMStrInt) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPDblDbl) IsMap() bool {
+func (t *VMStrInt) IsMap() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VMIntTPDblDbl) GetName() *VName {
+func (t *VMStrInt) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VMIntTPDblDbl) Key() string {
+func (t *VMStrInt) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VMIntTPDblDbl) Tags() Tags {
+func (t *VMStrInt) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VMIntTPDblDbl) UniqueId() uint64 {
+func (t *VMStrInt) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VMIntTPDblDbl) UniqueIdString() string {
+func (t *VMStrInt) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPDblDbl) IsVector() bool {
+func (t *VMStrInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPDblDbl) TypeName() string {
-	return "VMIntTPDblDbl"
+func (t *VMStrInt) TypeName() string {
+	return "VMStrInt"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblDbl) CassandraType() string {
-	return "map<double, frozen<VTDblDbl>>"
-}
-
-//**************** Map: double int64 VMIntTPDblInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPDblInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPDblInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPDblInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPDblInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPDblInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPDblInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPDblInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPDblInt) TypeName() string {
-	return "VMIntTPDblInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblInt) CassandraType() string {
-	return "map<double, frozen<VTDblInt>>"
-}
-
-//**************** Map: double string VMIntTPDblStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPDblStr) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPDblStr) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPDblStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPDblStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPDblStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPDblStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPDblStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPDblStr) TypeName() string {
-	return "VMIntTPDblStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblStr) CassandraType() string {
-	return "map<double, frozen<VTDblStr>>"
-}
-
-//**************** Map: int64 double VMIntTPIntDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPIntDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPIntDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPIntDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPIntDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPIntDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPIntDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPIntDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPIntDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPIntDbl) TypeName() string {
-	return "VMIntTPIntDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPIntDbl) CassandraType() string {
-	return "map<bigint, frozen<VTIntDbl>>"
-}
-
-//**************** Map: int64 int64 VMIntTPIntInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPIntInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPIntInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPIntInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPIntInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPIntInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPIntInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPIntInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPIntInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPIntInt) TypeName() string {
-	return "VMIntTPIntInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPIntInt) CassandraType() string {
-	return "map<bigint, frozen<VTIntInt>>"
-}
-
-//**************** Map: int64 string VMIntTPIntStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPIntStr) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPIntStr) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPIntStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPIntStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPIntStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPIntStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPIntStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPIntStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPIntStr) TypeName() string {
-	return "VMIntTPIntStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPIntStr) CassandraType() string {
-	return "map<bigint, frozen<VTIntStr>>"
-}
-
-//**************** Map: string double VMIntTPStrDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPStrDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPStrDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPStrDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPStrDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPStrDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPStrDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPStrDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPStrDbl) TypeName() string {
-	return "VMIntTPStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPStrDbl) CassandraType() string {
-	return "map<varchar, frozen<VTStrDbl>>"
-}
-
-//**************** Map: string int64 VMIntTPStrInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMIntTPStrInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMIntTPStrInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMIntTPStrInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMIntTPStrInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMIntTPStrInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMIntTPStrInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMIntTPStrInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMIntTPStrInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMIntTPStrInt) TypeName() string {
-	return "VMIntTPStrInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMIntTPStrInt) CassandraCreateType(keyspace string) string {
+func (t *VMStrInt) CassandraCreateType(keyspace string) string {
 	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPStrInt) CassandraType() string {
+func (t *VMStrInt) CassandraType() string {
 	return "map<varchar, frozen<VTStrInt>>"
 }
 
-//**************** Map: string string VMIntTPStrStr **********************/
+//**************** Map: string double VMStrDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPStrStr) VecType() string {
+func (t *VMStrDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPStrStr) IsMap() bool {
+func (t *VMStrDbl) IsMap() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VMIntTPStrStr) GetName() *VName {
+func (t *VMStrDbl) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VMIntTPStrStr) Key() string {
+func (t *VMStrDbl) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VMIntTPStrStr) Tags() Tags {
+func (t *VMStrDbl) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VMIntTPStrStr) UniqueId() uint64 {
+func (t *VMStrDbl) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VMIntTPStrStr) UniqueIdString() string {
+func (t *VMStrDbl) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPStrStr) IsVector() bool {
+func (t *VMStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPStrStr) TypeName() string {
-	return "VMIntTPStrStr"
+func (t *VMStrDbl) TypeName() string {
+	return "VMStrDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPStrStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrStr ( k varchar, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMIntTPStrStr) CassandraType() string {
-	return "map<varchar, frozen<VTStrStr>>"
-}
-
-//**************** Map: double double VMStrTPDblDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPDblDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPDblDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPDblDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPDblDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPDblDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPDblDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPDblDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPDblDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPDblDbl) TypeName() string {
-	return "VMStrTPDblDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblDbl) CassandraType() string {
-	return "map<double, frozen<VTDblDbl>>"
-}
-
-//**************** Map: double int64 VMStrTPDblInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPDblInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPDblInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPDblInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPDblInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPDblInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPDblInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPDblInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPDblInt) TypeName() string {
-	return "VMStrTPDblInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblInt) CassandraType() string {
-	return "map<double, frozen<VTDblInt>>"
-}
-
-//**************** Map: double string VMStrTPDblStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPDblStr) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPDblStr) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPDblStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPDblStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPDblStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPDblStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPDblStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPDblStr) TypeName() string {
-	return "VMStrTPDblStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblStr) CassandraType() string {
-	return "map<double, frozen<VTDblStr>>"
-}
-
-//**************** Map: int64 double VMStrTPIntDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPIntDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPIntDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPIntDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPIntDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPIntDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPIntDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPIntDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPIntDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPIntDbl) TypeName() string {
-	return "VMStrTPIntDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPIntDbl) CassandraType() string {
-	return "map<bigint, frozen<VTIntDbl>>"
-}
-
-//**************** Map: int64 int64 VMStrTPIntInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPIntInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPIntInt) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPIntInt) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPIntInt) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPIntInt) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPIntInt) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPIntInt) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPIntInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPIntInt) TypeName() string {
-	return "VMStrTPIntInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPIntInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPIntInt) CassandraType() string {
-	return "map<bigint, frozen<VTIntInt>>"
-}
-
-//**************** Map: int64 string VMStrTPIntStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPIntStr) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPIntStr) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPIntStr) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPIntStr) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPIntStr) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPIntStr) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPIntStr) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPIntStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPIntStr) TypeName() string {
-	return "VMStrTPIntStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPIntStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPIntStr) CassandraType() string {
-	return "map<bigint, frozen<VTIntStr>>"
-}
-
-//**************** Map: string double VMStrTPStrDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPStrDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPStrDbl) IsMap() bool {
-	return true
-}
-
-// GetName returns the Name of the vector
-func (t *VMStrTPStrDbl) GetName() *VName {
-	return t.Name
-}
-
-// Key returns the key of the vector
-func (t *VMStrTPStrDbl) Key() string {
-	return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *VMStrTPStrDbl) Tags() Tags {
-	return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *VMStrTPStrDbl) UniqueId() uint64 {
-	return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *VMStrTPStrDbl) UniqueIdString() string {
-	return t.Name.UniqueIdString()
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPStrDbl) TypeName() string {
-	return "VMStrTPStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPStrDbl) CassandraCreateType(keyspace string) string {
+func (t *VMStrDbl) CassandraCreateType(keyspace string) string {
 	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMStrTPStrDbl) CassandraType() string {
+func (t *VMStrDbl) CassandraType() string {
 	return "map<varchar, frozen<VTStrDbl>>"
 }
 
-//**************** Map: string int64 VMStrTPStrInt **********************/
+//**************** Map: int64 string VMIntStr **********************/
 
 // VecType the type of vector (map)
-func (t *VMStrTPStrInt) VecType() string {
+func (t *VMIntStr) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMStrTPStrInt) IsMap() bool {
+func (t *VMIntStr) IsMap() bool {
 	return true
 }
 
 // GetName returns the Name of the vector
-func (t *VMStrTPStrInt) GetName() *VName {
+func (t *VMIntStr) GetName() *VName {
 	return t.Name
 }
 
 // Key returns the key of the vector
-func (t *VMStrTPStrInt) Key() string {
+func (t *VMIntStr) Key() string {
 	return t.Name.Key
 }
 
 // Tags returns the tags of the vector
-func (t *VMStrTPStrInt) Tags() Tags {
+func (t *VMIntStr) Tags() Tags {
 	return t.Name.Tags
 }
 
 // UniqueId returns the tags of the vector
-func (t *VMStrTPStrInt) UniqueId() uint64 {
+func (t *VMIntStr) UniqueId() uint64 {
 	return t.Name.UniqueId()
 }
 
 // UniqueIdString returns the tags of the vector
-func (t *VMStrTPStrInt) UniqueIdString() string {
+func (t *VMIntStr) UniqueIdString() string {
 	return t.Name.UniqueIdString()
 }
 
 // IsVector more for interface acceptance
-func (t *VMStrTPStrInt) IsVector() bool {
+func (t *VMIntStr) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMStrTPStrInt) TypeName() string {
-	return "VMStrTPStrInt"
+func (t *VMIntStr) TypeName() string {
+	return "VMIntStr"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMStrTPStrInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
+func (t *VMIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMStrTPStrInt) CassandraType() string {
-	return "map<varchar, frozen<VTStrInt>>"
+func (t *VMIntStr) CassandraType() string {
+	return "map<bigint, frozen<VTIntStr>>"
+}
+
+//**************** Map: int64 int64 VMIntInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntInt) TypeName() string {
+	return "VMIntInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntInt) CassandraType() string {
+	return "map<bigint, frozen<VTIntInt>>"
+}
+
+//**************** Map: int64 double VMIntDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntDbl) TypeName() string {
+	return "VMIntDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntDbl) CassandraType() string {
+	return "map<bigint, frozen<VTIntDbl>>"
 }
 
 //**************** Map: string string VMStrTPStrStr **********************/
@@ -3039,10 +2036,1013 @@ func (t *VMStrTPStrStr) CassandraType() string {
 	return "map<varchar, frozen<VTStrStr>>"
 }
 
-var TupleNames = [...]string{"VTDblDbl", "VTDblInt", "VTDblStr", "VTIntDbl", "VTIntInt", "VTIntStr", "VTStrDbl", "VTStrInt", "VTStrStr"}
-var ListNames = [...]string{"VLDbl", "VLInt", "VLStr", "VLDblDbl", "VLDblInt", "VLDblStr", "VLIntDbl", "VLIntInt", "VLIntStr", "VLStrDbl", "VLStrInt", "VLStrStr"}
-var SetNames = [...]string{"VSDbl", "VSInt", "VSStr", "VSDblDbl", "VSDblInt", "VSDblStr", "VSIntDbl", "VSIntInt", "VSIntStr", "VSStrDbl", "VSStrInt", "VSStrStr"}
-var MapNames = [...]string{"VMIntDbl", "VMIntInt", "VMIntStr", "VMStrDbl", "VMStrInt", "VMStrStr", "VMIntTPDblDbl", "VMIntTPDblInt", "VMIntTPDblStr", "VMIntTPIntDbl", "VMIntTPIntInt", "VMIntTPIntStr", "VMIntTPStrDbl", "VMIntTPStrInt", "VMIntTPStrStr", "VMStrTPDblDbl", "VMStrTPDblInt", "VMStrTPDblStr", "VMStrTPIntDbl", "VMStrTPIntInt", "VMStrTPIntStr", "VMStrTPStrDbl", "VMStrTPStrInt", "VMStrTPStrStr"}
+//**************** Map: string int64 VMStrTPStrInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPStrInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPStrInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPStrInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPStrInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPStrInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPStrInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPStrInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPStrInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPStrInt) TypeName() string {
+	return "VMStrTPStrInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPStrInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPStrInt) CassandraType() string {
+	return "map<varchar, frozen<VTStrInt>>"
+}
+
+//**************** Map: string double VMStrTPStrDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPStrDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPStrDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPStrDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPStrDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPStrDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPStrDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPStrDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPStrDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPStrDbl) TypeName() string {
+	return "VMStrTPStrDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPStrDbl) CassandraType() string {
+	return "map<varchar, frozen<VTStrDbl>>"
+}
+
+//**************** Map: int64 string VMStrTPIntStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPIntStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPIntStr) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPIntStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPIntStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPIntStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPIntStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPIntStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPIntStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPIntStr) TypeName() string {
+	return "VMStrTPIntStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPIntStr) CassandraType() string {
+	return "map<bigint, frozen<VTIntStr>>"
+}
+
+//**************** Map: int64 int64 VMStrTPIntInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPIntInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPIntInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPIntInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPIntInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPIntInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPIntInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPIntInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPIntInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPIntInt) TypeName() string {
+	return "VMStrTPIntInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPIntInt) CassandraType() string {
+	return "map<bigint, frozen<VTIntInt>>"
+}
+
+//**************** Map: int64 double VMStrTPIntDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPIntDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPIntDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPIntDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPIntDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPIntDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPIntDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPIntDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPIntDbl) TypeName() string {
+	return "VMStrTPIntDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPIntDbl) CassandraType() string {
+	return "map<bigint, frozen<VTIntDbl>>"
+}
+
+//**************** Map: double string VMStrTPDblStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPDblStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPDblStr) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPDblStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPDblStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPDblStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPDblStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPDblStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPDblStr) TypeName() string {
+	return "VMStrTPDblStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPDblStr) CassandraType() string {
+	return "map<double, frozen<VTDblStr>>"
+}
+
+//**************** Map: double int64 VMStrTPDblInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPDblInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPDblInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPDblInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPDblInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPDblInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPDblInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPDblInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPDblInt) TypeName() string {
+	return "VMStrTPDblInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPDblInt) CassandraType() string {
+	return "map<double, frozen<VTDblInt>>"
+}
+
+//**************** Map: double double VMStrTPDblDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMStrTPDblDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMStrTPDblDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMStrTPDblDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMStrTPDblDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMStrTPDblDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMStrTPDblDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMStrTPDblDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMStrTPDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMStrTPDblDbl) TypeName() string {
+	return "VMStrTPDblDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMStrTPDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMStrTPDblDbl) CassandraType() string {
+	return "map<double, frozen<VTDblDbl>>"
+}
+
+//**************** Map: string string VMIntTPStrStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPStrStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPStrStr) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPStrStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPStrStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPStrStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPStrStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPStrStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPStrStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPStrStr) TypeName() string {
+	return "VMIntTPStrStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPStrStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrStr ( k varchar, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPStrStr) CassandraType() string {
+	return "map<varchar, frozen<VTStrStr>>"
+}
+
+//**************** Map: string int64 VMIntTPStrInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPStrInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPStrInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPStrInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPStrInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPStrInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPStrInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPStrInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPStrInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPStrInt) TypeName() string {
+	return "VMIntTPStrInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPStrInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrInt ( k varchar, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPStrInt) CassandraType() string {
+	return "map<varchar, frozen<VTStrInt>>"
+}
+
+//**************** Map: string double VMIntTPStrDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPStrDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPStrDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPStrDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPStrDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPStrDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPStrDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPStrDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPStrDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPStrDbl) TypeName() string {
+	return "VMIntTPStrDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPStrDbl) CassandraType() string {
+	return "map<varchar, frozen<VTStrDbl>>"
+}
+
+//**************** Map: int64 string VMIntTPIntStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPIntStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPIntStr) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPIntStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPIntStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPIntStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPIntStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPIntStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPIntStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPIntStr) TypeName() string {
+	return "VMIntTPIntStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPIntStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntStr ( k bigint, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPIntStr) CassandraType() string {
+	return "map<bigint, frozen<VTIntStr>>"
+}
+
+//**************** Map: int64 int64 VMIntTPIntInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPIntInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPIntInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPIntInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPIntInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPIntInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPIntInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPIntInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPIntInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPIntInt) TypeName() string {
+	return "VMIntTPIntInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPIntInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntInt ( k bigint, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPIntInt) CassandraType() string {
+	return "map<bigint, frozen<VTIntInt>>"
+}
+
+//**************** Map: int64 double VMIntTPIntDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPIntDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPIntDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPIntDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPIntDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPIntDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPIntDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPIntDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPIntDbl) TypeName() string {
+	return "VMIntTPIntDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPIntDbl) CassandraType() string {
+	return "map<bigint, frozen<VTIntDbl>>"
+}
+
+//**************** Map: double string VMIntTPDblStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblStr) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPDblStr) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPDblStr) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPDblStr) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPDblStr) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPDblStr) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblStr) TypeName() string {
+	return "VMIntTPDblStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblStr) CassandraType() string {
+	return "map<double, frozen<VTDblStr>>"
+}
+
+//**************** Map: double int64 VMIntTPDblInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblInt) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPDblInt) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPDblInt) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPDblInt) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPDblInt) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPDblInt) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblInt) TypeName() string {
+	return "VMIntTPDblInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblInt) CassandraType() string {
+	return "map<double, frozen<VTDblInt>>"
+}
+
+//**************** Map: double double VMIntTPDblDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblDbl) IsMap() bool {
+	return true
+}
+
+// GetName returns the Name of the vector
+func (t *VMIntTPDblDbl) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *VMIntTPDblDbl) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t *VMIntTPDblDbl) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *VMIntTPDblDbl) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *VMIntTPDblDbl) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblDbl) TypeName() string {
+	return "VMIntTPDblDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblDbl) CassandraType() string {
+	return "map<double, frozen<VTDblDbl>>"
+}
+
+var TupleNames = [...]string{"VTStrStr", "VTStrInt", "VTStrDbl", "VTIntStr", "VTIntInt", "VTIntDbl", "VTDblStr", "VTDblInt", "VTDblDbl"}
+var ListNames = [...]string{"VLStr", "VLInt", "VLDbl", "VLStrStr", "VLStrInt", "VLStrDbl", "VLIntStr", "VLIntInt", "VLIntDbl", "VLDblStr", "VLDblInt", "VLDblDbl"}
+var SetNames = [...]string{"VSStr", "VSInt", "VSDbl", "VSStrStr", "VSStrInt", "VSStrDbl", "VSIntStr", "VSIntInt", "VSIntDbl", "VSDblStr", "VSDblInt", "VSDblDbl"}
+var MapNames = [...]string{"VMStrStr", "VMStrInt", "VMStrDbl", "VMIntStr", "VMIntInt", "VMIntDbl", "VMStrTPStrStr", "VMStrTPStrInt", "VMStrTPStrDbl", "VMStrTPIntStr", "VMStrTPIntInt", "VMStrTPIntDbl", "VMStrTPDblStr", "VMStrTPDblInt", "VMStrTPDblDbl", "VMIntTPStrStr", "VMIntTPStrInt", "VMIntTPStrDbl", "VMIntTPIntStr", "VMIntTPIntInt", "VMIntTPIntDbl", "VMIntTPDblStr", "VMIntTPDblInt", "VMIntTPDblDbl"}
 var SHORT_NAME_MAP = map[string]string{
 	"ld":   "VLDbl",
 	"ldd":  "VLDblDbl",
@@ -3106,15 +3106,15 @@ var CASSANDRA_TYPE_MAP = map[string]string{
 	"list<frozen<VTStrInt>>":        "VLStrInt",
 	"list<frozen<VTStrStr>>":        "VLStrStr",
 	"list<varchar>":                 "VLStr",
-	"map<bigint,frozen<VTIntDbl>>":  "VMStrTPIntDbl",
-	"map<bigint,frozen<VTIntInt>>":  "VMStrTPIntInt",
-	"map<bigint,frozen<VTIntStr>>":  "VMStrTPIntStr",
-	"map<double,frozen<VTDblDbl>>":  "VMStrTPDblDbl",
-	"map<double,frozen<VTDblInt>>":  "VMStrTPDblInt",
-	"map<double,frozen<VTDblStr>>":  "VMStrTPDblStr",
-	"map<varchar,frozen<VTStrDbl>>": "VMStrTPStrDbl",
-	"map<varchar,frozen<VTStrInt>>": "VMStrTPStrInt",
-	"map<varchar,frozen<VTStrStr>>": "VMStrTPStrStr",
+	"map<bigint,frozen<VTIntDbl>>":  "VMIntTPIntDbl",
+	"map<bigint,frozen<VTIntInt>>":  "VMIntTPIntInt",
+	"map<bigint,frozen<VTIntStr>>":  "VMIntTPIntStr",
+	"map<double,frozen<VTDblDbl>>":  "VMIntTPDblDbl",
+	"map<double,frozen<VTDblInt>>":  "VMIntTPDblInt",
+	"map<double,frozen<VTDblStr>>":  "VMIntTPDblStr",
+	"map<varchar,frozen<VTStrDbl>>": "VMIntTPStrDbl",
+	"map<varchar,frozen<VTStrInt>>": "VMIntTPStrInt",
+	"map<varchar,frozen<VTStrStr>>": "VMIntTPStrStr",
 	"set<bigint>":                   "VSInt",
 	"set<double>":                   "VSDbl",
 	"set<frozen<VTDblDbl>>":         "VSDblDbl",

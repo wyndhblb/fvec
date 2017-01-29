@@ -7,17 +7,17 @@ tuples, map, sets of basic object for the many types
 
 from string import Template
 
-PROTOFILE = open("vepr.proto", "w")
-GOFILE = open("vepr_boiler.go", "w")
+PROTOFILE = open("fvec.proto", "w")
+GOFILE = open("fvec_boiler.go", "w")
 
 HEAD ="""
-// GENERATED3 with python genproto.py
+// GENERATED with python genproto.py
 // Edit at your own risk
 syntax = 'proto3';
 
 package github.com.wyndhblb.fvec;
 
-option go_package = "vepr";
+option go_package = "fvec";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "github.com/wyndhblb/timeslab/timeslab.proto";
@@ -270,7 +270,7 @@ BOILHEAD ="""
 // GENERATED with python3 genproto.py
 // Edit at your own risk
 
-package vepr
+package fvec
 
 import "reflect"
 import "fmt"

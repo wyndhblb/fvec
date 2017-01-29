@@ -207,22 +207,16 @@
 			"revisionTime": "2017-01-01T02:31:10Z"
 		},
 		{
-			"checksumSHA1": "/jZJZKCSdshVFhwXgapjhFn9nh4=",
-			"path": "github.com/wyndhblb/go-utils",
-			"revision": "310e7659b4c7f1a2178558f49185dc181dea3137",
-			"revisionTime": "2017-01-25T06:49:29Z"
-		},
-		{
 			"checksumSHA1": "UEEQIeG8HXVMHTkZSjFQ1YbINfI=",
 			"path": "github.com/wyndhblb/go-utils/pools",
 			"revision": "310e7659b4c7f1a2178558f49185dc181dea3137",
 			"revisionTime": "2017-01-25T06:49:29Z"
 		},
 		{
-			"checksumSHA1": "ZQbjLKyyCrr0vZbbwFZKJMbuWoo=",
+			"checksumSHA1": "dt/7KUXdTucMIKrndBgCeDIA0WA=",
 			"path": "github.com/wyndhblb/timeslab",
-			"revision": "436bc7d9ae562cf3c3ccc305182d22d7807bb9e9",
-			"revisionTime": "2017-01-29T10:13:59Z"
+			"revision": "49bbca9c604f8a27cc9aba6ad74f4560a68b45ad",
+			"revisionTime": "2017-01-29T10:25:53Z"
 		},
 		{
 			"path": "google.golang.org/grpc",

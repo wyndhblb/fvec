@@ -1,3 +1,3 @@
 // doc
 
-package vepr
+package fvec

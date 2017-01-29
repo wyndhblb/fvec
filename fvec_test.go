@@ -1,4 +1,4 @@
-package vepr
+package fvec
 
 import (
 	"bytes"
@@ -31,7 +31,7 @@ func Test_Slab_Formatting(t *testing.T) {
 		nm.Resolution = res
 		onSl := nm.ToSlab(ti)
 		if onSl != st {
-			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st,timeslab. Resolution_name[int32(res)])
+			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st, timeslab.Resolution_name[int32(res)])
 		}
 	}
 

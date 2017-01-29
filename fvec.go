@@ -4,7 +4,7 @@
    The base objects structs are in vepr.proto and generated
 */
 
-package vepr
+package fvec
 
 import (
 	"strings"
