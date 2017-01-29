@@ -122,7 +122,7 @@ of the form
 
     VT{t1}{t2}{
         key {t1}
-        vallue {t2}
+        value {t2}
     }
 
 where `t[1-2]` are base types.
