@@ -172,6 +172,22 @@ Some examples:
 - `l`, `sd` is a named set vector with the vector object as `[]Tuple{string, double}`
 
 
+Another method is  
+
+    GetVectorFromString(string)
+    
+Which will take the ShortHand or "Full struct form"
+
+    msss which is a VMStrTPStrStr
+    sis which is VSStrStr
+    VMStrTPStrStr
+    VSStrStr
+    li which is VLInt
+    VLint
+    
+*note* would not recommend using this for really high volume object initialization as the branch/map and string GC issues can cause performance issue.
+If the volume is low (1000s/Second) the extra GC/CPU cycles is probably ok.
+
 ## Interface
 
 The basic interface is a `Vector` which can be used as the basis for usage in other things.
