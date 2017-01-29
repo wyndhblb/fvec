@@ -130,11 +130,22 @@ Each vector object starts with it's root type prefix
 
 Have 12 variations each
 
-    VLInt|Str|Dbl + VL{Int|Str|Dbl}{Int|Str|Dbl}
-    VSInt|Str|Dbl + VS{Int|Str|Dbl}{Int|Str|Dbl}
+    VL{Int|Str|Dbl} + VL{Int|Str|Dbl}{Int|Str|Dbl}
+    VS{Int|Str|Dbl} + VS{Int|Str|Dbl}{Int|Str|Dbl}
 
-*NOTE* a SET is not really a "true set" internal to golang (as there is not a set base type), instead the cassandra `type` is a set, but internal
-to go 
+*NOTE* a SET is not really a "true set" internal to golang (as there is not a set base type), instead the cassandra `type` is a set, 
+but internal type to go is a simple array/slice.  Basically a cassandra query
+ 
+    UPDATE {keyspace}.{table}.{column} = {keyspace}.{table}.{column} + {vector_element} 
+    
+Will not do anything if the `{vector}` already exists inside a `set<vector_element>` type
+
+Same is true for redis where
+
+    SADD {key} {vector_element} 
+
+won't do anything if the `vector_element` is already there.
+
 
 ### Maps
 
