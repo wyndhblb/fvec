@@ -46,7 +46,7 @@ For such things I recommend cadent (https://github.com/wyndhblb/cadent).
 
 python3 is required for the generation as well, to laydown the inital boilerplate and protobut file, but it's as easy as 
 
-    cd fvector/schema/vepr
+    cd wyndhblb/fvec
     go generate
 
 
