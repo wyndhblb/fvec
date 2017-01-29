@@ -68,7 +68,11 @@ There is a nice utility method for generating "unique" IDs for a given Name whic
 and a Unique "string" format which is
 
     base36(unique_id)
-    
+ 
+This is needed as many DBs overflow on a `unit64` (the fnv64a type) (aka the DB we're targeting cassandra and redis) only support
+`int64`, thus a `uint64` will overflow that for 50% of the time.
+ 
+ 
 ### Resolution
 
 Resolution is a concept for "time slabbing" things.  A time slab is a string representation of time in 
