@@ -138,7 +138,7 @@ but internal type to go is a simple array/slice.  Basically a cassandra query
  
     UPDATE {keyspace}.{table}.{column} = {keyspace}.{table}.{column} + {vector_element} 
     
-Will not do anything if the `{vector}` already exists inside a `set<vector_element>` type
+Will not do anything if the `{vector_element}` already exists inside a `set<vector_element>` type
 
 Same is true for redis where
 
