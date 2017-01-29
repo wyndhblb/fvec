@@ -39,8 +39,6 @@ This forms the basis of a much large vector machine storage engine.
 I do NOT recommend this style for really high velocity distinct time series (aka data that is coming in at less then 1 sec intervals, every second, all the time). 
 For such things I recommend cadent (https://github.com/wyndhblb/cadent).
 
-This formalism, which is based on Cassandra's and Redis' nice set<stuff>, list<stuff>, maps<stuff, stuff> atomic insert/update/delete mechanics.
-
 
 ## To Generate
 
