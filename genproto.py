@@ -15,11 +15,12 @@ HEAD ="""
 // Edit at your own risk
 syntax = 'proto3';
 
-package schema.vepr;
+package github.com.wyndhblb.fvec;
 
 option go_package = "vepr";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/wyndhblb/timeslab/timeslab.proto";
 
 option (gogoproto.goproto_getters_all) = false;
 option (gogoproto.benchgen_all) = true;
@@ -35,21 +36,6 @@ message Tag {
 	string value = 2;
 }
 
-// Resoluton min, hour, day, week, month, year, all
-enum Resolution {
-	MIN = 0;
-	MIN10 = 1;
-	MIN30 = 2;
-	HOUR = 3;
-	DAY = 4;
-	WEEK = 5;
-	MONTH = 6;
-	MONTH2 = 7;
-	MONTH3 = 8;
-	MONTH6 = 9;
-	YEAR = 10;
-	ALL = 11;
-}
 
 // VN the base name for a given indexible element
 // easyjson:json
@@ -57,7 +43,7 @@ message VName {
     // @inject_tag: cql:"key" msg:"key"
 	string key = 1;
     // @inject_tag: cql:"res" msg:"res"
-	Resolution resolution = 2;
+	github.com.wyndhblb.timeslab.Resolution resolution = 2;
     // @inject_tag: cql:"ttl" msg:"ttl"
 	uint32 ttl = 3;
     // @inject_tag: cql:"-" msg:"-"

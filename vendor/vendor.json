@@ -159,6 +159,12 @@
 			"revisionTime": "2017-01-25T17:16:59Z"
 		},
 		{
+			"checksumSHA1": "kBeNcaKk56FguvPSUCEaH6AxpRc=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "8ee79997227bf9b34611aee7946ae64735e6fd93",
+			"revisionTime": "2016-11-17T03:31:26Z"
+		},
+		{
 			"checksumSHA1": "IGcXc+sO6sWPCXLPN6ZOtmM66x4=",
 			"path": "github.com/mailru/easyjson",
 			"revision": "cc9fc679cf2c79747fcbf73eed4e3c0f23d9ee14",
@@ -169,6 +175,12 @@
 			"path": "github.com/mailru/easyjson/buffer",
 			"revision": "cc9fc679cf2c79747fcbf73eed4e3c0f23d9ee14",
 			"revisionTime": "2017-01-24T15:31:42Z"
+		},
+		{
+			"checksumSHA1": "OYI6tvOnGD2mKKSRxc45Oz9gzs4=",
+			"path": "github.com/mailru/easyjson/gen",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
 		},
 		{
 			"checksumSHA1": "awmSd2XzrSAhUrGTsGxuZXpdf7s=",
@@ -207,6 +219,12 @@
 			"revisionTime": "2017-01-25T06:49:29Z"
 		},
 		{
+			"checksumSHA1": "ZQbjLKyyCrr0vZbbwFZKJMbuWoo=",
+			"path": "github.com/wyndhblb/timeslab",
+			"revision": "436bc7d9ae562cf3c3ccc305182d22d7807bb9e9",
+			"revisionTime": "2017-01-29T10:13:59Z"
+		},
+		{
 			"path": "google.golang.org/grpc",
 			"revision": ""
 		},
@@ -219,5 +237,5 @@
 			"revision": ""
 		}
 	],
-	"rootPath": "vector"
+	"rootPath": "wyndhblb/fvec"
 }

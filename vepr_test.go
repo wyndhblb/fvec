@@ -1,25 +1,10 @@
-/*
-Copyright 2016 Under Armour, Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 package vepr
 
 import (
 	"bytes"
 	"fmt"
 	"github.com/wyndhblb/go-utils/pools"
+	"github.com/wyndhblb/timeslab"
 	"reflect"
 	"testing"
 	"time"
@@ -29,46 +14,46 @@ func Test_Slab_Formatting(t *testing.T) {
 
 	ti := time.Date(2009, time.November, 10, 23, 1, 2, 0, time.UTC)
 
-	tData := make(map[Resolution]string)
-	tData[Resolution_MIN] = "200911102301"
-	tData[Resolution_MIN10] = "2009111023I100"
-	tData[Resolution_MIN30] = "2009111023I300"
-	tData[Resolution_HOUR] = "2009111023"
-	tData[Resolution_DAY] = "20091110"
-	tData[Resolution_WEEK] = "200946"
-	tData[Resolution_MONTH] = "200911"
-	tData[Resolution_MONTH2] = "2009M25"
-	tData[Resolution_MONTH3] = "2009M33"
-	tData[Resolution_MONTH6] = "2009M61"
-	tData[Resolution_YEAR] = "2009"
+	tData := make(map[timeslab.Resolution]string)
+	tData[timeslab.Resolution_MIN] = "200911102301"
+	tData[timeslab.Resolution_MIN10] = "2009111023I100"
+	tData[timeslab.Resolution_MIN30] = "2009111023I300"
+	tData[timeslab.Resolution_HOUR] = "2009111023"
+	tData[timeslab.Resolution_DAY] = "20091110"
+	tData[timeslab.Resolution_WEEK] = "200946"
+	tData[timeslab.Resolution_MONTH] = "200911"
+	tData[timeslab.Resolution_MONTH2] = "2009M25"
+	tData[timeslab.Resolution_MONTH3] = "2009M33"
+	tData[timeslab.Resolution_MONTH6] = "2009M61"
+	tData[timeslab.Resolution_YEAR] = "2009"
 
 	for res, st := range tData {
 		nm.Resolution = res
 		onSl := nm.ToSlab(ti)
 		if onSl != st {
-			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st, Resolution_name[int32(res)])
+			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st,timeslab. Resolution_name[int32(res)])
 		}
 	}
 
 	ti = time.Date(2009, time.May, 30, 6, 45, 2, 0, time.UTC)
-	tData = make(map[Resolution]string)
-	tData[Resolution_MIN] = "200905300645"
-	tData[Resolution_MIN10] = "2009053006I104"
-	tData[Resolution_MIN30] = "2009053006I301"
-	tData[Resolution_HOUR] = "2009053006"
-	tData[Resolution_DAY] = "20090530"
-	tData[Resolution_WEEK] = "200922"
-	tData[Resolution_MONTH] = "200905"
-	tData[Resolution_MONTH2] = "2009M22"
-	tData[Resolution_MONTH3] = "2009M31"
-	tData[Resolution_MONTH6] = "2009M60"
-	tData[Resolution_YEAR] = "2009"
+	tData = make(map[timeslab.Resolution]string)
+	tData[timeslab.Resolution_MIN] = "200905300645"
+	tData[timeslab.Resolution_MIN10] = "2009053006I104"
+	tData[timeslab.Resolution_MIN30] = "2009053006I301"
+	tData[timeslab.Resolution_HOUR] = "2009053006"
+	tData[timeslab.Resolution_DAY] = "20090530"
+	tData[timeslab.Resolution_WEEK] = "200922"
+	tData[timeslab.Resolution_MONTH] = "200905"
+	tData[timeslab.Resolution_MONTH2] = "2009M22"
+	tData[timeslab.Resolution_MONTH3] = "2009M31"
+	tData[timeslab.Resolution_MONTH6] = "2009M60"
+	tData[timeslab.Resolution_YEAR] = "2009"
 
 	for res, st := range tData {
 		nm.Resolution = res
 		onSl := nm.ToSlab(ti)
 		if onSl != st {
-			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st, Resolution_name[int32(res)])
+			t.Fatalf("Invalid time slab: got: %s, wanted: %s for resolution %s", onSl, st, timeslab.Resolution_name[int32(res)])
 		}
 	}
 }
@@ -148,11 +133,10 @@ func Test_GetVectorFromCassType(t *testing.T) {
 		}
 	}
 	nope := GetVectorFromString("mnkey")
-	if nope != nil{
+	if nope != nil {
 		t.Fatal("Shuld have gotten nil for `mnkey`")
 	}
 }
-
 
 // run through all the permutations to make sure things are assigned and really available
 // from the generate stages

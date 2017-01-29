@@ -7,8 +7,8 @@
 package vepr
 
 import (
-	"fmt"
 	"github.com/wyndhblb/go-utils/pools"
+	"github.com/wyndhblb/timeslab"
 	"sort"
 	"strconv"
 	"strings"
@@ -39,40 +39,13 @@ func (s *VName) SetKey(name string) {
 // MONTH6 -> YYYYM6{month / 6}
 //
 func (s *VName) ToSlab(t time.Time) string {
-	switch s.Resolution {
-	case Resolution_MIN:
-		return t.Format("200601021504")
-	case Resolution_MIN10:
-		m := t.Minute() / 10
-		return t.Format("2006010215") + "I10" + strconv.Itoa(m)
-	case Resolution_MIN30:
-		m := t.Minute() / 30
-		return t.Format("2006010215") + "I30" + strconv.Itoa(m)
-	case Resolution_HOUR:
-		return t.Format("2006010215")
-	case Resolution_DAY:
-		return t.Format("20060102")
-	case Resolution_WEEK:
-		ynum, wnum := t.ISOWeek()
-		return fmt.Sprintf("%04d%02d", ynum, wnum)
-	case Resolution_MONTH:
-		return t.Format("200601")
-	case Resolution_MONTH2:
-		m := (int(t.Month()) / 2)
-		return t.Format("2006") + "M2" + strconv.Itoa(m)
-	case Resolution_MONTH3:
-		m := (int(t.Month()) / 3)
-		return t.Format("2006") + "M3" + strconv.Itoa(m)
-	case Resolution_MONTH6:
-		m := (int(t.Month()) / 6)
-		return t.Format("2006") + "M6" + strconv.Itoa(m)
-	case Resolution_YEAR:
-		return t.Format("2006")
-	case Resolution_ALL:
-		return "ALL"
-	default:
-		return t.Format("2006010215")
-	}
+	return timeslab.ToSlab(s.Resolution, t)
+}
+
+// SetResolutionFromString will set the vector name resolution from a string
+// (see ResolutionFromString for string to res mappings)
+func (s *VName) SetResolutionFromString(res string) {
+	s.Resolution = timeslab.ResolutionFromString(res)
 }
 
 // UniqueId take the various "parts" (keys, resolution, tags) and return a basic md5 hash of things
