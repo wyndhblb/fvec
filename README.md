@@ -178,11 +178,11 @@ Another method is
     
 Which will take the ShortHand or "Full struct form"
 
-    msss which is a VMStrTPStrStr
-    sis which is VSStrStr
+    msss which is a VMStrTPStrStr which is map<string, VTStrStr> which is map<string, <string, string>
+    sis which is VSStrStr which is set<VTStrStr> which is set<string, string>
     VMStrTPStrStr
     VSStrStr
-    li which is VLInt
+    li which is VLInt which is list<bigint>
     VLint
     
 *note* would not recommend using this for really high volume object initialization as the branch/map and string GC issues can cause performance issue.
