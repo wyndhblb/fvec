@@ -23,182 +23,6 @@ func stringToString(tp string) (string, error) {
 	return tp, nil
 }
 
-//**************** Tuple: double double VTDblDbl **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTDblDbl) CassandraType() string {
-	return "VTDblDbl"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTDblDbl) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblDbl) RedisValue() string {
-	return fmt.Sprintf("%v %v", t.Key, t.Value)
-}
-
-// JavaType the type of object in java
-// org.apache.commons.lang3.tuple
-func (t *VTDblDbl) JavaType() string {
-	return "Pair<Double,Double>"
-}
-
-// IsVector more for interface acceptance
-func (t *VTDblDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VTDblDbl) TypeName() string {
-	return "VTDblDbl"
-}
-
-// GoType the type of object in go
-func (t *VTDblDbl) GoType() string {
-	return "VTDblDbl"
-}
-
-//**************** Tuple: double string VTDblStr **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTDblStr) CassandraType() string {
-	return "VTDblStr"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTDblStr) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblStr) RedisValue() string {
-	return fmt.Sprintf("%v %s", t.Key, t.Value)
-}
-
-// JavaType the type of object in java
-// org.apache.commons.lang3.tuple
-func (t *VTDblStr) JavaType() string {
-	return "Pair<Double,String>"
-}
-
-// IsVector more for interface acceptance
-func (t *VTDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VTDblStr) TypeName() string {
-	return "VTDblStr"
-}
-
-// GoType the type of object in go
-func (t *VTDblStr) GoType() string {
-	return "VTDblStr"
-}
-
-//**************** Tuple: double int64 VTDblInt **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTDblInt) CassandraType() string {
-	return "VTDblInt"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTDblInt) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTDblInt) RedisValue() string {
-	return fmt.Sprintf("%v %d", t.Key, t.Value)
-}
-
-// JavaType the type of object in java
-// org.apache.commons.lang3.tuple
-func (t *VTDblInt) JavaType() string {
-	return "Pair<Double,Integer>"
-}
-
-// IsVector more for interface acceptance
-func (t *VTDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VTDblInt) TypeName() string {
-	return "VTDblInt"
-}
-
-// GoType the type of object in go
-func (t *VTDblInt) GoType() string {
-	return "VTDblInt"
-}
-
-//**************** Tuple: string double VTStrDbl **********************/
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-func (t *VTStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the tuple
-func (t *VTStrDbl) CassandraType() string {
-	return "VTStrDbl"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VTStrDbl) RedisInsertCmd(key string) string {
-	return "LPUSH " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VTStrDbl) RedisValue() string {
-	return fmt.Sprintf("%s %v", t.Key, t.Value)
-}
-
-// JavaType the type of object in java
-// org.apache.commons.lang3.tuple
-func (t *VTStrDbl) JavaType() string {
-	return "Pair<String,Double>"
-}
-
-// IsVector more for interface acceptance
-func (t *VTStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VTStrDbl) TypeName() string {
-	return "VTStrDbl"
-}
-
-// GoType the type of object in go
-func (t *VTStrDbl) GoType() string {
-	return "VTStrDbl"
-}
-
 //**************** Tuple: string string VTStrStr **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
@@ -287,48 +111,48 @@ func (t *VTStrInt) GoType() string {
 	return "VTStrInt"
 }
 
-//**************** Tuple: int64 double VTIntDbl **********************/
+//**************** Tuple: string double VTStrDbl **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VTIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+func (t *VTStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the tuple
-func (t *VTIntDbl) CassandraType() string {
-	return "VTIntDbl"
+func (t *VTStrDbl) CassandraType() string {
+	return "VTStrDbl"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VTIntDbl) RedisInsertCmd(key string) string {
+func (t *VTStrDbl) RedisInsertCmd(key string) string {
 	return "LPUSH " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VTIntDbl) RedisValue() string {
-	return fmt.Sprintf("%d %v", t.Key, t.Value)
+func (t *VTStrDbl) RedisValue() string {
+	return fmt.Sprintf("%s %v", t.Key, t.Value)
 }
 
 // JavaType the type of object in java
 // org.apache.commons.lang3.tuple
-func (t *VTIntDbl) JavaType() string {
-	return "Pair<Integer,Double>"
+func (t *VTStrDbl) JavaType() string {
+	return "Pair<String,Double>"
 }
 
 // IsVector more for interface acceptance
-func (t *VTIntDbl) IsVector() bool {
+func (t *VTStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VTIntDbl) TypeName() string {
-	return "VTIntDbl"
+func (t *VTStrDbl) TypeName() string {
+	return "VTStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VTIntDbl) GoType() string {
-	return "VTIntDbl"
+func (t *VTStrDbl) GoType() string {
+	return "VTStrDbl"
 }
 
 //**************** Tuple: int64 string VTIntStr **********************/
@@ -419,68 +243,180 @@ func (t *VTIntInt) GoType() string {
 	return "VTIntInt"
 }
 
-//**************** Set: double  VSDbl **********************/
+//**************** Tuple: int64 double VTIntDbl **********************/
 
-// VecType the type of vector (set)
-func (t *VSDbl) VecType() string {
-	return "set"
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
 }
 
-// IsSet is a set type
-func (t *VSDbl) IsSet() bool {
-	return true
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTIntDbl) CassandraType() string {
+	return "VTIntDbl"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTIntDbl) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTIntDbl) RedisValue() string {
+	return fmt.Sprintf("%d %v", t.Key, t.Value)
+}
+
+// JavaType the type of object in java
+// org.apache.commons.lang3.tuple
+func (t *VTIntDbl) JavaType() string {
+	return "Pair<Integer,Double>"
 }
 
 // IsVector more for interface acceptance
-func (t *VSDbl) IsVector() bool {
+func (t *VTIntDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VSDbl) TypeName() string {
-	return "VSDbl"
+func (t *VTIntDbl) TypeName() string {
+	return "VTIntDbl"
 }
 
 // GoType the type of object in go
-func (t *VSDbl) GoType() string {
-	return "VSDbl"
+func (t *VTIntDbl) GoType() string {
+	return "VTIntDbl"
 }
+
+//**************** Tuple: double string VTDblStr **********************/
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VSDbl) CassandraCreateType(keyspace string) string {
-	return ""
+func (t *VTDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
 }
 
-// CassandraType the matching types in cassandra for the set
-func (t *VSDbl) CassandraType() string {
-	return "set<double>"
-}
-
-// JavaType the type of object in java
-// java.util
-func (t *VSDbl) JavaType() string {
-	return "Set<Double>"
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblStr) CassandraType() string {
+	return "VTDblStr"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VSDbl) RedisInsertCmd(key string) string {
-	return "SADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-func (t *VSDbl) RedisRemoveCmd(key string) string {
-	return "SREM " + key
+func (t *VTDblStr) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VSDbl) RedisValue(v float64) string {
-	return fmt.Sprintf("%v", v)
+func (t *VTDblStr) RedisValue() string {
+	return fmt.Sprintf("%v %s", t.Key, t.Value)
 }
 
-// FromRedisValue given the redis value, make it into a proper float64
-func (t *VSDbl) FromRedisValue(i string) (v float64, err error) {
-	return stringToFloat(i)
+// JavaType the type of object in java
+// org.apache.commons.lang3.tuple
+func (t *VTDblStr) JavaType() string {
+	return "Pair<Double,String>"
+}
+
+// IsVector more for interface acceptance
+func (t *VTDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VTDblStr) TypeName() string {
+	return "VTDblStr"
+}
+
+// GoType the type of object in go
+func (t *VTDblStr) GoType() string {
+	return "VTDblStr"
+}
+
+//**************** Tuple: double int64 VTDblInt **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblInt) CassandraType() string {
+	return "VTDblInt"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTDblInt) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTDblInt) RedisValue() string {
+	return fmt.Sprintf("%v %d", t.Key, t.Value)
+}
+
+// JavaType the type of object in java
+// org.apache.commons.lang3.tuple
+func (t *VTDblInt) JavaType() string {
+	return "Pair<Double,Integer>"
+}
+
+// IsVector more for interface acceptance
+func (t *VTDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VTDblInt) TypeName() string {
+	return "VTDblInt"
+}
+
+// GoType the type of object in go
+func (t *VTDblInt) GoType() string {
+	return "VTDblInt"
+}
+
+//**************** Tuple: double double VTDblDbl **********************/
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+func (t *VTDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the tuple
+func (t *VTDblDbl) CassandraType() string {
+	return "VTDblDbl"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VTDblDbl) RedisInsertCmd(key string) string {
+	return "LPUSH " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VTDblDbl) RedisValue() string {
+	return fmt.Sprintf("%v %v", t.Key, t.Value)
+}
+
+// JavaType the type of object in java
+// org.apache.commons.lang3.tuple
+func (t *VTDblDbl) JavaType() string {
+	return "Pair<Double,Double>"
+}
+
+// IsVector more for interface acceptance
+func (t *VTDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VTDblDbl) TypeName() string {
+	return "VTDblDbl"
+}
+
+// GoType the type of object in go
+func (t *VTDblDbl) GoType() string {
+	return "VTDblDbl"
 }
 
 //**************** Set: string  VSStr **********************/
@@ -611,292 +547,68 @@ func (t *VSInt) FromRedisValue(i string) (v int64, err error) {
 	return stringToInt(i)
 }
 
-//**************** Set: double double VSDblDbl **********************/
+//**************** Set: double  VSDbl **********************/
 
 // VecType the type of vector (set)
-func (t *VSDblDbl) VecType() string {
+func (t *VSDbl) VecType() string {
 	return "set"
 }
 
 // IsSet is a set type
-func (t *VSDblDbl) IsSet() bool {
+func (t *VSDbl) IsSet() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VSDblDbl) IsVector() bool {
+func (t *VSDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VSDblDbl) TypeName() string {
-	return "VSDblDbl"
+func (t *VSDbl) TypeName() string {
+	return "VSDbl"
 }
 
 // GoType the type of object in go
-func (t *VSDblDbl) GoType() string {
-	return "VSDblDbl"
+func (t *VSDbl) GoType() string {
+	return "VSDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VSDbl) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the set
-func (t *VSDblDbl) CassandraType() string {
-	return "set<frozen<VTDblDbl>>"
+func (t *VSDbl) CassandraType() string {
+	return "set<double>"
 }
 
 // JavaType the type of object in java
 // java.util
-// org.apache.commons.lang3.tuple
-func (t *VSDblDbl) JavaType() string {
-	return "Set<Pair<Double,Double>>"
+func (t *VSDbl) JavaType() string {
+	return "Set<Double>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VSDblDbl) RedisInsertCmd(key string) string {
+func (t *VSDbl) RedisInsertCmd(key string) string {
 	return "SADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
-func (t *VSDblDbl) RedisRemoveCmd(key string) string {
+func (t *VSDbl) RedisRemoveCmd(key string) string {
 	return "SREM " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VSDblDbl) RedisInsertValue(v VTDblDbl) string {
-	return fmt.Sprintf("%v:%v", v.Key, v.Value)
+func (t *VSDbl) RedisValue(v float64) string {
+	return fmt.Sprintf("%v", v)
 }
 
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VSDblDbl) FromRedisValue(i string) (v VTDblDbl, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToFloat(spl[1])
-	return v, err
-}
-
-//**************** Set: double string VSDblStr **********************/
-
-// VecType the type of vector (set)
-func (t *VSDblStr) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSDblStr) IsSet() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VSDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSDblStr) TypeName() string {
-	return "VSDblStr"
-}
-
-// GoType the type of object in go
-func (t *VSDblStr) GoType() string {
-	return "VSDblStr"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSDblStr) CassandraType() string {
-	return "set<frozen<VTDblStr>>"
-}
-
-// JavaType the type of object in java
-// java.util
-// org.apache.commons.lang3.tuple
-func (t *VSDblStr) JavaType() string {
-	return "Set<Pair<Double,String>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VSDblStr) RedisInsertCmd(key string) string {
-	return "SADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-func (t *VSDblStr) RedisRemoveCmd(key string) string {
-	return "SREM " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VSDblStr) RedisInsertValue(v VTDblStr) string {
-	return fmt.Sprintf("%v:%s", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VSDblStr) FromRedisValue(i string) (v VTDblStr, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToString(spl[1])
-	return v, err
-}
-
-//**************** Set: double int64 VSDblInt **********************/
-
-// VecType the type of vector (set)
-func (t *VSDblInt) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSDblInt) IsSet() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VSDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSDblInt) TypeName() string {
-	return "VSDblInt"
-}
-
-// GoType the type of object in go
-func (t *VSDblInt) GoType() string {
-	return "VSDblInt"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSDblInt) CassandraType() string {
-	return "set<frozen<VTDblInt>>"
-}
-
-// JavaType the type of object in java
-// java.util
-// org.apache.commons.lang3.tuple
-func (t *VSDblInt) JavaType() string {
-	return "Set<Pair<Double,Integer>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VSDblInt) RedisInsertCmd(key string) string {
-	return "SADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-func (t *VSDblInt) RedisRemoveCmd(key string) string {
-	return "SREM " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VSDblInt) RedisInsertValue(v VTDblInt) string {
-	return fmt.Sprintf("%v:%d", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VSDblInt) FromRedisValue(i string) (v VTDblInt, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToInt(spl[1])
-	return v, err
-}
-
-//**************** Set: string double VSStrDbl **********************/
-
-// VecType the type of vector (set)
-func (t *VSStrDbl) VecType() string {
-	return "set"
-}
-
-// IsSet is a set type
-func (t *VSStrDbl) IsSet() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VSStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VSStrDbl) TypeName() string {
-	return "VSStrDbl"
-}
-
-// GoType the type of object in go
-func (t *VSStrDbl) GoType() string {
-	return "VSStrDbl"
-}
-
-// CassandraCreateType string for the create type (if nessesary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VSStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the set
-func (t *VSStrDbl) CassandraType() string {
-	return "set<frozen<VTStrDbl>>"
-}
-
-// JavaType the type of object in java
-// java.util
-// org.apache.commons.lang3.tuple
-func (t *VSStrDbl) JavaType() string {
-	return "Set<Pair<String,Double>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VSStrDbl) RedisInsertCmd(key string) string {
-	return "SADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-func (t *VSStrDbl) RedisRemoveCmd(key string) string {
-	return "SREM " + key
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VSStrDbl) RedisInsertValue(v VTStrDbl) string {
-	return fmt.Sprintf("%s:%v", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VSStrDbl) FromRedisValue(i string) (v VTStrDbl, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToString(spl[0])
-	v.Value, err = stringToFloat(spl[1])
-	return v, err
+// FromRedisValue given the redis value, make it into a proper float64
+func (t *VSDbl) FromRedisValue(i string) (v float64, err error) {
+	return stringToFloat(i)
 }
 
 //**************** Set: string string VSStrStr **********************/
@@ -1043,74 +755,74 @@ func (t *VSStrInt) FromRedisValue(i string) (v VTStrInt, err error) {
 	return v, err
 }
 
-//**************** Set: int64 double VSIntDbl **********************/
+//**************** Set: string double VSStrDbl **********************/
 
 // VecType the type of vector (set)
-func (t *VSIntDbl) VecType() string {
+func (t *VSStrDbl) VecType() string {
 	return "set"
 }
 
 // IsSet is a set type
-func (t *VSIntDbl) IsSet() bool {
+func (t *VSStrDbl) IsSet() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VSIntDbl) IsVector() bool {
+func (t *VSStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VSIntDbl) TypeName() string {
-	return "VSIntDbl"
+func (t *VSStrDbl) TypeName() string {
+	return "VSStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VSIntDbl) GoType() string {
-	return "VSIntDbl"
+func (t *VSStrDbl) GoType() string {
+	return "VSStrDbl"
 }
 
 // CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VSIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+func (t *VSStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the set
-func (t *VSIntDbl) CassandraType() string {
-	return "set<frozen<VTIntDbl>>"
+func (t *VSStrDbl) CassandraType() string {
+	return "set<frozen<VTStrDbl>>"
 }
 
 // JavaType the type of object in java
 // java.util
 // org.apache.commons.lang3.tuple
-func (t *VSIntDbl) JavaType() string {
-	return "Set<Pair<Integer,Double>>"
+func (t *VSStrDbl) JavaType() string {
+	return "Set<Pair<String,Double>>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VSIntDbl) RedisInsertCmd(key string) string {
+func (t *VSStrDbl) RedisInsertCmd(key string) string {
 	return "SADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
-func (t *VSIntDbl) RedisRemoveCmd(key string) string {
+func (t *VSStrDbl) RedisRemoveCmd(key string) string {
 	return "SREM " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VSIntDbl) RedisInsertValue(v VTIntDbl) string {
-	return fmt.Sprintf("%d:%v", v.Key, v.Value)
+func (t *VSStrDbl) RedisInsertValue(v VTStrDbl) string {
+	return fmt.Sprintf("%s:%v", v.Key, v.Value)
 }
 
 // FromRedisValue given the redis value, make it into a proper tuple
-func (t *VSIntDbl) FromRedisValue(i string) (v VTIntDbl, err error) {
+func (t *VSStrDbl) FromRedisValue(i string) (v VTStrDbl, err error) {
 	spl := strings.Split(i, ":")
 	if len(spl) != 2 {
 		return v, ErrorInvalidRedisValue
 	}
-	v.Key, err = stringToInt(spl[0])
+	v.Key, err = stringToString(spl[0])
 	v.Value, err = stringToFloat(spl[1])
 	return v, err
 }
@@ -1259,68 +971,292 @@ func (t *VSIntInt) FromRedisValue(i string) (v VTIntInt, err error) {
 	return v, err
 }
 
-//**************** List: double  VLDbl **********************/
+//**************** Set: int64 double VSIntDbl **********************/
 
-// VecType the type of vector (list)
-func (t *VLDbl) VecType() string {
-	return "list"
+// VecType the type of vector (set)
+func (t *VSIntDbl) VecType() string {
+	return "set"
 }
 
-// IsList this is a list type
-func (t *VLDbl) IsList() bool {
+// IsSet is a set type
+func (t *VSIntDbl) IsSet() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VLDbl) IsVector() bool {
+func (t *VSIntDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLDbl) TypeName() string {
-	return "VLDbl"
+func (t *VSIntDbl) TypeName() string {
+	return "VSIntDbl"
 }
 
 // GoType the type of object in go
-func (t *VLDbl) GoType() string {
-	return "VLDbl"
+func (t *VSIntDbl) GoType() string {
+	return "VSIntDbl"
 }
 
-// CassandraCreateType string for the create type (if necessary)
+// CassandraCreateType string for the create type (if nessesary)
 // the string will be blank if no create is needed
-func (t *VLDbl) CassandraCreateType(keyspace string) string {
-	return ""
+// the set of of the tpl types
+func (t *VSIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
 }
 
-// CassandraType the matching types in cassandra for the list
-func (t *VLDbl) CassandraType() string {
-	return "list<double>"
+// CassandraType the matching types in cassandra for the set
+func (t *VSIntDbl) CassandraType() string {
+	return "set<frozen<VTIntDbl>>"
 }
 
-// JavaType the java type for the object
-func (t *VLDbl) JavaType() string {
-	return "List<Double>"
+// JavaType the type of object in java
+// java.util
+// org.apache.commons.lang3.tuple
+func (t *VSIntDbl) JavaType() string {
+	return "Set<Pair<Integer,Double>>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VLDbl) RedisInsertCmd(key string) string {
-	return "LADD " + key
+func (t *VSIntDbl) RedisInsertCmd(key string) string {
+	return "SADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
-// (cannot remove from lists) this is a blank command
-func (t *VLDbl) RedisRemoveCmd(key string) string {
-	return ""
+func (t *VSIntDbl) RedisRemoveCmd(key string) string {
+	return "SREM " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VLDbl) RedisInsertValue(v float64) string {
-	return fmt.Sprintf("%v", v)
+func (t *VSIntDbl) RedisInsertValue(v VTIntDbl) string {
+	return fmt.Sprintf("%d:%v", v.Key, v.Value)
 }
 
-// FromRedisValue given the redis value, make it into a proper float64
-func (t *VLDbl) FromRedisValue(i string) (v float64, err error) {
-	return stringToFloat(i)
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VSIntDbl) FromRedisValue(i string) (v VTIntDbl, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToInt(spl[0])
+	v.Value, err = stringToFloat(spl[1])
+	return v, err
+}
+
+//**************** Set: double string VSDblStr **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblStr) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblStr) IsSet() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblStr) TypeName() string {
+	return "VSDblStr"
+}
+
+// GoType the type of object in go
+func (t *VSDblStr) GoType() string {
+	return "VSDblStr"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblStr) CassandraType() string {
+	return "set<frozen<VTDblStr>>"
+}
+
+// JavaType the type of object in java
+// java.util
+// org.apache.commons.lang3.tuple
+func (t *VSDblStr) JavaType() string {
+	return "Set<Pair<Double,String>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VSDblStr) RedisInsertCmd(key string) string {
+	return "SADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+func (t *VSDblStr) RedisRemoveCmd(key string) string {
+	return "SREM " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VSDblStr) RedisInsertValue(v VTDblStr) string {
+	return fmt.Sprintf("%v:%s", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VSDblStr) FromRedisValue(i string) (v VTDblStr, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToString(spl[1])
+	return v, err
+}
+
+//**************** Set: double int64 VSDblInt **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblInt) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblInt) IsSet() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblInt) TypeName() string {
+	return "VSDblInt"
+}
+
+// GoType the type of object in go
+func (t *VSDblInt) GoType() string {
+	return "VSDblInt"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblInt) CassandraType() string {
+	return "set<frozen<VTDblInt>>"
+}
+
+// JavaType the type of object in java
+// java.util
+// org.apache.commons.lang3.tuple
+func (t *VSDblInt) JavaType() string {
+	return "Set<Pair<Double,Integer>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VSDblInt) RedisInsertCmd(key string) string {
+	return "SADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+func (t *VSDblInt) RedisRemoveCmd(key string) string {
+	return "SREM " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VSDblInt) RedisInsertValue(v VTDblInt) string {
+	return fmt.Sprintf("%v:%d", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VSDblInt) FromRedisValue(i string) (v VTDblInt, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToInt(spl[1])
+	return v, err
+}
+
+//**************** Set: double double VSDblDbl **********************/
+
+// VecType the type of vector (set)
+func (t *VSDblDbl) VecType() string {
+	return "set"
+}
+
+// IsSet is a set type
+func (t *VSDblDbl) IsSet() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VSDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VSDblDbl) TypeName() string {
+	return "VSDblDbl"
+}
+
+// GoType the type of object in go
+func (t *VSDblDbl) GoType() string {
+	return "VSDblDbl"
+}
+
+// CassandraCreateType string for the create type (if nessesary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VSDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the set
+func (t *VSDblDbl) CassandraType() string {
+	return "set<frozen<VTDblDbl>>"
+}
+
+// JavaType the type of object in java
+// java.util
+// org.apache.commons.lang3.tuple
+func (t *VSDblDbl) JavaType() string {
+	return "Set<Pair<Double,Double>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VSDblDbl) RedisInsertCmd(key string) string {
+	return "SADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+func (t *VSDblDbl) RedisRemoveCmd(key string) string {
+	return "SREM " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VSDblDbl) RedisInsertValue(v VTDblDbl) string {
+	return fmt.Sprintf("%v:%v", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VSDblDbl) FromRedisValue(i string) (v VTDblDbl, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToFloat(spl[1])
+	return v, err
 }
 
 //**************** List: string  VLStr **********************/
@@ -1451,292 +1387,68 @@ func (t *VLInt) FromRedisValue(i string) (v int64, err error) {
 	return stringToInt(i)
 }
 
-//**************** List: double double VLDblDbl **********************/
+//**************** List: double  VLDbl **********************/
 
 // VecType the type of vector (list)
-func (t *VLDblDbl) VecType() string {
+func (t *VLDbl) VecType() string {
 	return "list"
 }
 
 // IsList this is a list type
-func (t *VLDblDbl) IsList() bool {
+func (t *VLDbl) IsList() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VLDblDbl) IsVector() bool {
+func (t *VLDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLDblDbl) TypeName() string {
-	return "VLDblDbl"
+func (t *VLDbl) TypeName() string {
+	return "VLDbl"
 }
 
 // GoType the type of object in go
-func (t *VLDblDbl) GoType() string {
-	return "VLDblDbl"
+func (t *VLDbl) GoType() string {
+	return "VLDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VLDbl) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the list
-func (t *VLDblDbl) CassandraType() string {
-	return "list<frozen<VTDblDbl>>"
+func (t *VLDbl) CassandraType() string {
+	return "list<double>"
 }
 
 // JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VLDblDbl) JavaType() string {
-	return "List<Pair<Double,Double>>"
+func (t *VLDbl) JavaType() string {
+	return "List<Double>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VLDblDbl) RedisInsertCmd(key string) string {
+func (t *VLDbl) RedisInsertCmd(key string) string {
 	return "LADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
 // (cannot remove from lists) this is a blank command
-func (t *VLDblDbl) RedisRemoveCmd(key string) string {
+func (t *VLDbl) RedisRemoveCmd(key string) string {
 	return ""
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VLDblDbl) RedisInsertValue(v VTDblDbl) string {
-	return fmt.Sprintf("%v:%v", v.Key, v.Value)
+func (t *VLDbl) RedisInsertValue(v float64) string {
+	return fmt.Sprintf("%v", v)
 }
 
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VLDblDbl) FromRedisValue(i string) (v VTDblDbl, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToFloat(spl[1])
-	return v, err
-}
-
-//**************** List: double string VLDblStr **********************/
-
-// VecType the type of vector (list)
-func (t *VLDblStr) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLDblStr) IsList() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VLDblStr) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLDblStr) TypeName() string {
-	return "VLDblStr"
-}
-
-// GoType the type of object in go
-func (t *VLDblStr) GoType() string {
-	return "VLDblStr"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLDblStr) CassandraType() string {
-	return "list<frozen<VTDblStr>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VLDblStr) JavaType() string {
-	return "List<Pair<Double,String>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VLDblStr) RedisInsertCmd(key string) string {
-	return "LADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-// (cannot remove from lists) this is a blank command
-func (t *VLDblStr) RedisRemoveCmd(key string) string {
-	return ""
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VLDblStr) RedisInsertValue(v VTDblStr) string {
-	return fmt.Sprintf("%v:%s", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VLDblStr) FromRedisValue(i string) (v VTDblStr, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToString(spl[1])
-	return v, err
-}
-
-//**************** List: double int64 VLDblInt **********************/
-
-// VecType the type of vector (list)
-func (t *VLDblInt) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLDblInt) IsList() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VLDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLDblInt) TypeName() string {
-	return "VLDblInt"
-}
-
-// GoType the type of object in go
-func (t *VLDblInt) GoType() string {
-	return "VLDblInt"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLDblInt) CassandraType() string {
-	return "list<frozen<VTDblInt>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VLDblInt) JavaType() string {
-	return "List<Pair<Double,Integer>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VLDblInt) RedisInsertCmd(key string) string {
-	return "LADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-// (cannot remove from lists) this is a blank command
-func (t *VLDblInt) RedisRemoveCmd(key string) string {
-	return ""
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VLDblInt) RedisInsertValue(v VTDblInt) string {
-	return fmt.Sprintf("%v:%d", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VLDblInt) FromRedisValue(i string) (v VTDblInt, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToFloat(spl[0])
-	v.Value, err = stringToInt(spl[1])
-	return v, err
-}
-
-//**************** List: string double VLStrDbl **********************/
-
-// VecType the type of vector (list)
-func (t *VLStrDbl) VecType() string {
-	return "list"
-}
-
-// IsList this is a list type
-func (t *VLStrDbl) IsList() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VLStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VLStrDbl) TypeName() string {
-	return "VLStrDbl"
-}
-
-// GoType the type of object in go
-func (t *VLStrDbl) GoType() string {
-	return "VLStrDbl"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VLStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the list
-func (t *VLStrDbl) CassandraType() string {
-	return "list<frozen<VTStrDbl>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VLStrDbl) JavaType() string {
-	return "List<Pair<String,Double>>"
-}
-
-// RedisInsertCmd returns the redis add command
-func (t *VLStrDbl) RedisInsertCmd(key string) string {
-	return "LADD " + key
-}
-
-// RedisRemoveCmd returns the redis add command
-// (cannot remove from lists) this is a blank command
-func (t *VLStrDbl) RedisRemoveCmd(key string) string {
-	return ""
-}
-
-// RedisInsertValue returns what the value string would be for a redis command
-func (t *VLStrDbl) RedisInsertValue(v VTStrDbl) string {
-	return fmt.Sprintf("%s:%v", v.Key, v.Value)
-}
-
-// FromRedisValue given the redis value, make it into a proper tuple
-func (t *VLStrDbl) FromRedisValue(i string) (v VTStrDbl, err error) {
-	spl := strings.Split(i, ":")
-	if len(spl) != 2 {
-		return v, ErrorInvalidRedisValue
-	}
-	v.Key, err = stringToString(spl[0])
-	v.Value, err = stringToFloat(spl[1])
-	return v, err
+// FromRedisValue given the redis value, make it into a proper float64
+func (t *VLDbl) FromRedisValue(i string) (v float64, err error) {
+	return stringToFloat(i)
 }
 
 //**************** List: string string VLStrStr **********************/
@@ -1883,74 +1595,74 @@ func (t *VLStrInt) FromRedisValue(i string) (v VTStrInt, err error) {
 	return v, err
 }
 
-//**************** List: int64 double VLIntDbl **********************/
+//**************** List: string double VLStrDbl **********************/
 
 // VecType the type of vector (list)
-func (t *VLIntDbl) VecType() string {
+func (t *VLStrDbl) VecType() string {
 	return "list"
 }
 
 // IsList this is a list type
-func (t *VLIntDbl) IsList() bool {
+func (t *VLStrDbl) IsList() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VLIntDbl) IsVector() bool {
+func (t *VLStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VLIntDbl) TypeName() string {
-	return "VLIntDbl"
+func (t *VLStrDbl) TypeName() string {
+	return "VLStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VLIntDbl) GoType() string {
-	return "VLIntDbl"
+func (t *VLStrDbl) GoType() string {
+	return "VLStrDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VLIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+func (t *VLStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the list
-func (t *VLIntDbl) CassandraType() string {
-	return "list<frozen<VTIntDbl>>"
+func (t *VLStrDbl) CassandraType() string {
+	return "list<frozen<VTStrDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VLIntDbl) JavaType() string {
-	return "List<Pair<Integer,Double>>"
+func (t *VLStrDbl) JavaType() string {
+	return "List<Pair<String,Double>>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VLIntDbl) RedisInsertCmd(key string) string {
+func (t *VLStrDbl) RedisInsertCmd(key string) string {
 	return "LADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
 // (cannot remove from lists) this is a blank command
-func (t *VLIntDbl) RedisRemoveCmd(key string) string {
+func (t *VLStrDbl) RedisRemoveCmd(key string) string {
 	return ""
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VLIntDbl) RedisInsertValue(v VTIntDbl) string {
-	return fmt.Sprintf("%d:%v", v.Key, v.Value)
+func (t *VLStrDbl) RedisInsertValue(v VTStrDbl) string {
+	return fmt.Sprintf("%s:%v", v.Key, v.Value)
 }
 
 // FromRedisValue given the redis value, make it into a proper tuple
-func (t *VLIntDbl) FromRedisValue(i string) (v VTIntDbl, err error) {
+func (t *VLStrDbl) FromRedisValue(i string) (v VTStrDbl, err error) {
 	spl := strings.Split(i, ":")
 	if len(spl) != 2 {
 		return v, ErrorInvalidRedisValue
 	}
-	v.Key, err = stringToInt(spl[0])
+	v.Key, err = stringToString(spl[0])
 	v.Value, err = stringToFloat(spl[1])
 	return v, err
 }
@@ -2099,69 +1811,292 @@ func (t *VLIntInt) FromRedisValue(i string) (v VTIntInt, err error) {
 	return v, err
 }
 
-//**************** Map: string double VMStrDbl **********************/
+//**************** List: int64 double VLIntDbl **********************/
 
-// VecType the type of vector (map)
-func (t *VMStrDbl) VecType() string {
-	return "map"
+// VecType the type of vector (list)
+func (t *VLIntDbl) VecType() string {
+	return "list"
 }
 
-// IsMap is a set type
-func (t *VMStrDbl) IsMap() bool {
+// IsList this is a list type
+func (t *VLIntDbl) IsList() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMStrDbl) IsVector() bool {
+func (t *VLIntDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMStrDbl) TypeName() string {
-	return "VMStrDbl"
+func (t *VLIntDbl) TypeName() string {
+	return "VLIntDbl"
 }
 
 // GoType the type of object in go
-func (t *VMStrDbl) GoType() string {
-	return "VMStrDbl"
+func (t *VLIntDbl) GoType() string {
+	return "VLIntDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
-func (t *VMStrDbl) CassandraCreateType(keyspace string) string {
-	return ""
+// the set of of the tpl types
+func (t *VLIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
 }
 
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrDbl) CassandraType() string {
-	return "map<varchar,double>"
+// CassandraType the matching types in cassandra for the list
+func (t *VLIntDbl) CassandraType() string {
+	return "list<frozen<VTIntDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMStrDbl) JavaType() string {
-	return "Map<String,Double>"
+func (t *VLIntDbl) JavaType() string {
+	return "List<Pair<Integer,Double>>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VMStrDbl) RedisInsertCmd(key string) string {
-	return "HMSET " + key
+func (t *VLIntDbl) RedisInsertCmd(key string) string {
+	return "LADD " + key
 }
 
 // RedisRemoveCmd returns the redis add command
 // (cannot remove from lists) this is a blank command
-func (t *VMStrDbl) RedisRemoveCmd(key string) string {
-	return "HDEL " + key
+func (t *VLIntDbl) RedisRemoveCmd(key string) string {
+	return ""
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VMStrDbl) RedisInsertValue(v string) string {
-	return fmt.Sprintf("%s", v)
+func (t *VLIntDbl) RedisInsertValue(v VTIntDbl) string {
+	return fmt.Sprintf("%d:%v", v.Key, v.Value)
 }
 
-// FromRedisValue given the redis value, make it into a proper string
-func (t *VMStrDbl) FromRedisValue(i string) (v string, err error) {
-	return stringToString(i)
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VLIntDbl) FromRedisValue(i string) (v VTIntDbl, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToInt(spl[0])
+	v.Value, err = stringToFloat(spl[1])
+	return v, err
+}
+
+//**************** List: double string VLDblStr **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblStr) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblStr) IsList() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblStr) TypeName() string {
+	return "VLDblStr"
+}
+
+// GoType the type of object in go
+func (t *VLDblStr) GoType() string {
+	return "VLDblStr"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblStr) CassandraType() string {
+	return "list<frozen<VTDblStr>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VLDblStr) JavaType() string {
+	return "List<Pair<Double,String>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VLDblStr) RedisInsertCmd(key string) string {
+	return "LADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *VLDblStr) RedisRemoveCmd(key string) string {
+	return ""
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VLDblStr) RedisInsertValue(v VTDblStr) string {
+	return fmt.Sprintf("%v:%s", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VLDblStr) FromRedisValue(i string) (v VTDblStr, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToString(spl[1])
+	return v, err
+}
+
+//**************** List: double int64 VLDblInt **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblInt) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblInt) IsList() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblInt) TypeName() string {
+	return "VLDblInt"
+}
+
+// GoType the type of object in go
+func (t *VLDblInt) GoType() string {
+	return "VLDblInt"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblInt) CassandraType() string {
+	return "list<frozen<VTDblInt>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VLDblInt) JavaType() string {
+	return "List<Pair<Double,Integer>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VLDblInt) RedisInsertCmd(key string) string {
+	return "LADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *VLDblInt) RedisRemoveCmd(key string) string {
+	return ""
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VLDblInt) RedisInsertValue(v VTDblInt) string {
+	return fmt.Sprintf("%v:%d", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VLDblInt) FromRedisValue(i string) (v VTDblInt, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToInt(spl[1])
+	return v, err
+}
+
+//**************** List: double double VLDblDbl **********************/
+
+// VecType the type of vector (list)
+func (t *VLDblDbl) VecType() string {
+	return "list"
+}
+
+// IsList this is a list type
+func (t *VLDblDbl) IsList() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VLDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VLDblDbl) TypeName() string {
+	return "VLDblDbl"
+}
+
+// GoType the type of object in go
+func (t *VLDblDbl) GoType() string {
+	return "VLDblDbl"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VLDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the list
+func (t *VLDblDbl) CassandraType() string {
+	return "list<frozen<VTDblDbl>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VLDblDbl) JavaType() string {
+	return "List<Pair<Double,Double>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *VLDblDbl) RedisInsertCmd(key string) string {
+	return "LADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *VLDblDbl) RedisRemoveCmd(key string) string {
+	return ""
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VLDblDbl) RedisInsertValue(v VTDblDbl) string {
+	return fmt.Sprintf("%v:%v", v.Key, v.Value)
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *VLDblDbl) FromRedisValue(i string) (v VTDblDbl, err error) {
+	spl := strings.Split(i, ":")
+	if len(spl) != 2 {
+		return v, ErrorInvalidRedisValue
+	}
+	v.Key, err = stringToFloat(spl[0])
+	v.Value, err = stringToFloat(spl[1])
+	return v, err
 }
 
 //**************** Map: string string VMStrStr **********************/
@@ -2294,69 +2229,69 @@ func (t *VMStrInt) FromRedisValue(i string) (v string, err error) {
 	return stringToString(i)
 }
 
-//**************** Map: int64 double VMIntDbl **********************/
+//**************** Map: string double VMStrDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntDbl) VecType() string {
+func (t *VMStrDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntDbl) IsMap() bool {
+func (t *VMStrDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntDbl) IsVector() bool {
+func (t *VMStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntDbl) TypeName() string {
-	return "VMIntDbl"
+func (t *VMStrDbl) TypeName() string {
+	return "VMStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VMIntDbl) GoType() string {
-	return "VMIntDbl"
+func (t *VMStrDbl) GoType() string {
+	return "VMStrDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
-func (t *VMIntDbl) CassandraCreateType(keyspace string) string {
+func (t *VMStrDbl) CassandraCreateType(keyspace string) string {
 	return ""
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntDbl) CassandraType() string {
-	return "map<bigint,double>"
+func (t *VMStrDbl) CassandraType() string {
+	return "map<varchar,double>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntDbl) JavaType() string {
-	return "Map<Integer,Double>"
+func (t *VMStrDbl) JavaType() string {
+	return "Map<String,Double>"
 }
 
 // RedisInsertCmd returns the redis add command
-func (t *VMIntDbl) RedisInsertCmd(key string) string {
+func (t *VMStrDbl) RedisInsertCmd(key string) string {
 	return "HMSET " + key
 }
 
 // RedisRemoveCmd returns the redis add command
 // (cannot remove from lists) this is a blank command
-func (t *VMIntDbl) RedisRemoveCmd(key string) string {
+func (t *VMStrDbl) RedisRemoveCmd(key string) string {
 	return "HDEL " + key
 }
 
 // RedisInsertValue returns what the value string would be for a redis command
-func (t *VMIntDbl) RedisInsertValue(v int64) string {
-	return fmt.Sprintf("%d", v)
+func (t *VMStrDbl) RedisInsertValue(v string) string {
+	return fmt.Sprintf("%s", v)
 }
 
-// FromRedisValue given the redis value, make it into a proper int64
-func (t *VMIntDbl) FromRedisValue(i string) (v int64, err error) {
-	return stringToInt(i)
+// FromRedisValue given the redis value, make it into a proper string
+func (t *VMStrDbl) FromRedisValue(i string) (v string, err error) {
+	return stringToString(i)
 }
 
 //**************** Map: int64 string VMIntStr **********************/
@@ -2489,184 +2424,69 @@ func (t *VMIntInt) FromRedisValue(i string) (v int64, err error) {
 	return stringToInt(i)
 }
 
-//**************** Map: double double VMStrTPDblDbl **********************/
+//**************** Map: int64 double VMIntDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMStrTPDblDbl) VecType() string {
+func (t *VMIntDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMStrTPDblDbl) IsMap() bool {
+func (t *VMIntDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMStrTPDblDbl) IsVector() bool {
+func (t *VMIntDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMStrTPDblDbl) TypeName() string {
-	return "VMStrTPDblDbl"
+func (t *VMIntDbl) TypeName() string {
+	return "VMIntDbl"
 }
 
 // GoType the type of object in go
-func (t *VMStrTPDblDbl) GoType() string {
-	return "VMStrTPDblDbl"
+func (t *VMIntDbl) GoType() string {
+	return "VMIntDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VMIntDbl) CassandraCreateType(keyspace string) string {
+	return ""
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblDbl) CassandraType() string {
-	return "map<varchar,frozen<VTDblDbl>>"
+func (t *VMIntDbl) CassandraType() string {
+	return "map<bigint,double>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMStrTPDblDbl) JavaType() string {
-	return "Map<String,Pair<Double,Double>>"
+func (t *VMIntDbl) JavaType() string {
+	return "Map<Integer,Double>"
 }
 
-//**************** Map: double string VMStrTPDblStr **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPDblStr) VecType() string {
-	return "map"
+// RedisInsertCmd returns the redis add command
+func (t *VMIntDbl) RedisInsertCmd(key string) string {
+	return "HMSET " + key
 }
 
-// IsMap is a set type
-func (t *VMStrTPDblStr) IsMap() bool {
-	return true
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *VMIntDbl) RedisRemoveCmd(key string) string {
+	return "HDEL " + key
 }
 
-// IsVector more for interface acceptance
-func (t *VMStrTPDblStr) IsVector() bool {
-	return true
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *VMIntDbl) RedisInsertValue(v int64) string {
+	return fmt.Sprintf("%d", v)
 }
 
-// Name the type name for ease
-func (t *VMStrTPDblStr) TypeName() string {
-	return "VMStrTPDblStr"
-}
-
-// GoType the type of object in go
-func (t *VMStrTPDblStr) GoType() string {
-	return "VMStrTPDblStr"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblStr) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblStr) CassandraType() string {
-	return "map<varchar,frozen<VTDblStr>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VMStrTPDblStr) JavaType() string {
-	return "Map<String,Pair<Double,String>>"
-}
-
-//**************** Map: double int64 VMStrTPDblInt **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPDblInt) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPDblInt) IsMap() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPDblInt) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPDblInt) TypeName() string {
-	return "VMStrTPDblInt"
-}
-
-// GoType the type of object in go
-func (t *VMStrTPDblInt) GoType() string {
-	return "VMStrTPDblInt"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPDblInt) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPDblInt) CassandraType() string {
-	return "map<varchar,frozen<VTDblInt>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VMStrTPDblInt) JavaType() string {
-	return "Map<String,Pair<Double,Integer>>"
-}
-
-//**************** Map: string double VMStrTPStrDbl **********************/
-
-// VecType the type of vector (map)
-func (t *VMStrTPStrDbl) VecType() string {
-	return "map"
-}
-
-// IsMap is a set type
-func (t *VMStrTPStrDbl) IsMap() bool {
-	return true
-}
-
-// IsVector more for interface acceptance
-func (t *VMStrTPStrDbl) IsVector() bool {
-	return true
-}
-
-// Name the type name for ease
-func (t *VMStrTPStrDbl) TypeName() string {
-	return "VMStrTPStrDbl"
-}
-
-// GoType the type of object in go
-func (t *VMStrTPStrDbl) GoType() string {
-	return "VMStrTPStrDbl"
-}
-
-// CassandraCreateType string for the create type (if necessary)
-// the string will be blank if no create is needed
-// the set of of the tpl types
-func (t *VMStrTPStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
-}
-
-// CassandraType the matching types in cassandra for the map
-func (t *VMStrTPStrDbl) CassandraType() string {
-	return "map<varchar,frozen<VTStrDbl>>"
-}
-
-// JavaType the java type for the object
-// org.apache.commons.lang3.tuple
-func (t *VMStrTPStrDbl) JavaType() string {
-	return "Map<String,Pair<String,Double>>"
+// FromRedisValue given the redis value, make it into a proper int64
+func (t *VMIntDbl) FromRedisValue(i string) (v int64, err error) {
+	return stringToInt(i)
 }
 
 //**************** Map: string string VMStrTPStrStr **********************/
@@ -2759,49 +2579,49 @@ func (t *VMStrTPStrInt) JavaType() string {
 	return "Map<String,Pair<String,Integer>>"
 }
 
-//**************** Map: int64 double VMStrTPIntDbl **********************/
+//**************** Map: string double VMStrTPStrDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMStrTPIntDbl) VecType() string {
+func (t *VMStrTPStrDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMStrTPIntDbl) IsMap() bool {
+func (t *VMStrTPStrDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMStrTPIntDbl) IsVector() bool {
+func (t *VMStrTPStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMStrTPIntDbl) TypeName() string {
-	return "VMStrTPIntDbl"
+func (t *VMStrTPStrDbl) TypeName() string {
+	return "VMStrTPStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VMStrTPIntDbl) GoType() string {
-	return "VMStrTPIntDbl"
+func (t *VMStrTPStrDbl) GoType() string {
+	return "VMStrTPStrDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMStrTPIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+func (t *VMStrTPStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMStrTPIntDbl) CassandraType() string {
-	return "map<varchar,frozen<VTIntDbl>>"
+func (t *VMStrTPStrDbl) CassandraType() string {
+	return "map<varchar,frozen<VTStrDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMStrTPIntDbl) JavaType() string {
-	return "Map<String,Pair<Integer,Double>>"
+func (t *VMStrTPStrDbl) JavaType() string {
+	return "Map<String,Pair<String,Double>>"
 }
 
 //**************** Map: int64 string VMStrTPIntStr **********************/
@@ -2894,184 +2714,184 @@ func (t *VMStrTPIntInt) JavaType() string {
 	return "Map<String,Pair<Integer,Integer>>"
 }
 
-//**************** Map: double double VMIntTPDblDbl **********************/
+//**************** Map: int64 double VMStrTPIntDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPDblDbl) VecType() string {
+func (t *VMStrTPIntDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPDblDbl) IsMap() bool {
+func (t *VMStrTPIntDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPDblDbl) IsVector() bool {
+func (t *VMStrTPIntDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPDblDbl) TypeName() string {
-	return "VMIntTPDblDbl"
+func (t *VMStrTPIntDbl) TypeName() string {
+	return "VMStrTPIntDbl"
 }
 
 // GoType the type of object in go
-func (t *VMIntTPDblDbl) GoType() string {
-	return "VMIntTPDblDbl"
+func (t *VMStrTPIntDbl) GoType() string {
+	return "VMStrTPIntDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPDblDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+func (t *VMStrTPIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblDbl) CassandraType() string {
-	return "map<bigint,frozen<VTDblDbl>>"
+func (t *VMStrTPIntDbl) CassandraType() string {
+	return "map<varchar,frozen<VTIntDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntTPDblDbl) JavaType() string {
-	return "Map<Integer,Pair<Double,Double>>"
+func (t *VMStrTPIntDbl) JavaType() string {
+	return "Map<String,Pair<Integer,Double>>"
 }
 
-//**************** Map: double string VMIntTPDblStr **********************/
+//**************** Map: double string VMStrTPDblStr **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPDblStr) VecType() string {
+func (t *VMStrTPDblStr) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPDblStr) IsMap() bool {
+func (t *VMStrTPDblStr) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPDblStr) IsVector() bool {
+func (t *VMStrTPDblStr) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPDblStr) TypeName() string {
-	return "VMIntTPDblStr"
+func (t *VMStrTPDblStr) TypeName() string {
+	return "VMStrTPDblStr"
 }
 
 // GoType the type of object in go
-func (t *VMIntTPDblStr) GoType() string {
-	return "VMIntTPDblStr"
+func (t *VMStrTPDblStr) GoType() string {
+	return "VMStrTPDblStr"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPDblStr) CassandraCreateType(keyspace string) string {
+func (t *VMStrTPDblStr) CassandraCreateType(keyspace string) string {
 	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblStr) CassandraType() string {
-	return "map<bigint,frozen<VTDblStr>>"
+func (t *VMStrTPDblStr) CassandraType() string {
+	return "map<varchar,frozen<VTDblStr>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntTPDblStr) JavaType() string {
-	return "Map<Integer,Pair<Double,String>>"
+func (t *VMStrTPDblStr) JavaType() string {
+	return "Map<String,Pair<Double,String>>"
 }
 
-//**************** Map: double int64 VMIntTPDblInt **********************/
+//**************** Map: double int64 VMStrTPDblInt **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPDblInt) VecType() string {
+func (t *VMStrTPDblInt) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPDblInt) IsMap() bool {
+func (t *VMStrTPDblInt) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPDblInt) IsVector() bool {
+func (t *VMStrTPDblInt) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPDblInt) TypeName() string {
-	return "VMIntTPDblInt"
+func (t *VMStrTPDblInt) TypeName() string {
+	return "VMStrTPDblInt"
 }
 
 // GoType the type of object in go
-func (t *VMIntTPDblInt) GoType() string {
-	return "VMIntTPDblInt"
+func (t *VMStrTPDblInt) GoType() string {
+	return "VMStrTPDblInt"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPDblInt) CassandraCreateType(keyspace string) string {
+func (t *VMStrTPDblInt) CassandraCreateType(keyspace string) string {
 	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPDblInt) CassandraType() string {
-	return "map<bigint,frozen<VTDblInt>>"
+func (t *VMStrTPDblInt) CassandraType() string {
+	return "map<varchar,frozen<VTDblInt>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntTPDblInt) JavaType() string {
-	return "Map<Integer,Pair<Double,Integer>>"
+func (t *VMStrTPDblInt) JavaType() string {
+	return "Map<String,Pair<Double,Integer>>"
 }
 
-//**************** Map: string double VMIntTPStrDbl **********************/
+//**************** Map: double double VMStrTPDblDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPStrDbl) VecType() string {
+func (t *VMStrTPDblDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPStrDbl) IsMap() bool {
+func (t *VMStrTPDblDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPStrDbl) IsVector() bool {
+func (t *VMStrTPDblDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPStrDbl) TypeName() string {
-	return "VMIntTPStrDbl"
+func (t *VMStrTPDblDbl) TypeName() string {
+	return "VMStrTPDblDbl"
 }
 
 // GoType the type of object in go
-func (t *VMIntTPStrDbl) GoType() string {
-	return "VMIntTPStrDbl"
+func (t *VMStrTPDblDbl) GoType() string {
+	return "VMStrTPDblDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPStrDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
+func (t *VMStrTPDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPStrDbl) CassandraType() string {
-	return "map<bigint,frozen<VTStrDbl>>"
+func (t *VMStrTPDblDbl) CassandraType() string {
+	return "map<varchar,frozen<VTDblDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntTPStrDbl) JavaType() string {
-	return "Map<Integer,Pair<String,Double>>"
+func (t *VMStrTPDblDbl) JavaType() string {
+	return "Map<String,Pair<Double,Double>>"
 }
 
 //**************** Map: string string VMIntTPStrStr **********************/
@@ -3164,49 +2984,49 @@ func (t *VMIntTPStrInt) JavaType() string {
 	return "Map<Integer,Pair<String,Integer>>"
 }
 
-//**************** Map: int64 double VMIntTPIntDbl **********************/
+//**************** Map: string double VMIntTPStrDbl **********************/
 
 // VecType the type of vector (map)
-func (t *VMIntTPIntDbl) VecType() string {
+func (t *VMIntTPStrDbl) VecType() string {
 	return "map"
 }
 
 // IsMap is a set type
-func (t *VMIntTPIntDbl) IsMap() bool {
+func (t *VMIntTPStrDbl) IsMap() bool {
 	return true
 }
 
 // IsVector more for interface acceptance
-func (t *VMIntTPIntDbl) IsVector() bool {
+func (t *VMIntTPStrDbl) IsVector() bool {
 	return true
 }
 
 // Name the type name for ease
-func (t *VMIntTPIntDbl) TypeName() string {
-	return "VMIntTPIntDbl"
+func (t *VMIntTPStrDbl) TypeName() string {
+	return "VMIntTPStrDbl"
 }
 
 // GoType the type of object in go
-func (t *VMIntTPIntDbl) GoType() string {
-	return "VMIntTPIntDbl"
+func (t *VMIntTPStrDbl) GoType() string {
+	return "VMIntTPStrDbl"
 }
 
 // CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
-func (t *VMIntTPIntDbl) CassandraCreateType(keyspace string) string {
-	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+func (t *VMIntTPStrDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTStrDbl ( k varchar, v double );"
 }
 
 // CassandraType the matching types in cassandra for the map
-func (t *VMIntTPIntDbl) CassandraType() string {
-	return "map<bigint,frozen<VTIntDbl>>"
+func (t *VMIntTPStrDbl) CassandraType() string {
+	return "map<bigint,frozen<VTStrDbl>>"
 }
 
 // JavaType the java type for the object
 // org.apache.commons.lang3.tuple
-func (t *VMIntTPIntDbl) JavaType() string {
-	return "Map<Integer,Pair<Integer,Double>>"
+func (t *VMIntTPStrDbl) JavaType() string {
+	return "Map<Integer,Pair<String,Double>>"
 }
 
 //**************** Map: int64 string VMIntTPIntStr **********************/
@@ -3299,10 +3119,190 @@ func (t *VMIntTPIntInt) JavaType() string {
 	return "Map<Integer,Pair<Integer,Integer>>"
 }
 
-var TupleNames = [...]string{"VTDblDbl", "VTDblStr", "VTDblInt", "VTStrDbl", "VTStrStr", "VTStrInt", "VTIntDbl", "VTIntStr", "VTIntInt"}
-var ListNames = [...]string{"VLDbl", "VLStr", "VLInt", "VLDblDbl", "VLDblStr", "VLDblInt", "VLStrDbl", "VLStrStr", "VLStrInt", "VLIntDbl", "VLIntStr", "VLIntInt"}
-var SetNames = [...]string{"VSDbl", "VSStr", "VSInt", "VSDblDbl", "VSDblStr", "VSDblInt", "VSStrDbl", "VSStrStr", "VSStrInt", "VSIntDbl", "VSIntStr", "VSIntInt"}
-var MapNames = [...]string{"VMStrDbl", "VMStrStr", "VMStrInt", "VMIntDbl", "VMIntStr", "VMIntInt", "VMStrTPDblDbl", "VMStrTPDblStr", "VMStrTPDblInt", "VMStrTPStrDbl", "VMStrTPStrStr", "VMStrTPStrInt", "VMStrTPIntDbl", "VMStrTPIntStr", "VMStrTPIntInt", "VMIntTPDblDbl", "VMIntTPDblStr", "VMIntTPDblInt", "VMIntTPStrDbl", "VMIntTPStrStr", "VMIntTPStrInt", "VMIntTPIntDbl", "VMIntTPIntStr", "VMIntTPIntInt"}
+//**************** Map: int64 double VMIntTPIntDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPIntDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPIntDbl) IsMap() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPIntDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPIntDbl) TypeName() string {
+	return "VMIntTPIntDbl"
+}
+
+// GoType the type of object in go
+func (t *VMIntTPIntDbl) GoType() string {
+	return "VMIntTPIntDbl"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPIntDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTIntDbl ( k bigint, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPIntDbl) CassandraType() string {
+	return "map<bigint,frozen<VTIntDbl>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VMIntTPIntDbl) JavaType() string {
+	return "Map<Integer,Pair<Integer,Double>>"
+}
+
+//**************** Map: double string VMIntTPDblStr **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblStr) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblStr) IsMap() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblStr) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblStr) TypeName() string {
+	return "VMIntTPDblStr"
+}
+
+// GoType the type of object in go
+func (t *VMIntTPDblStr) GoType() string {
+	return "VMIntTPDblStr"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblStr) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblStr ( k double, v varchar );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblStr) CassandraType() string {
+	return "map<bigint,frozen<VTDblStr>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VMIntTPDblStr) JavaType() string {
+	return "Map<Integer,Pair<Double,String>>"
+}
+
+//**************** Map: double int64 VMIntTPDblInt **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblInt) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblInt) IsMap() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblInt) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblInt) TypeName() string {
+	return "VMIntTPDblInt"
+}
+
+// GoType the type of object in go
+func (t *VMIntTPDblInt) GoType() string {
+	return "VMIntTPDblInt"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblInt) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblInt ( k double, v bigint );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblInt) CassandraType() string {
+	return "map<bigint,frozen<VTDblInt>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VMIntTPDblInt) JavaType() string {
+	return "Map<Integer,Pair<Double,Integer>>"
+}
+
+//**************** Map: double double VMIntTPDblDbl **********************/
+
+// VecType the type of vector (map)
+func (t *VMIntTPDblDbl) VecType() string {
+	return "map"
+}
+
+// IsMap is a set type
+func (t *VMIntTPDblDbl) IsMap() bool {
+	return true
+}
+
+// IsVector more for interface acceptance
+func (t *VMIntTPDblDbl) IsVector() bool {
+	return true
+}
+
+// Name the type name for ease
+func (t *VMIntTPDblDbl) TypeName() string {
+	return "VMIntTPDblDbl"
+}
+
+// GoType the type of object in go
+func (t *VMIntTPDblDbl) GoType() string {
+	return "VMIntTPDblDbl"
+}
+
+// CassandraCreateType string for the create type (if necessary)
+// the string will be blank if no create is needed
+// the set of of the tpl types
+func (t *VMIntTPDblDbl) CassandraCreateType(keyspace string) string {
+	return "CREATE TYPE IF NOT EXISTS " + keyspace + ".VTDblDbl ( k double, v double );"
+}
+
+// CassandraType the matching types in cassandra for the map
+func (t *VMIntTPDblDbl) CassandraType() string {
+	return "map<bigint,frozen<VTDblDbl>>"
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t *VMIntTPDblDbl) JavaType() string {
+	return "Map<Integer,Pair<Double,Double>>"
+}
+
+var TupleNames = [...]string{"VTStrStr", "VTStrInt", "VTStrDbl", "VTIntStr", "VTIntInt", "VTIntDbl", "VTDblStr", "VTDblInt", "VTDblDbl"}
+var ListNames = [...]string{"VLStr", "VLInt", "VLDbl", "VLStrStr", "VLStrInt", "VLStrDbl", "VLIntStr", "VLIntInt", "VLIntDbl", "VLDblStr", "VLDblInt", "VLDblDbl"}
+var SetNames = [...]string{"VSStr", "VSInt", "VSDbl", "VSStrStr", "VSStrInt", "VSStrDbl", "VSIntStr", "VSIntInt", "VSIntDbl", "VSDblStr", "VSDblInt", "VSDblDbl"}
+var MapNames = [...]string{"VMStrStr", "VMStrInt", "VMStrDbl", "VMIntStr", "VMIntInt", "VMIntDbl", "VMStrTPStrStr", "VMStrTPStrInt", "VMStrTPStrDbl", "VMStrTPIntStr", "VMStrTPIntInt", "VMStrTPIntDbl", "VMStrTPDblStr", "VMStrTPDblInt", "VMStrTPDblDbl", "VMIntTPStrStr", "VMIntTPStrInt", "VMIntTPStrDbl", "VMIntTPIntStr", "VMIntTPIntInt", "VMIntTPIntDbl", "VMIntTPDblStr", "VMIntTPDblInt", "VMIntTPDblDbl"}
 var SHORT_NAME_MAP = map[string]string{
 	"ld":   "VLDbl",
 	"ldd":  "VLDblDbl",

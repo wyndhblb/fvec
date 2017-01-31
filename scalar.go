@@ -19,6 +19,7 @@ type Scalar interface {
 	JavaType() string
 
 	// GoType the string name of the golang type
+	GoType() string
 }
 
 type DoubleType float64
@@ -110,7 +111,7 @@ func (d *ByteType) IsScalar() bool {
 var SCALAR_SHORT_NAME_MAP = map[string]string{
 	"i": "IntType",
 	"d": "DoubleType",
-	"f": "FloatType",
+	"f": "DoubleType",
 	"b": "ByteType",
 	"s": "StringType",
 	"c": "CounterType",

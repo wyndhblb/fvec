@@ -11,63 +11,63 @@
 	It has these top-level messages:
 		Tag
 		VName
-		VTDblDbl
-		VTDblStr
-		VTDblInt
-		VTStrDbl
 		VTStrStr
 		VTStrInt
-		VTIntDbl
+		VTStrDbl
 		VTIntStr
 		VTIntInt
-		VLDbl
+		VTIntDbl
+		VTDblStr
+		VTDblInt
+		VTDblDbl
 		VLStr
 		VLInt
-		VLDblDbl
-		VLDblStr
-		VLDblInt
-		VLStrDbl
+		VLDbl
 		VLStrStr
 		VLStrInt
-		VLIntDbl
+		VLStrDbl
 		VLIntStr
 		VLIntInt
-		VSDbl
+		VLIntDbl
+		VLDblStr
+		VLDblInt
+		VLDblDbl
 		VSStr
 		VSInt
-		VSDblDbl
-		VSDblStr
-		VSDblInt
-		VSStrDbl
+		VSDbl
 		VSStrStr
 		VSStrInt
-		VSIntDbl
+		VSStrDbl
 		VSIntStr
 		VSIntInt
-		VMStrDbl
+		VSIntDbl
+		VSDblStr
+		VSDblInt
+		VSDblDbl
 		VMStrStr
 		VMStrInt
-		VMIntDbl
+		VMStrDbl
 		VMIntStr
 		VMIntInt
-		VMStrTPDblDbl
-		VMStrTPDblStr
-		VMStrTPDblInt
-		VMStrTPStrDbl
+		VMIntDbl
 		VMStrTPStrStr
 		VMStrTPStrInt
-		VMStrTPIntDbl
+		VMStrTPStrDbl
 		VMStrTPIntStr
 		VMStrTPIntInt
-		VMIntTPDblDbl
-		VMIntTPDblStr
-		VMIntTPDblInt
-		VMIntTPStrDbl
+		VMStrTPIntDbl
+		VMStrTPDblStr
+		VMStrTPDblInt
+		VMStrTPDblDbl
 		VMIntTPStrStr
 		VMIntTPStrInt
-		VMIntTPIntDbl
+		VMIntTPStrDbl
 		VMIntTPIntStr
 		VMIntTPIntInt
+		VMIntTPIntDbl
+		VMIntTPDblStr
+		VMIntTPDblInt
+		VMIntTPDblDbl
 */
 package fvec
 
@@ -123,62 +123,6 @@ func (m *VName) String() string            { return proto.CompactTextString(m) }
 func (*VName) ProtoMessage()               {}
 func (*VName) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{1} }
 
-// VTDblDbl Tuple Type key=double value=double
-// easyjson:json
-type VTDblDbl struct {
-	// @inject_tag: cql:"k" msg:"key"
-	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
-	// @inject_tag: cql:"v" msg:"value"
-	Value float64 `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
-}
-
-func (m *VTDblDbl) Reset()                    { *m = VTDblDbl{} }
-func (m *VTDblDbl) String() string            { return proto.CompactTextString(m) }
-func (*VTDblDbl) ProtoMessage()               {}
-func (*VTDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{2} }
-
-// VTDblStr Tuple Type key=double value=string
-// easyjson:json
-type VTDblStr struct {
-	// @inject_tag: cql:"k" msg:"key"
-	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
-	// @inject_tag: cql:"v" msg:"value"
-	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
-}
-
-func (m *VTDblStr) Reset()                    { *m = VTDblStr{} }
-func (m *VTDblStr) String() string            { return proto.CompactTextString(m) }
-func (*VTDblStr) ProtoMessage()               {}
-func (*VTDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{3} }
-
-// VTDblInt Tuple Type key=double value=int64
-// easyjson:json
-type VTDblInt struct {
-	// @inject_tag: cql:"k" msg:"key"
-	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
-	// @inject_tag: cql:"v" msg:"value"
-	Value int64 `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
-}
-
-func (m *VTDblInt) Reset()                    { *m = VTDblInt{} }
-func (m *VTDblInt) String() string            { return proto.CompactTextString(m) }
-func (*VTDblInt) ProtoMessage()               {}
-func (*VTDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{4} }
-
-// VTStrDbl Tuple Type key=string value=double
-// easyjson:json
-type VTStrDbl struct {
-	// @inject_tag: cql:"k" msg:"key"
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
-	// @inject_tag: cql:"v" msg:"value"
-	Value float64 `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
-}
-
-func (m *VTStrDbl) Reset()                    { *m = VTStrDbl{} }
-func (m *VTStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VTStrDbl) ProtoMessage()               {}
-func (*VTStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{5} }
-
 // VTStrStr Tuple Type key=string value=string
 // easyjson:json
 type VTStrStr struct {
@@ -191,7 +135,7 @@ type VTStrStr struct {
 func (m *VTStrStr) Reset()                    { *m = VTStrStr{} }
 func (m *VTStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VTStrStr) ProtoMessage()               {}
-func (*VTStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{6} }
+func (*VTStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{2} }
 
 // VTStrInt Tuple Type key=string value=int64
 // easyjson:json
@@ -205,21 +149,21 @@ type VTStrInt struct {
 func (m *VTStrInt) Reset()                    { *m = VTStrInt{} }
 func (m *VTStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VTStrInt) ProtoMessage()               {}
-func (*VTStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{7} }
+func (*VTStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{3} }
 
-// VTIntDbl Tuple Type key=int64 value=double
+// VTStrDbl Tuple Type key=string value=double
 // easyjson:json
-type VTIntDbl struct {
+type VTStrDbl struct {
 	// @inject_tag: cql:"k" msg:"key"
-	Key int64 `protobuf:"varint,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
 	// @inject_tag: cql:"v" msg:"value"
 	Value float64 `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
 }
 
-func (m *VTIntDbl) Reset()                    { *m = VTIntDbl{} }
-func (m *VTIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VTIntDbl) ProtoMessage()               {}
-func (*VTIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{8} }
+func (m *VTStrDbl) Reset()                    { *m = VTStrDbl{} }
+func (m *VTStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VTStrDbl) ProtoMessage()               {}
+func (*VTStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{4} }
 
 // VTIntStr Tuple Type key=int64 value=string
 // easyjson:json
@@ -233,7 +177,7 @@ type VTIntStr struct {
 func (m *VTIntStr) Reset()                    { *m = VTIntStr{} }
 func (m *VTIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VTIntStr) ProtoMessage()               {}
-func (*VTIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{9} }
+func (*VTIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{5} }
 
 // VTIntInt Tuple Type key=int64 value=int64
 // easyjson:json
@@ -247,19 +191,63 @@ type VTIntInt struct {
 func (m *VTIntInt) Reset()                    { *m = VTIntInt{} }
 func (m *VTIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VTIntInt) ProtoMessage()               {}
-func (*VTIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{10} }
+func (*VTIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{6} }
 
-// VLDbl list
+// VTIntDbl Tuple Type key=int64 value=double
 // easyjson:json
-type VLDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []float64 `protobuf:"fixed64,1,rep,packed,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+type VTIntDbl struct {
+	// @inject_tag: cql:"k" msg:"key"
+	Key int64 `protobuf:"varint,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
+	// @inject_tag: cql:"v" msg:"value"
+	Value float64 `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
 }
 
-func (m *VLDbl) Reset()                    { *m = VLDbl{} }
-func (m *VLDbl) String() string            { return proto.CompactTextString(m) }
-func (*VLDbl) ProtoMessage()               {}
-func (*VLDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{11} }
+func (m *VTIntDbl) Reset()                    { *m = VTIntDbl{} }
+func (m *VTIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VTIntDbl) ProtoMessage()               {}
+func (*VTIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{7} }
+
+// VTDblStr Tuple Type key=double value=string
+// easyjson:json
+type VTDblStr struct {
+	// @inject_tag: cql:"k" msg:"key"
+	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
+	// @inject_tag: cql:"v" msg:"value"
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
+}
+
+func (m *VTDblStr) Reset()                    { *m = VTDblStr{} }
+func (m *VTDblStr) String() string            { return proto.CompactTextString(m) }
+func (*VTDblStr) ProtoMessage()               {}
+func (*VTDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{8} }
+
+// VTDblInt Tuple Type key=double value=int64
+// easyjson:json
+type VTDblInt struct {
+	// @inject_tag: cql:"k" msg:"key"
+	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
+	// @inject_tag: cql:"v" msg:"value"
+	Value int64 `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
+}
+
+func (m *VTDblInt) Reset()                    { *m = VTDblInt{} }
+func (m *VTDblInt) String() string            { return proto.CompactTextString(m) }
+func (*VTDblInt) ProtoMessage()               {}
+func (*VTDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{9} }
+
+// VTDblDbl Tuple Type key=double value=double
+// easyjson:json
+type VTDblDbl struct {
+	// @inject_tag: cql:"k" msg:"key"
+	Key float64 `protobuf:"fixed64,1,opt,name=key,proto3" json:"key,omitempty" cql:"k" msg:"key"`
+	// @inject_tag: cql:"v" msg:"value"
+	Value float64 `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty" cql:"v" msg:"value"`
+}
+
+func (m *VTDblDbl) Reset()                    { *m = VTDblDbl{} }
+func (m *VTDblDbl) String() string            { return proto.CompactTextString(m) }
+func (*VTDblDbl) ProtoMessage()               {}
+func (*VTDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{10} }
 
 // VLStr list
 // easyjson:json
@@ -271,7 +259,7 @@ type VLStr struct {
 func (m *VLStr) Reset()                    { *m = VLStr{} }
 func (m *VLStr) String() string            { return proto.CompactTextString(m) }
 func (*VLStr) ProtoMessage()               {}
-func (*VLStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{12} }
+func (*VLStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{11} }
 
 // VLInt list
 // easyjson:json
@@ -283,55 +271,19 @@ type VLInt struct {
 func (m *VLInt) Reset()                    { *m = VLInt{} }
 func (m *VLInt) String() string            { return proto.CompactTextString(m) }
 func (*VLInt) ProtoMessage()               {}
-func (*VLInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{13} }
+func (*VLInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{12} }
 
-// VLDblDbl list
+// VLDbl list
 // easyjson:json
-type VLDblDbl struct {
+type VLDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+	Vec []float64 `protobuf:"fixed64,1,rep,packed,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VLDblDbl) Reset()                    { *m = VLDblDbl{} }
-func (m *VLDblDbl) String() string            { return proto.CompactTextString(m) }
-func (*VLDblDbl) ProtoMessage()               {}
-func (*VLDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{14} }
-
-// VLDblStr list
-// easyjson:json
-type VLDblStr struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VLDblStr) Reset()                    { *m = VLDblStr{} }
-func (m *VLDblStr) String() string            { return proto.CompactTextString(m) }
-func (*VLDblStr) ProtoMessage()               {}
-func (*VLDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{15} }
-
-// VLDblInt list
-// easyjson:json
-type VLDblInt struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VLDblInt) Reset()                    { *m = VLDblInt{} }
-func (m *VLDblInt) String() string            { return proto.CompactTextString(m) }
-func (*VLDblInt) ProtoMessage()               {}
-func (*VLDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{16} }
-
-// VLStrDbl list
-// easyjson:json
-type VLStrDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VLStrDbl) Reset()                    { *m = VLStrDbl{} }
-func (m *VLStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VLStrDbl) ProtoMessage()               {}
-func (*VLStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{17} }
+func (m *VLDbl) Reset()                    { *m = VLDbl{} }
+func (m *VLDbl) String() string            { return proto.CompactTextString(m) }
+func (*VLDbl) ProtoMessage()               {}
+func (*VLDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{13} }
 
 // VLStrStr list
 // easyjson:json
@@ -343,7 +295,7 @@ type VLStrStr struct {
 func (m *VLStrStr) Reset()                    { *m = VLStrStr{} }
 func (m *VLStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VLStrStr) ProtoMessage()               {}
-func (*VLStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{18} }
+func (*VLStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{14} }
 
 // VLStrInt list
 // easyjson:json
@@ -355,19 +307,19 @@ type VLStrInt struct {
 func (m *VLStrInt) Reset()                    { *m = VLStrInt{} }
 func (m *VLStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VLStrInt) ProtoMessage()               {}
-func (*VLStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{19} }
+func (*VLStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{15} }
 
-// VLIntDbl list
+// VLStrDbl list
 // easyjson:json
-type VLIntDbl struct {
+type VLStrDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+	Vec []*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VLIntDbl) Reset()                    { *m = VLIntDbl{} }
-func (m *VLIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VLIntDbl) ProtoMessage()               {}
-func (*VLIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{20} }
+func (m *VLStrDbl) Reset()                    { *m = VLStrDbl{} }
+func (m *VLStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VLStrDbl) ProtoMessage()               {}
+func (*VLStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{16} }
 
 // VLIntStr list
 // easyjson:json
@@ -379,7 +331,7 @@ type VLIntStr struct {
 func (m *VLIntStr) Reset()                    { *m = VLIntStr{} }
 func (m *VLIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VLIntStr) ProtoMessage()               {}
-func (*VLIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{21} }
+func (*VLIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{17} }
 
 // VLIntInt list
 // easyjson:json
@@ -391,19 +343,55 @@ type VLIntInt struct {
 func (m *VLIntInt) Reset()                    { *m = VLIntInt{} }
 func (m *VLIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VLIntInt) ProtoMessage()               {}
-func (*VLIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{22} }
+func (*VLIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{18} }
 
-// VSDbl set
+// VLIntDbl list
 // easyjson:json
-type VSDbl struct {
+type VLIntDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []float64 `protobuf:"fixed64,1,rep,packed,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+	Vec []*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VSDbl) Reset()                    { *m = VSDbl{} }
-func (m *VSDbl) String() string            { return proto.CompactTextString(m) }
-func (*VSDbl) ProtoMessage()               {}
-func (*VSDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{23} }
+func (m *VLIntDbl) Reset()                    { *m = VLIntDbl{} }
+func (m *VLIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VLIntDbl) ProtoMessage()               {}
+func (*VLIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{19} }
+
+// VLDblStr list
+// easyjson:json
+type VLDblStr struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VLDblStr) Reset()                    { *m = VLDblStr{} }
+func (m *VLDblStr) String() string            { return proto.CompactTextString(m) }
+func (*VLDblStr) ProtoMessage()               {}
+func (*VLDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{20} }
+
+// VLDblInt list
+// easyjson:json
+type VLDblInt struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VLDblInt) Reset()                    { *m = VLDblInt{} }
+func (m *VLDblInt) String() string            { return proto.CompactTextString(m) }
+func (*VLDblInt) ProtoMessage()               {}
+func (*VLDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{21} }
+
+// VLDblDbl list
+// easyjson:json
+type VLDblDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VLDblDbl) Reset()                    { *m = VLDblDbl{} }
+func (m *VLDblDbl) String() string            { return proto.CompactTextString(m) }
+func (*VLDblDbl) ProtoMessage()               {}
+func (*VLDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{22} }
 
 // VSStr set
 // easyjson:json
@@ -415,7 +403,7 @@ type VSStr struct {
 func (m *VSStr) Reset()                    { *m = VSStr{} }
 func (m *VSStr) String() string            { return proto.CompactTextString(m) }
 func (*VSStr) ProtoMessage()               {}
-func (*VSStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{24} }
+func (*VSStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{23} }
 
 // VSInt set
 // easyjson:json
@@ -427,55 +415,19 @@ type VSInt struct {
 func (m *VSInt) Reset()                    { *m = VSInt{} }
 func (m *VSInt) String() string            { return proto.CompactTextString(m) }
 func (*VSInt) ProtoMessage()               {}
-func (*VSInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{25} }
+func (*VSInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{24} }
 
-// VSDblDbl set
+// VSDbl set
 // easyjson:json
-type VSDblDbl struct {
+type VSDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+	Vec []float64 `protobuf:"fixed64,1,rep,packed,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VSDblDbl) Reset()                    { *m = VSDblDbl{} }
-func (m *VSDblDbl) String() string            { return proto.CompactTextString(m) }
-func (*VSDblDbl) ProtoMessage()               {}
-func (*VSDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{26} }
-
-// VSDblStr set
-// easyjson:json
-type VSDblStr struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VSDblStr) Reset()                    { *m = VSDblStr{} }
-func (m *VSDblStr) String() string            { return proto.CompactTextString(m) }
-func (*VSDblStr) ProtoMessage()               {}
-func (*VSDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{27} }
-
-// VSDblInt set
-// easyjson:json
-type VSDblInt struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VSDblInt) Reset()                    { *m = VSDblInt{} }
-func (m *VSDblInt) String() string            { return proto.CompactTextString(m) }
-func (*VSDblInt) ProtoMessage()               {}
-func (*VSDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{28} }
-
-// VSStrDbl set
-// easyjson:json
-type VSStrDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
-}
-
-func (m *VSStrDbl) Reset()                    { *m = VSStrDbl{} }
-func (m *VSStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VSStrDbl) ProtoMessage()               {}
-func (*VSStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{29} }
+func (m *VSDbl) Reset()                    { *m = VSDbl{} }
+func (m *VSDbl) String() string            { return proto.CompactTextString(m) }
+func (*VSDbl) ProtoMessage()               {}
+func (*VSDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{25} }
 
 // VSStrStr set
 // easyjson:json
@@ -487,7 +439,7 @@ type VSStrStr struct {
 func (m *VSStrStr) Reset()                    { *m = VSStrStr{} }
 func (m *VSStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VSStrStr) ProtoMessage()               {}
-func (*VSStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{30} }
+func (*VSStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{26} }
 
 // VSStrInt set
 // easyjson:json
@@ -499,19 +451,19 @@ type VSStrInt struct {
 func (m *VSStrInt) Reset()                    { *m = VSStrInt{} }
 func (m *VSStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VSStrInt) ProtoMessage()               {}
-func (*VSStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{31} }
+func (*VSStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{27} }
 
-// VSIntDbl set
+// VSStrDbl set
 // easyjson:json
-type VSIntDbl struct {
+type VSStrDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec []*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+	Vec []*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VSIntDbl) Reset()                    { *m = VSIntDbl{} }
-func (m *VSIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VSIntDbl) ProtoMessage()               {}
-func (*VSIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{32} }
+func (m *VSStrDbl) Reset()                    { *m = VSStrDbl{} }
+func (m *VSStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VSStrDbl) ProtoMessage()               {}
+func (*VSStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{28} }
 
 // VSIntStr set
 // easyjson:json
@@ -523,7 +475,7 @@ type VSIntStr struct {
 func (m *VSIntStr) Reset()                    { *m = VSIntStr{} }
 func (m *VSIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VSIntStr) ProtoMessage()               {}
-func (*VSIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{33} }
+func (*VSIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{29} }
 
 // VSIntInt set
 // easyjson:json
@@ -535,19 +487,55 @@ type VSIntInt struct {
 func (m *VSIntInt) Reset()                    { *m = VSIntInt{} }
 func (m *VSIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VSIntInt) ProtoMessage()               {}
-func (*VSIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{34} }
+func (*VSIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{30} }
 
-// VMStrDbl map of string -> double
+// VSIntDbl set
 // easyjson:json
-type VMStrDbl struct {
+type VSIntDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]float64 `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3" cql:"vec" msg:"vec"`
+	Vec []*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
 }
 
-func (m *VMStrDbl) Reset()                    { *m = VMStrDbl{} }
-func (m *VMStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMStrDbl) ProtoMessage()               {}
-func (*VMStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{35} }
+func (m *VSIntDbl) Reset()                    { *m = VSIntDbl{} }
+func (m *VSIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VSIntDbl) ProtoMessage()               {}
+func (*VSIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{31} }
+
+// VSDblStr set
+// easyjson:json
+type VSDblStr struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VSDblStr) Reset()                    { *m = VSDblStr{} }
+func (m *VSDblStr) String() string            { return proto.CompactTextString(m) }
+func (*VSDblStr) ProtoMessage()               {}
+func (*VSDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{32} }
+
+// VSDblInt set
+// easyjson:json
+type VSDblInt struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VSDblInt) Reset()                    { *m = VSDblInt{} }
+func (m *VSDblInt) String() string            { return proto.CompactTextString(m) }
+func (*VSDblInt) ProtoMessage()               {}
+func (*VSDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{33} }
+
+// VSDblDbl set
+// easyjson:json
+type VSDblDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec []*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" cql:"vec" msg:"vec"`
+}
+
+func (m *VSDblDbl) Reset()                    { *m = VSDblDbl{} }
+func (m *VSDblDbl) String() string            { return proto.CompactTextString(m) }
+func (*VSDblDbl) ProtoMessage()               {}
+func (*VSDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{34} }
 
 // VMStrStr map of string -> string
 // easyjson:json
@@ -559,7 +547,7 @@ type VMStrStr struct {
 func (m *VMStrStr) Reset()                    { *m = VMStrStr{} }
 func (m *VMStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VMStrStr) ProtoMessage()               {}
-func (*VMStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{36} }
+func (*VMStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{35} }
 
 // VMStrInt map of string -> int64
 // easyjson:json
@@ -571,17 +559,19 @@ type VMStrInt struct {
 func (m *VMStrInt) Reset()                    { *m = VMStrInt{} }
 func (m *VMStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VMStrInt) ProtoMessage()               {}
-func (*VMStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{37} }
+func (*VMStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{36} }
 
-type VMIntDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]float64 `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3" cql:"vec" msg:"vec,extention"`
+// VMStrDbl map of string -> double
+// easyjson:json
+type VMStrDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec map[string]float64 `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3" cql:"vec" msg:"vec"`
 }
 
-func (m *VMIntDbl) Reset()                    { *m = VMIntDbl{} }
-func (m *VMIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMIntDbl) ProtoMessage()               {}
-func (*VMIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{38} }
+func (m *VMStrDbl) Reset()                    { *m = VMStrDbl{} }
+func (m *VMStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMStrDbl) ProtoMessage()               {}
+func (*VMStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{37} }
 
 type VMIntStr struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -591,7 +581,7 @@ type VMIntStr struct {
 func (m *VMIntStr) Reset()                    { *m = VMIntStr{} }
 func (m *VMIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VMIntStr) ProtoMessage()               {}
-func (*VMIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{39} }
+func (*VMIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{38} }
 
 type VMIntInt struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -601,55 +591,17 @@ type VMIntInt struct {
 func (m *VMIntInt) Reset()                    { *m = VMIntInt{} }
 func (m *VMIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VMIntInt) ProtoMessage()               {}
-func (*VMIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{40} }
+func (*VMIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{39} }
 
-// VMStrTPDblDbl map of double -> set(double, double)
-// easyjson:json
-type VMStrTPDblDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
+type VMIntDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec,extention"
+	Vec map[int64]float64 `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3" cql:"vec" msg:"vec,extention"`
 }
 
-func (m *VMStrTPDblDbl) Reset()                    { *m = VMStrTPDblDbl{} }
-func (m *VMStrTPDblDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMStrTPDblDbl) ProtoMessage()               {}
-func (*VMStrTPDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{41} }
-
-// VMStrTPDblStr map of double -> set(double, string)
-// easyjson:json
-type VMStrTPDblStr struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
-}
-
-func (m *VMStrTPDblStr) Reset()                    { *m = VMStrTPDblStr{} }
-func (m *VMStrTPDblStr) String() string            { return proto.CompactTextString(m) }
-func (*VMStrTPDblStr) ProtoMessage()               {}
-func (*VMStrTPDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{42} }
-
-// VMStrTPDblInt map of double -> set(double, int64)
-// easyjson:json
-type VMStrTPDblInt struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
-}
-
-func (m *VMStrTPDblInt) Reset()                    { *m = VMStrTPDblInt{} }
-func (m *VMStrTPDblInt) String() string            { return proto.CompactTextString(m) }
-func (*VMStrTPDblInt) ProtoMessage()               {}
-func (*VMStrTPDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{43} }
-
-// VMStrTPStrDbl map of string -> set(string, double)
-// easyjson:json
-type VMStrTPStrDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
-}
-
-func (m *VMStrTPStrDbl) Reset()                    { *m = VMStrTPStrDbl{} }
-func (m *VMStrTPStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMStrTPStrDbl) ProtoMessage()               {}
-func (*VMStrTPStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{44} }
+func (m *VMIntDbl) Reset()                    { *m = VMIntDbl{} }
+func (m *VMIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMIntDbl) ProtoMessage()               {}
+func (*VMIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{40} }
 
 // VMStrTPStrStr map of string -> set(string, string)
 // easyjson:json
@@ -661,7 +613,7 @@ type VMStrTPStrStr struct {
 func (m *VMStrTPStrStr) Reset()                    { *m = VMStrTPStrStr{} }
 func (m *VMStrTPStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VMStrTPStrStr) ProtoMessage()               {}
-func (*VMStrTPStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{45} }
+func (*VMStrTPStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{41} }
 
 // VMStrTPStrInt map of string -> set(string, int64)
 // easyjson:json
@@ -673,19 +625,19 @@ type VMStrTPStrInt struct {
 func (m *VMStrTPStrInt) Reset()                    { *m = VMStrTPStrInt{} }
 func (m *VMStrTPStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VMStrTPStrInt) ProtoMessage()               {}
-func (*VMStrTPStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{46} }
+func (*VMStrTPStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{42} }
 
-// VMStrTPIntDbl map of int64 -> set(int64, double)
+// VMStrTPStrDbl map of string -> set(string, double)
 // easyjson:json
-type VMStrTPIntDbl struct {
+type VMStrTPStrDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec"
-	Vec map[string]*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
+	Vec map[string]*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
 }
 
-func (m *VMStrTPIntDbl) Reset()                    { *m = VMStrTPIntDbl{} }
-func (m *VMStrTPIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMStrTPIntDbl) ProtoMessage()               {}
-func (*VMStrTPIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{47} }
+func (m *VMStrTPStrDbl) Reset()                    { *m = VMStrTPStrDbl{} }
+func (m *VMStrTPStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMStrTPStrDbl) ProtoMessage()               {}
+func (*VMStrTPStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{43} }
 
 // VMStrTPIntStr map of int64 -> set(int64, string)
 // easyjson:json
@@ -697,7 +649,7 @@ type VMStrTPIntStr struct {
 func (m *VMStrTPIntStr) Reset()                    { *m = VMStrTPIntStr{} }
 func (m *VMStrTPIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VMStrTPIntStr) ProtoMessage()               {}
-func (*VMStrTPIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{48} }
+func (*VMStrTPIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{44} }
 
 // VMStrTPIntInt map of int64 -> set(int64, int64)
 // easyjson:json
@@ -709,47 +661,55 @@ type VMStrTPIntInt struct {
 func (m *VMStrTPIntInt) Reset()                    { *m = VMStrTPIntInt{} }
 func (m *VMStrTPIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VMStrTPIntInt) ProtoMessage()               {}
-func (*VMStrTPIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{49} }
+func (*VMStrTPIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{45} }
 
-type VMIntTPDblDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+// VMStrTPIntDbl map of int64 -> set(int64, double)
+// easyjson:json
+type VMStrTPIntDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec map[string]*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
 }
 
-func (m *VMIntTPDblDbl) Reset()                    { *m = VMIntTPDblDbl{} }
-func (m *VMIntTPDblDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMIntTPDblDbl) ProtoMessage()               {}
-func (*VMIntTPDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{50} }
+func (m *VMStrTPIntDbl) Reset()                    { *m = VMStrTPIntDbl{} }
+func (m *VMStrTPIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMStrTPIntDbl) ProtoMessage()               {}
+func (*VMStrTPIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{46} }
 
-type VMIntTPDblStr struct {
-	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+// VMStrTPDblStr map of double -> set(double, string)
+// easyjson:json
+type VMStrTPDblStr struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec map[string]*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
 }
 
-func (m *VMIntTPDblStr) Reset()                    { *m = VMIntTPDblStr{} }
-func (m *VMIntTPDblStr) String() string            { return proto.CompactTextString(m) }
-func (*VMIntTPDblStr) ProtoMessage()               {}
-func (*VMIntTPDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{51} }
+func (m *VMStrTPDblStr) Reset()                    { *m = VMStrTPDblStr{} }
+func (m *VMStrTPDblStr) String() string            { return proto.CompactTextString(m) }
+func (*VMStrTPDblStr) ProtoMessage()               {}
+func (*VMStrTPDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{47} }
 
-type VMIntTPDblInt struct {
-	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+// VMStrTPDblInt map of double -> set(double, int64)
+// easyjson:json
+type VMStrTPDblInt struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec map[string]*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
 }
 
-func (m *VMIntTPDblInt) Reset()                    { *m = VMIntTPDblInt{} }
-func (m *VMIntTPDblInt) String() string            { return proto.CompactTextString(m) }
-func (*VMIntTPDblInt) ProtoMessage()               {}
-func (*VMIntTPDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{52} }
+func (m *VMStrTPDblInt) Reset()                    { *m = VMStrTPDblInt{} }
+func (m *VMStrTPDblInt) String() string            { return proto.CompactTextString(m) }
+func (*VMStrTPDblInt) ProtoMessage()               {}
+func (*VMStrTPDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{48} }
 
-type VMIntTPStrDbl struct {
-	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+// VMStrTPDblDbl map of double -> set(double, double)
+// easyjson:json
+type VMStrTPDblDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec"
+	Vec map[string]*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec"`
 }
 
-func (m *VMIntTPStrDbl) Reset()                    { *m = VMIntTPStrDbl{} }
-func (m *VMIntTPStrDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMIntTPStrDbl) ProtoMessage()               {}
-func (*VMIntTPStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{53} }
+func (m *VMStrTPDblDbl) Reset()                    { *m = VMStrTPDblDbl{} }
+func (m *VMStrTPDblDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMStrTPDblDbl) ProtoMessage()               {}
+func (*VMStrTPDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{49} }
 
 type VMIntTPStrStr struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -759,7 +719,7 @@ type VMIntTPStrStr struct {
 func (m *VMIntTPStrStr) Reset()                    { *m = VMIntTPStrStr{} }
 func (m *VMIntTPStrStr) String() string            { return proto.CompactTextString(m) }
 func (*VMIntTPStrStr) ProtoMessage()               {}
-func (*VMIntTPStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{54} }
+func (*VMIntTPStrStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{50} }
 
 type VMIntTPStrInt struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -769,17 +729,17 @@ type VMIntTPStrInt struct {
 func (m *VMIntTPStrInt) Reset()                    { *m = VMIntTPStrInt{} }
 func (m *VMIntTPStrInt) String() string            { return proto.CompactTextString(m) }
 func (*VMIntTPStrInt) ProtoMessage()               {}
-func (*VMIntTPStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{55} }
+func (*VMIntTPStrInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{51} }
 
-type VMIntTPIntDbl struct {
+type VMIntTPStrDbl struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
-	Vec map[int64]*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+	Vec map[int64]*VTStrDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
 }
 
-func (m *VMIntTPIntDbl) Reset()                    { *m = VMIntTPIntDbl{} }
-func (m *VMIntTPIntDbl) String() string            { return proto.CompactTextString(m) }
-func (*VMIntTPIntDbl) ProtoMessage()               {}
-func (*VMIntTPIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{56} }
+func (m *VMIntTPStrDbl) Reset()                    { *m = VMIntTPStrDbl{} }
+func (m *VMIntTPStrDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMIntTPStrDbl) ProtoMessage()               {}
+func (*VMIntTPStrDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{52} }
 
 type VMIntTPIntStr struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -789,7 +749,7 @@ type VMIntTPIntStr struct {
 func (m *VMIntTPIntStr) Reset()                    { *m = VMIntTPIntStr{} }
 func (m *VMIntTPIntStr) String() string            { return proto.CompactTextString(m) }
 func (*VMIntTPIntStr) ProtoMessage()               {}
-func (*VMIntTPIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{57} }
+func (*VMIntTPIntStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{53} }
 
 type VMIntTPIntInt struct {
 	// @inject_tag: cql:"vec" msg:"vec,extention"
@@ -799,68 +759,108 @@ type VMIntTPIntInt struct {
 func (m *VMIntTPIntInt) Reset()                    { *m = VMIntTPIntInt{} }
 func (m *VMIntTPIntInt) String() string            { return proto.CompactTextString(m) }
 func (*VMIntTPIntInt) ProtoMessage()               {}
-func (*VMIntTPIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{58} }
+func (*VMIntTPIntInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{54} }
+
+type VMIntTPIntDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec,extention"
+	Vec map[int64]*VTIntDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+}
+
+func (m *VMIntTPIntDbl) Reset()                    { *m = VMIntTPIntDbl{} }
+func (m *VMIntTPIntDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMIntTPIntDbl) ProtoMessage()               {}
+func (*VMIntTPIntDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{55} }
+
+type VMIntTPDblStr struct {
+	// @inject_tag: cql:"vec" msg:"vec,extention"
+	Vec map[int64]*VTDblStr `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+}
+
+func (m *VMIntTPDblStr) Reset()                    { *m = VMIntTPDblStr{} }
+func (m *VMIntTPDblStr) String() string            { return proto.CompactTextString(m) }
+func (*VMIntTPDblStr) ProtoMessage()               {}
+func (*VMIntTPDblStr) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{56} }
+
+type VMIntTPDblInt struct {
+	// @inject_tag: cql:"vec" msg:"vec,extention"
+	Vec map[int64]*VTDblInt `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+}
+
+func (m *VMIntTPDblInt) Reset()                    { *m = VMIntTPDblInt{} }
+func (m *VMIntTPDblInt) String() string            { return proto.CompactTextString(m) }
+func (*VMIntTPDblInt) ProtoMessage()               {}
+func (*VMIntTPDblInt) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{57} }
+
+type VMIntTPDblDbl struct {
+	// @inject_tag: cql:"vec" msg:"vec,extention"
+	Vec map[int64]*VTDblDbl `protobuf:"bytes,1,rep,name=vec" json:"vec,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value" cql:"vec" msg:"vec,extention"`
+}
+
+func (m *VMIntTPDblDbl) Reset()                    { *m = VMIntTPDblDbl{} }
+func (m *VMIntTPDblDbl) String() string            { return proto.CompactTextString(m) }
+func (*VMIntTPDblDbl) ProtoMessage()               {}
+func (*VMIntTPDblDbl) Descriptor() ([]byte, []int) { return fileDescriptorFvec, []int{58} }
 
 func init() {
 	proto.RegisterType((*Tag)(nil), "github.com.wyndhblb.fvec.Tag")
 	proto.RegisterType((*VName)(nil), "github.com.wyndhblb.fvec.VName")
-	proto.RegisterType((*VTDblDbl)(nil), "github.com.wyndhblb.fvec.VTDblDbl")
-	proto.RegisterType((*VTDblStr)(nil), "github.com.wyndhblb.fvec.VTDblStr")
-	proto.RegisterType((*VTDblInt)(nil), "github.com.wyndhblb.fvec.VTDblInt")
-	proto.RegisterType((*VTStrDbl)(nil), "github.com.wyndhblb.fvec.VTStrDbl")
 	proto.RegisterType((*VTStrStr)(nil), "github.com.wyndhblb.fvec.VTStrStr")
 	proto.RegisterType((*VTStrInt)(nil), "github.com.wyndhblb.fvec.VTStrInt")
-	proto.RegisterType((*VTIntDbl)(nil), "github.com.wyndhblb.fvec.VTIntDbl")
+	proto.RegisterType((*VTStrDbl)(nil), "github.com.wyndhblb.fvec.VTStrDbl")
 	proto.RegisterType((*VTIntStr)(nil), "github.com.wyndhblb.fvec.VTIntStr")
 	proto.RegisterType((*VTIntInt)(nil), "github.com.wyndhblb.fvec.VTIntInt")
-	proto.RegisterType((*VLDbl)(nil), "github.com.wyndhblb.fvec.VLDbl")
+	proto.RegisterType((*VTIntDbl)(nil), "github.com.wyndhblb.fvec.VTIntDbl")
+	proto.RegisterType((*VTDblStr)(nil), "github.com.wyndhblb.fvec.VTDblStr")
+	proto.RegisterType((*VTDblInt)(nil), "github.com.wyndhblb.fvec.VTDblInt")
+	proto.RegisterType((*VTDblDbl)(nil), "github.com.wyndhblb.fvec.VTDblDbl")
 	proto.RegisterType((*VLStr)(nil), "github.com.wyndhblb.fvec.VLStr")
 	proto.RegisterType((*VLInt)(nil), "github.com.wyndhblb.fvec.VLInt")
-	proto.RegisterType((*VLDblDbl)(nil), "github.com.wyndhblb.fvec.VLDblDbl")
-	proto.RegisterType((*VLDblStr)(nil), "github.com.wyndhblb.fvec.VLDblStr")
-	proto.RegisterType((*VLDblInt)(nil), "github.com.wyndhblb.fvec.VLDblInt")
-	proto.RegisterType((*VLStrDbl)(nil), "github.com.wyndhblb.fvec.VLStrDbl")
+	proto.RegisterType((*VLDbl)(nil), "github.com.wyndhblb.fvec.VLDbl")
 	proto.RegisterType((*VLStrStr)(nil), "github.com.wyndhblb.fvec.VLStrStr")
 	proto.RegisterType((*VLStrInt)(nil), "github.com.wyndhblb.fvec.VLStrInt")
-	proto.RegisterType((*VLIntDbl)(nil), "github.com.wyndhblb.fvec.VLIntDbl")
+	proto.RegisterType((*VLStrDbl)(nil), "github.com.wyndhblb.fvec.VLStrDbl")
 	proto.RegisterType((*VLIntStr)(nil), "github.com.wyndhblb.fvec.VLIntStr")
 	proto.RegisterType((*VLIntInt)(nil), "github.com.wyndhblb.fvec.VLIntInt")
-	proto.RegisterType((*VSDbl)(nil), "github.com.wyndhblb.fvec.VSDbl")
+	proto.RegisterType((*VLIntDbl)(nil), "github.com.wyndhblb.fvec.VLIntDbl")
+	proto.RegisterType((*VLDblStr)(nil), "github.com.wyndhblb.fvec.VLDblStr")
+	proto.RegisterType((*VLDblInt)(nil), "github.com.wyndhblb.fvec.VLDblInt")
+	proto.RegisterType((*VLDblDbl)(nil), "github.com.wyndhblb.fvec.VLDblDbl")
 	proto.RegisterType((*VSStr)(nil), "github.com.wyndhblb.fvec.VSStr")
 	proto.RegisterType((*VSInt)(nil), "github.com.wyndhblb.fvec.VSInt")
-	proto.RegisterType((*VSDblDbl)(nil), "github.com.wyndhblb.fvec.VSDblDbl")
-	proto.RegisterType((*VSDblStr)(nil), "github.com.wyndhblb.fvec.VSDblStr")
-	proto.RegisterType((*VSDblInt)(nil), "github.com.wyndhblb.fvec.VSDblInt")
-	proto.RegisterType((*VSStrDbl)(nil), "github.com.wyndhblb.fvec.VSStrDbl")
+	proto.RegisterType((*VSDbl)(nil), "github.com.wyndhblb.fvec.VSDbl")
 	proto.RegisterType((*VSStrStr)(nil), "github.com.wyndhblb.fvec.VSStrStr")
 	proto.RegisterType((*VSStrInt)(nil), "github.com.wyndhblb.fvec.VSStrInt")
-	proto.RegisterType((*VSIntDbl)(nil), "github.com.wyndhblb.fvec.VSIntDbl")
+	proto.RegisterType((*VSStrDbl)(nil), "github.com.wyndhblb.fvec.VSStrDbl")
 	proto.RegisterType((*VSIntStr)(nil), "github.com.wyndhblb.fvec.VSIntStr")
 	proto.RegisterType((*VSIntInt)(nil), "github.com.wyndhblb.fvec.VSIntInt")
-	proto.RegisterType((*VMStrDbl)(nil), "github.com.wyndhblb.fvec.VMStrDbl")
+	proto.RegisterType((*VSIntDbl)(nil), "github.com.wyndhblb.fvec.VSIntDbl")
+	proto.RegisterType((*VSDblStr)(nil), "github.com.wyndhblb.fvec.VSDblStr")
+	proto.RegisterType((*VSDblInt)(nil), "github.com.wyndhblb.fvec.VSDblInt")
+	proto.RegisterType((*VSDblDbl)(nil), "github.com.wyndhblb.fvec.VSDblDbl")
 	proto.RegisterType((*VMStrStr)(nil), "github.com.wyndhblb.fvec.VMStrStr")
 	proto.RegisterType((*VMStrInt)(nil), "github.com.wyndhblb.fvec.VMStrInt")
-	proto.RegisterType((*VMIntDbl)(nil), "github.com.wyndhblb.fvec.VMIntDbl")
+	proto.RegisterType((*VMStrDbl)(nil), "github.com.wyndhblb.fvec.VMStrDbl")
 	proto.RegisterType((*VMIntStr)(nil), "github.com.wyndhblb.fvec.VMIntStr")
 	proto.RegisterType((*VMIntInt)(nil), "github.com.wyndhblb.fvec.VMIntInt")
-	proto.RegisterType((*VMStrTPDblDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPDblDbl")
-	proto.RegisterType((*VMStrTPDblStr)(nil), "github.com.wyndhblb.fvec.VMStrTPDblStr")
-	proto.RegisterType((*VMStrTPDblInt)(nil), "github.com.wyndhblb.fvec.VMStrTPDblInt")
-	proto.RegisterType((*VMStrTPStrDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPStrDbl")
+	proto.RegisterType((*VMIntDbl)(nil), "github.com.wyndhblb.fvec.VMIntDbl")
 	proto.RegisterType((*VMStrTPStrStr)(nil), "github.com.wyndhblb.fvec.VMStrTPStrStr")
 	proto.RegisterType((*VMStrTPStrInt)(nil), "github.com.wyndhblb.fvec.VMStrTPStrInt")
-	proto.RegisterType((*VMStrTPIntDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPIntDbl")
+	proto.RegisterType((*VMStrTPStrDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPStrDbl")
 	proto.RegisterType((*VMStrTPIntStr)(nil), "github.com.wyndhblb.fvec.VMStrTPIntStr")
 	proto.RegisterType((*VMStrTPIntInt)(nil), "github.com.wyndhblb.fvec.VMStrTPIntInt")
-	proto.RegisterType((*VMIntTPDblDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPDblDbl")
-	proto.RegisterType((*VMIntTPDblStr)(nil), "github.com.wyndhblb.fvec.VMIntTPDblStr")
-	proto.RegisterType((*VMIntTPDblInt)(nil), "github.com.wyndhblb.fvec.VMIntTPDblInt")
-	proto.RegisterType((*VMIntTPStrDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPStrDbl")
+	proto.RegisterType((*VMStrTPIntDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPIntDbl")
+	proto.RegisterType((*VMStrTPDblStr)(nil), "github.com.wyndhblb.fvec.VMStrTPDblStr")
+	proto.RegisterType((*VMStrTPDblInt)(nil), "github.com.wyndhblb.fvec.VMStrTPDblInt")
+	proto.RegisterType((*VMStrTPDblDbl)(nil), "github.com.wyndhblb.fvec.VMStrTPDblDbl")
 	proto.RegisterType((*VMIntTPStrStr)(nil), "github.com.wyndhblb.fvec.VMIntTPStrStr")
 	proto.RegisterType((*VMIntTPStrInt)(nil), "github.com.wyndhblb.fvec.VMIntTPStrInt")
-	proto.RegisterType((*VMIntTPIntDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPIntDbl")
+	proto.RegisterType((*VMIntTPStrDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPStrDbl")
 	proto.RegisterType((*VMIntTPIntStr)(nil), "github.com.wyndhblb.fvec.VMIntTPIntStr")
 	proto.RegisterType((*VMIntTPIntInt)(nil), "github.com.wyndhblb.fvec.VMIntTPIntInt")
+	proto.RegisterType((*VMIntTPIntDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPIntDbl")
+	proto.RegisterType((*VMIntTPDblStr)(nil), "github.com.wyndhblb.fvec.VMIntTPDblStr")
+	proto.RegisterType((*VMIntTPDblInt)(nil), "github.com.wyndhblb.fvec.VMIntTPDblInt")
+	proto.RegisterType((*VMIntTPDblDbl)(nil), "github.com.wyndhblb.fvec.VMIntTPDblDbl")
 }
 func (m *Tag) Marshal() (data []byte, err error) {
 	size := m.Size()
@@ -949,120 +949,6 @@ func (m *VName) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VTDblDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VTDblDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if m.Key != 0 {
-		data[i] = 0x9
-		i++
-		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
-	}
-	if m.Value != 0 {
-		data[i] = 0x11
-		i++
-		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Value))))
-	}
-	return i, nil
-}
-
-func (m *VTDblStr) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VTDblStr) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if m.Key != 0 {
-		data[i] = 0x9
-		i++
-		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
-	}
-	if len(m.Value) > 0 {
-		data[i] = 0x12
-		i++
-		i = encodeVarintFvec(data, i, uint64(len(m.Value)))
-		i += copy(data[i:], m.Value)
-	}
-	return i, nil
-}
-
-func (m *VTDblInt) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VTDblInt) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if m.Key != 0 {
-		data[i] = 0x9
-		i++
-		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
-	}
-	if m.Value != 0 {
-		data[i] = 0x10
-		i++
-		i = encodeVarintFvec(data, i, uint64(m.Value))
-	}
-	return i, nil
-}
-
-func (m *VTStrDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VTStrDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Key) > 0 {
-		data[i] = 0xa
-		i++
-		i = encodeVarintFvec(data, i, uint64(len(m.Key)))
-		i += copy(data[i:], m.Key)
-	}
-	if m.Value != 0 {
-		data[i] = 0x11
-		i++
-		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Value))))
-	}
-	return i, nil
-}
-
 func (m *VTStrStr) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
@@ -1122,7 +1008,7 @@ func (m *VTStrInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VTIntDbl) Marshal() (data []byte, err error) {
+func (m *VTStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1132,15 +1018,16 @@ func (m *VTIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VTIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VTStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Key != 0 {
-		data[i] = 0x8
+	if len(m.Key) > 0 {
+		data[i] = 0xa
 		i++
-		i = encodeVarintFvec(data, i, uint64(m.Key))
+		i = encodeVarintFvec(data, i, uint64(len(m.Key)))
+		i += copy(data[i:], m.Key)
 	}
 	if m.Value != 0 {
 		data[i] = 0x11
@@ -1207,7 +1094,7 @@ func (m *VTIntInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VLDbl) Marshal() (data []byte, err error) {
+func (m *VTIntDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1217,34 +1104,105 @@ func (m *VLDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VLDbl) MarshalTo(data []byte) (int, error) {
+func (m *VTIntDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.Vec) > 0 {
-		data[i] = 0xa
+	if m.Key != 0 {
+		data[i] = 0x8
 		i++
-		i = encodeVarintFvec(data, i, uint64(len(m.Vec)*8))
-		for _, num := range m.Vec {
-			f1 := math.Float64bits(float64(num))
-			data[i] = uint8(f1)
-			i++
-			data[i] = uint8(f1 >> 8)
-			i++
-			data[i] = uint8(f1 >> 16)
-			i++
-			data[i] = uint8(f1 >> 24)
-			i++
-			data[i] = uint8(f1 >> 32)
-			i++
-			data[i] = uint8(f1 >> 40)
-			i++
-			data[i] = uint8(f1 >> 48)
-			i++
-			data[i] = uint8(f1 >> 56)
-			i++
-		}
+		i = encodeVarintFvec(data, i, uint64(m.Key))
+	}
+	if m.Value != 0 {
+		data[i] = 0x11
+		i++
+		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Value))))
+	}
+	return i, nil
+}
+
+func (m *VTDblStr) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VTDblStr) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Key != 0 {
+		data[i] = 0x9
+		i++
+		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
+	}
+	if len(m.Value) > 0 {
+		data[i] = 0x12
+		i++
+		i = encodeVarintFvec(data, i, uint64(len(m.Value)))
+		i += copy(data[i:], m.Value)
+	}
+	return i, nil
+}
+
+func (m *VTDblInt) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VTDblInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Key != 0 {
+		data[i] = 0x9
+		i++
+		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
+	}
+	if m.Value != 0 {
+		data[i] = 0x10
+		i++
+		i = encodeVarintFvec(data, i, uint64(m.Value))
+	}
+	return i, nil
+}
+
+func (m *VTDblDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VTDblDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Key != 0 {
+		data[i] = 0x9
+		i++
+		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Key))))
+	}
+	if m.Value != 0 {
+		data[i] = 0x11
+		i++
+		i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(m.Value))))
 	}
 	return i, nil
 }
@@ -1298,27 +1256,27 @@ func (m *VLInt) MarshalTo(data []byte) (int, error) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		data3 := make([]byte, len(m.Vec)*10)
-		var j2 int
+		data2 := make([]byte, len(m.Vec)*10)
+		var j1 int
 		for _, num1 := range m.Vec {
 			num := uint64(num1)
 			for num >= 1<<7 {
-				data3[j2] = uint8(uint64(num)&0x7f | 0x80)
+				data2[j1] = uint8(uint64(num)&0x7f | 0x80)
 				num >>= 7
-				j2++
+				j1++
 			}
-			data3[j2] = uint8(num)
-			j2++
+			data2[j1] = uint8(num)
+			j1++
 		}
 		data[i] = 0xa
 		i++
-		i = encodeVarintFvec(data, i, uint64(j2))
-		i += copy(data[i:], data3[:j2])
+		i = encodeVarintFvec(data, i, uint64(j1))
+		i += copy(data[i:], data2[:j1])
 	}
 	return i, nil
 }
 
-func (m *VLDblDbl) Marshal() (data []byte, err error) {
+func (m *VLDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1328,111 +1286,33 @@ func (m *VLDblDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VLDblDbl) MarshalTo(data []byte) (int, error) {
+func (m *VLDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+		data[i] = 0xa
+		i++
+		i = encodeVarintFvec(data, i, uint64(len(m.Vec)*8))
+		for _, num := range m.Vec {
+			f3 := math.Float64bits(float64(num))
+			data[i] = uint8(f3)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VLDblStr) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VLDblStr) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f3 >> 8)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VLDblInt) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VLDblInt) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f3 >> 16)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VLStrDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VLStrDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f3 >> 24)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
+			data[i] = uint8(f3 >> 32)
+			i++
+			data[i] = uint8(f3 >> 40)
+			i++
+			data[i] = uint8(f3 >> 48)
+			i++
+			data[i] = uint8(f3 >> 56)
+			i++
 		}
 	}
 	return i, nil
@@ -1498,7 +1378,7 @@ func (m *VLStrInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VLIntDbl) Marshal() (data []byte, err error) {
+func (m *VLStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1508,7 +1388,7 @@ func (m *VLIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VLIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VLStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -1588,7 +1468,7 @@ func (m *VLIntInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VSDbl) Marshal() (data []byte, err error) {
+func (m *VLIntDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1598,33 +1478,111 @@ func (m *VSDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VSDbl) MarshalTo(data []byte) (int, error) {
+func (m *VLIntDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		data[i] = 0xa
-		i++
-		i = encodeVarintFvec(data, i, uint64(len(m.Vec)*8))
-		for _, num := range m.Vec {
-			f4 := math.Float64bits(float64(num))
-			data[i] = uint8(f4)
+		for _, msg := range m.Vec {
+			data[i] = 0xa
 			i++
-			data[i] = uint8(f4 >> 8)
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VLDblStr) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VLDblStr) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
+			data[i] = 0xa
 			i++
-			data[i] = uint8(f4 >> 16)
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VLDblInt) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VLDblInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
+			data[i] = 0xa
 			i++
-			data[i] = uint8(f4 >> 24)
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VLDblDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VLDblDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
+			data[i] = 0xa
 			i++
-			data[i] = uint8(f4 >> 32)
-			i++
-			data[i] = uint8(f4 >> 40)
-			i++
-			data[i] = uint8(f4 >> 48)
-			i++
-			data[i] = uint8(f4 >> 56)
-			i++
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
 	return i, nil
@@ -1679,27 +1637,27 @@ func (m *VSInt) MarshalTo(data []byte) (int, error) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		data6 := make([]byte, len(m.Vec)*10)
-		var j5 int
+		data5 := make([]byte, len(m.Vec)*10)
+		var j4 int
 		for _, num1 := range m.Vec {
 			num := uint64(num1)
 			for num >= 1<<7 {
-				data6[j5] = uint8(uint64(num)&0x7f | 0x80)
+				data5[j4] = uint8(uint64(num)&0x7f | 0x80)
 				num >>= 7
-				j5++
+				j4++
 			}
-			data6[j5] = uint8(num)
-			j5++
+			data5[j4] = uint8(num)
+			j4++
 		}
 		data[i] = 0xa
 		i++
-		i = encodeVarintFvec(data, i, uint64(j5))
-		i += copy(data[i:], data6[:j5])
+		i = encodeVarintFvec(data, i, uint64(j4))
+		i += copy(data[i:], data5[:j4])
 	}
 	return i, nil
 }
 
-func (m *VSDblDbl) Marshal() (data []byte, err error) {
+func (m *VSDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1709,111 +1667,33 @@ func (m *VSDblDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VSDblDbl) MarshalTo(data []byte) (int, error) {
+func (m *VSDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+		data[i] = 0xa
+		i++
+		i = encodeVarintFvec(data, i, uint64(len(m.Vec)*8))
+		for _, num := range m.Vec {
+			f6 := math.Float64bits(float64(num))
+			data[i] = uint8(f6)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VSDblStr) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VSDblStr) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f6 >> 8)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VSDblInt) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VSDblInt) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f6 >> 16)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
-}
-
-func (m *VSStrDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VSStrDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, msg := range m.Vec {
-			data[i] = 0xa
+			data[i] = uint8(f6 >> 24)
 			i++
-			i = encodeVarintFvec(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
+			data[i] = uint8(f6 >> 32)
+			i++
+			data[i] = uint8(f6 >> 40)
+			i++
+			data[i] = uint8(f6 >> 48)
+			i++
+			data[i] = uint8(f6 >> 56)
+			i++
 		}
 	}
 	return i, nil
@@ -1879,7 +1759,7 @@ func (m *VSStrInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VSIntDbl) Marshal() (data []byte, err error) {
+func (m *VSStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1889,7 +1769,7 @@ func (m *VSIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VSIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VSStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -1969,7 +1849,7 @@ func (m *VSIntInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VMStrDbl) Marshal() (data []byte, err error) {
+func (m *VSIntDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -1979,25 +1859,111 @@ func (m *VMStrDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VMStrDbl) MarshalTo(data []byte) (int, error) {
+func (m *VSIntDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for k := range m.Vec {
+		for _, msg := range m.Vec {
 			data[i] = 0xa
 			i++
-			v := m.Vec[k]
-			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + 1 + 8
-			i = encodeVarintFvec(data, i, uint64(mapSize))
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VSDblStr) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VSDblStr) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
 			data[i] = 0xa
 			i++
-			i = encodeVarintFvec(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			data[i] = 0x11
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VSDblInt) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VSDblInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
+			data[i] = 0xa
 			i++
-			i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(v))))
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
+func (m *VSDblDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VSDblDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, msg := range m.Vec {
+			data[i] = 0xa
+			i++
+			i = encodeVarintFvec(data, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(data[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
 	return i, nil
@@ -2072,7 +2038,7 @@ func (m *VMStrInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VMIntDbl) Marshal() (data []byte, err error) {
+func (m *VMStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -2082,7 +2048,7 @@ func (m *VMIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VMIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VMStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -2092,11 +2058,12 @@ func (m *VMIntDbl) MarshalTo(data []byte) (int, error) {
 			data[i] = 0xa
 			i++
 			v := m.Vec[k]
-			mapSize := 1 + sovFvec(uint64(k)) + 1 + 8
+			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + 1 + 8
 			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0x8
+			data[i] = 0xa
 			i++
-			i = encodeVarintFvec(data, i, uint64(k))
+			i = encodeVarintFvec(data, i, uint64(len(k)))
+			i += copy(data[i:], k)
 			data[i] = 0x11
 			i++
 			i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(v))))
@@ -2172,7 +2139,7 @@ func (m *VMIntInt) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *VMStrTPDblDbl) Marshal() (data []byte, err error) {
+func (m *VMIntDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -2182,7 +2149,7 @@ func (m *VMStrTPDblDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VMStrTPDblDbl) MarshalTo(data []byte) (int, error) {
+func (m *VMIntDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -2192,165 +2159,14 @@ func (m *VMStrTPDblDbl) MarshalTo(data []byte) (int, error) {
 			data[i] = 0xa
 			i++
 			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
+			mapSize := 1 + sovFvec(uint64(k)) + 1 + 8
 			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0xa
+			data[i] = 0x8
 			i++
-			i = encodeVarintFvec(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n7, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n7
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMStrTPDblStr) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMStrTPDblStr) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
+			i = encodeVarintFvec(data, i, uint64(k))
+			data[i] = 0x11
 			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0xa
-			i++
-			i = encodeVarintFvec(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n8, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n8
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMStrTPDblInt) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMStrTPDblInt) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0xa
-			i++
-			i = encodeVarintFvec(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n9, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n9
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMStrTPStrDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMStrTPStrDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0xa
-			i++
-			i = encodeVarintFvec(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n10, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n10
-			}
+			i = encodeFixed64Fvec(data, i, uint64(math.Float64bits(float64(v))))
 		}
 	}
 	return i, nil
@@ -2391,11 +2207,11 @@ func (m *VMStrTPStrStr) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n11, err := v.MarshalTo(data[i:])
+				n7, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n11
+				i += n7
 			}
 		}
 	}
@@ -2437,18 +2253,18 @@ func (m *VMStrTPStrInt) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n12, err := v.MarshalTo(data[i:])
+				n8, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n12
+				i += n8
 			}
 		}
 	}
 	return i, nil
 }
 
-func (m *VMStrTPIntDbl) Marshal() (data []byte, err error) {
+func (m *VMStrTPStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -2458,7 +2274,7 @@ func (m *VMStrTPIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VMStrTPIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VMStrTPStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -2483,11 +2299,11 @@ func (m *VMStrTPIntDbl) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n13, err := v.MarshalTo(data[i:])
+				n9, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n13
+				i += n9
 			}
 		}
 	}
@@ -2529,11 +2345,11 @@ func (m *VMStrTPIntStr) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n14, err := v.MarshalTo(data[i:])
+				n10, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n14
+				i += n10
 			}
 		}
 	}
@@ -2575,191 +2391,195 @@ func (m *VMStrTPIntInt) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n11, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n11
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMStrTPIntDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMStrTPIntDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0xa
+			i++
+			i = encodeVarintFvec(data, i, uint64(len(k)))
+			i += copy(data[i:], k)
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n12, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n12
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMStrTPDblStr) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMStrTPDblStr) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0xa
+			i++
+			i = encodeVarintFvec(data, i, uint64(len(k)))
+			i += copy(data[i:], k)
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n13, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n13
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMStrTPDblInt) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMStrTPDblInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0xa
+			i++
+			i = encodeVarintFvec(data, i, uint64(len(k)))
+			i += copy(data[i:], k)
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n14, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n14
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMStrTPDblDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMStrTPDblDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + len(k) + sovFvec(uint64(len(k))) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0xa
+			i++
+			i = encodeVarintFvec(data, i, uint64(len(k)))
+			i += copy(data[i:], k)
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
 				n15, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
 				i += n15
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMIntTPDblDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMIntTPDblDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + sovFvec(uint64(k)) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0x8
-			i++
-			i = encodeVarintFvec(data, i, uint64(k))
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n16, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n16
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMIntTPDblStr) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMIntTPDblStr) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + sovFvec(uint64(k)) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0x8
-			i++
-			i = encodeVarintFvec(data, i, uint64(k))
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n17, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n17
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMIntTPDblInt) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMIntTPDblInt) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + sovFvec(uint64(k)) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0x8
-			i++
-			i = encodeVarintFvec(data, i, uint64(k))
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n18, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n18
-			}
-		}
-	}
-	return i, nil
-}
-
-func (m *VMIntTPStrDbl) Marshal() (data []byte, err error) {
-	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
-	if err != nil {
-		return nil, err
-	}
-	return data[:n], nil
-}
-
-func (m *VMIntTPStrDbl) MarshalTo(data []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k := range m.Vec {
-			data[i] = 0xa
-			i++
-			v := m.Vec[k]
-			msgSize := 0
-			if v != nil {
-				msgSize = v.Size()
-				msgSize += 1 + sovFvec(uint64(msgSize))
-			}
-			mapSize := 1 + sovFvec(uint64(k)) + msgSize
-			i = encodeVarintFvec(data, i, uint64(mapSize))
-			data[i] = 0x8
-			i++
-			i = encodeVarintFvec(data, i, uint64(k))
-			if v != nil {
-				data[i] = 0x12
-				i++
-				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n19, err := v.MarshalTo(data[i:])
-				if err != nil {
-					return 0, err
-				}
-				i += n19
 			}
 		}
 	}
@@ -2800,11 +2620,11 @@ func (m *VMIntTPStrStr) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n20, err := v.MarshalTo(data[i:])
+				n16, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n20
+				i += n16
 			}
 		}
 	}
@@ -2845,18 +2665,18 @@ func (m *VMIntTPStrInt) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n21, err := v.MarshalTo(data[i:])
+				n17, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n21
+				i += n17
 			}
 		}
 	}
 	return i, nil
 }
 
-func (m *VMIntTPIntDbl) Marshal() (data []byte, err error) {
+func (m *VMIntTPStrDbl) Marshal() (data []byte, err error) {
 	size := m.Size()
 	data = make([]byte, size)
 	n, err := m.MarshalTo(data)
@@ -2866,7 +2686,7 @@ func (m *VMIntTPIntDbl) Marshal() (data []byte, err error) {
 	return data[:n], nil
 }
 
-func (m *VMIntTPIntDbl) MarshalTo(data []byte) (int, error) {
+func (m *VMIntTPStrDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -2890,11 +2710,11 @@ func (m *VMIntTPIntDbl) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n22, err := v.MarshalTo(data[i:])
+				n18, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n22
+				i += n18
 			}
 		}
 	}
@@ -2935,11 +2755,11 @@ func (m *VMIntTPIntStr) MarshalTo(data []byte) (int, error) {
 				data[i] = 0x12
 				i++
 				i = encodeVarintFvec(data, i, uint64(v.Size()))
-				n23, err := v.MarshalTo(data[i:])
+				n19, err := v.MarshalTo(data[i:])
 				if err != nil {
 					return 0, err
 				}
-				i += n23
+				i += n19
 			}
 		}
 	}
@@ -2957,6 +2777,186 @@ func (m *VMIntTPIntInt) Marshal() (data []byte, err error) {
 }
 
 func (m *VMIntTPIntInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + sovFvec(uint64(k)) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0x8
+			i++
+			i = encodeVarintFvec(data, i, uint64(k))
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n20, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n20
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMIntTPIntDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMIntTPIntDbl) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + sovFvec(uint64(k)) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0x8
+			i++
+			i = encodeVarintFvec(data, i, uint64(k))
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n21, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n21
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMIntTPDblStr) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMIntTPDblStr) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + sovFvec(uint64(k)) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0x8
+			i++
+			i = encodeVarintFvec(data, i, uint64(k))
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n22, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n22
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMIntTPDblInt) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMIntTPDblInt) MarshalTo(data []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k := range m.Vec {
+			data[i] = 0xa
+			i++
+			v := m.Vec[k]
+			msgSize := 0
+			if v != nil {
+				msgSize = v.Size()
+				msgSize += 1 + sovFvec(uint64(msgSize))
+			}
+			mapSize := 1 + sovFvec(uint64(k)) + msgSize
+			i = encodeVarintFvec(data, i, uint64(mapSize))
+			data[i] = 0x8
+			i++
+			i = encodeVarintFvec(data, i, uint64(k))
+			if v != nil {
+				data[i] = 0x12
+				i++
+				i = encodeVarintFvec(data, i, uint64(v.Size()))
+				n23, err := v.MarshalTo(data[i:])
+				if err != nil {
+					return 0, err
+				}
+				i += n23
+			}
+		}
+	}
+	return i, nil
+}
+
+func (m *VMIntTPDblDbl) Marshal() (data []byte, err error) {
+	size := m.Size()
+	data = make([]byte, size)
+	n, err := m.MarshalTo(data)
+	if err != nil {
+		return nil, err
+	}
+	return data[:n], nil
+}
+
+func (m *VMIntTPDblDbl) MarshalTo(data []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -3046,9 +3046,69 @@ func NewPopulatedVName(r randyFvec, easy bool) *VName {
 	return this
 }
 
-func NewPopulatedVTDblDbl(r randyFvec, easy bool) *VTDblDbl {
-	this := &VTDblDbl{}
-	this.Key = float64(r.Float64())
+func NewPopulatedVTStrStr(r randyFvec, easy bool) *VTStrStr {
+	this := &VTStrStr{}
+	this.Key = randStringFvec(r)
+	this.Value = randStringFvec(r)
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVTStrInt(r randyFvec, easy bool) *VTStrInt {
+	this := &VTStrInt{}
+	this.Key = randStringFvec(r)
+	this.Value = int64(r.Int63())
+	if r.Intn(2) == 0 {
+		this.Value *= -1
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVTStrDbl(r randyFvec, easy bool) *VTStrDbl {
+	this := &VTStrDbl{}
+	this.Key = randStringFvec(r)
+	this.Value = float64(r.Float64())
+	if r.Intn(2) == 0 {
+		this.Value *= -1
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVTIntStr(r randyFvec, easy bool) *VTIntStr {
+	this := &VTIntStr{}
+	this.Key = int64(r.Int63())
+	if r.Intn(2) == 0 {
+		this.Key *= -1
+	}
+	this.Value = randStringFvec(r)
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVTIntInt(r randyFvec, easy bool) *VTIntInt {
+	this := &VTIntInt{}
+	this.Key = int64(r.Int63())
+	if r.Intn(2) == 0 {
+		this.Key *= -1
+	}
+	this.Value = int64(r.Int63())
+	if r.Intn(2) == 0 {
+		this.Value *= -1
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVTIntDbl(r randyFvec, easy bool) *VTIntDbl {
+	this := &VTIntDbl{}
+	this.Key = int64(r.Int63())
 	if r.Intn(2) == 0 {
 		this.Key *= -1
 	}
@@ -3088,90 +3148,15 @@ func NewPopulatedVTDblInt(r randyFvec, easy bool) *VTDblInt {
 	return this
 }
 
-func NewPopulatedVTStrDbl(r randyFvec, easy bool) *VTStrDbl {
-	this := &VTStrDbl{}
-	this.Key = randStringFvec(r)
-	this.Value = float64(r.Float64())
-	if r.Intn(2) == 0 {
-		this.Value *= -1
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVTStrStr(r randyFvec, easy bool) *VTStrStr {
-	this := &VTStrStr{}
-	this.Key = randStringFvec(r)
-	this.Value = randStringFvec(r)
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVTStrInt(r randyFvec, easy bool) *VTStrInt {
-	this := &VTStrInt{}
-	this.Key = randStringFvec(r)
-	this.Value = int64(r.Int63())
-	if r.Intn(2) == 0 {
-		this.Value *= -1
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVTIntDbl(r randyFvec, easy bool) *VTIntDbl {
-	this := &VTIntDbl{}
-	this.Key = int64(r.Int63())
+func NewPopulatedVTDblDbl(r randyFvec, easy bool) *VTDblDbl {
+	this := &VTDblDbl{}
+	this.Key = float64(r.Float64())
 	if r.Intn(2) == 0 {
 		this.Key *= -1
 	}
 	this.Value = float64(r.Float64())
 	if r.Intn(2) == 0 {
 		this.Value *= -1
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVTIntStr(r randyFvec, easy bool) *VTIntStr {
-	this := &VTIntStr{}
-	this.Key = int64(r.Int63())
-	if r.Intn(2) == 0 {
-		this.Key *= -1
-	}
-	this.Value = randStringFvec(r)
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVTIntInt(r randyFvec, easy bool) *VTIntInt {
-	this := &VTIntInt{}
-	this.Key = int64(r.Int63())
-	if r.Intn(2) == 0 {
-		this.Key *= -1
-	}
-	this.Value = int64(r.Int63())
-	if r.Intn(2) == 0 {
-		this.Value *= -1
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVLDbl(r randyFvec, easy bool) *VLDbl {
-	this := &VLDbl{}
-	v2 := r.Intn(10)
-	this.Vec = make([]float64, v2)
-	for i := 0; i < v2; i++ {
-		this.Vec[i] = float64(r.Float64())
-		if r.Intn(2) == 0 {
-			this.Vec[i] *= -1
-		}
 	}
 	if !easy && r.Intn(10) != 0 {
 	}
@@ -3180,9 +3165,9 @@ func NewPopulatedVLDbl(r randyFvec, easy bool) *VLDbl {
 
 func NewPopulatedVLStr(r randyFvec, easy bool) *VLStr {
 	this := &VLStr{}
-	v3 := r.Intn(10)
-	this.Vec = make([]string, v3)
-	for i := 0; i < v3; i++ {
+	v2 := r.Intn(10)
+	this.Vec = make([]string, v2)
+	for i := 0; i < v2; i++ {
 		this.Vec[i] = randStringFvec(r)
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3192,9 +3177,9 @@ func NewPopulatedVLStr(r randyFvec, easy bool) *VLStr {
 
 func NewPopulatedVLInt(r randyFvec, easy bool) *VLInt {
 	this := &VLInt{}
-	v4 := r.Intn(10)
-	this.Vec = make([]int64, v4)
-	for i := 0; i < v4; i++ {
+	v3 := r.Intn(10)
+	this.Vec = make([]int64, v3)
+	for i := 0; i < v3; i++ {
 		this.Vec[i] = int64(r.Int63())
 		if r.Intn(2) == 0 {
 			this.Vec[i] *= -1
@@ -3205,55 +3190,14 @@ func NewPopulatedVLInt(r randyFvec, easy bool) *VLInt {
 	return this
 }
 
-func NewPopulatedVLDblDbl(r randyFvec, easy bool) *VLDblDbl {
-	this := &VLDblDbl{}
-	if r.Intn(10) != 0 {
-		v5 := r.Intn(5)
-		this.Vec = make([]*VTDblDbl, v5)
-		for i := 0; i < v5; i++ {
-			this.Vec[i] = NewPopulatedVTDblDbl(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVLDblStr(r randyFvec, easy bool) *VLDblStr {
-	this := &VLDblStr{}
-	if r.Intn(10) != 0 {
-		v6 := r.Intn(5)
-		this.Vec = make([]*VTDblStr, v6)
-		for i := 0; i < v6; i++ {
-			this.Vec[i] = NewPopulatedVTDblStr(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVLDblInt(r randyFvec, easy bool) *VLDblInt {
-	this := &VLDblInt{}
-	if r.Intn(10) != 0 {
-		v7 := r.Intn(5)
-		this.Vec = make([]*VTDblInt, v7)
-		for i := 0; i < v7; i++ {
-			this.Vec[i] = NewPopulatedVTDblInt(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVLStrDbl(r randyFvec, easy bool) *VLStrDbl {
-	this := &VLStrDbl{}
-	if r.Intn(10) != 0 {
-		v8 := r.Intn(5)
-		this.Vec = make([]*VTStrDbl, v8)
-		for i := 0; i < v8; i++ {
-			this.Vec[i] = NewPopulatedVTStrDbl(r, easy)
+func NewPopulatedVLDbl(r randyFvec, easy bool) *VLDbl {
+	this := &VLDbl{}
+	v4 := r.Intn(10)
+	this.Vec = make([]float64, v4)
+	for i := 0; i < v4; i++ {
+		this.Vec[i] = float64(r.Float64())
+		if r.Intn(2) == 0 {
+			this.Vec[i] *= -1
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3264,9 +3208,9 @@ func NewPopulatedVLStrDbl(r randyFvec, easy bool) *VLStrDbl {
 func NewPopulatedVLStrStr(r randyFvec, easy bool) *VLStrStr {
 	this := &VLStrStr{}
 	if r.Intn(10) != 0 {
-		v9 := r.Intn(5)
-		this.Vec = make([]*VTStrStr, v9)
-		for i := 0; i < v9; i++ {
+		v5 := r.Intn(5)
+		this.Vec = make([]*VTStrStr, v5)
+		for i := 0; i < v5; i++ {
 			this.Vec[i] = NewPopulatedVTStrStr(r, easy)
 		}
 	}
@@ -3278,9 +3222,9 @@ func NewPopulatedVLStrStr(r randyFvec, easy bool) *VLStrStr {
 func NewPopulatedVLStrInt(r randyFvec, easy bool) *VLStrInt {
 	this := &VLStrInt{}
 	if r.Intn(10) != 0 {
-		v10 := r.Intn(5)
-		this.Vec = make([]*VTStrInt, v10)
-		for i := 0; i < v10; i++ {
+		v6 := r.Intn(5)
+		this.Vec = make([]*VTStrInt, v6)
+		for i := 0; i < v6; i++ {
 			this.Vec[i] = NewPopulatedVTStrInt(r, easy)
 		}
 	}
@@ -3289,13 +3233,13 @@ func NewPopulatedVLStrInt(r randyFvec, easy bool) *VLStrInt {
 	return this
 }
 
-func NewPopulatedVLIntDbl(r randyFvec, easy bool) *VLIntDbl {
-	this := &VLIntDbl{}
+func NewPopulatedVLStrDbl(r randyFvec, easy bool) *VLStrDbl {
+	this := &VLStrDbl{}
 	if r.Intn(10) != 0 {
-		v11 := r.Intn(5)
-		this.Vec = make([]*VTIntDbl, v11)
-		for i := 0; i < v11; i++ {
-			this.Vec[i] = NewPopulatedVTIntDbl(r, easy)
+		v7 := r.Intn(5)
+		this.Vec = make([]*VTStrDbl, v7)
+		for i := 0; i < v7; i++ {
+			this.Vec[i] = NewPopulatedVTStrDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3306,9 +3250,9 @@ func NewPopulatedVLIntDbl(r randyFvec, easy bool) *VLIntDbl {
 func NewPopulatedVLIntStr(r randyFvec, easy bool) *VLIntStr {
 	this := &VLIntStr{}
 	if r.Intn(10) != 0 {
-		v12 := r.Intn(5)
-		this.Vec = make([]*VTIntStr, v12)
-		for i := 0; i < v12; i++ {
+		v8 := r.Intn(5)
+		this.Vec = make([]*VTIntStr, v8)
+		for i := 0; i < v8; i++ {
 			this.Vec[i] = NewPopulatedVTIntStr(r, easy)
 		}
 	}
@@ -3320,9 +3264,9 @@ func NewPopulatedVLIntStr(r randyFvec, easy bool) *VLIntStr {
 func NewPopulatedVLIntInt(r randyFvec, easy bool) *VLIntInt {
 	this := &VLIntInt{}
 	if r.Intn(10) != 0 {
-		v13 := r.Intn(5)
-		this.Vec = make([]*VTIntInt, v13)
-		for i := 0; i < v13; i++ {
+		v9 := r.Intn(5)
+		this.Vec = make([]*VTIntInt, v9)
+		for i := 0; i < v9; i++ {
 			this.Vec[i] = NewPopulatedVTIntInt(r, easy)
 		}
 	}
@@ -3331,14 +3275,55 @@ func NewPopulatedVLIntInt(r randyFvec, easy bool) *VLIntInt {
 	return this
 }
 
-func NewPopulatedVSDbl(r randyFvec, easy bool) *VSDbl {
-	this := &VSDbl{}
-	v14 := r.Intn(10)
-	this.Vec = make([]float64, v14)
-	for i := 0; i < v14; i++ {
-		this.Vec[i] = float64(r.Float64())
-		if r.Intn(2) == 0 {
-			this.Vec[i] *= -1
+func NewPopulatedVLIntDbl(r randyFvec, easy bool) *VLIntDbl {
+	this := &VLIntDbl{}
+	if r.Intn(10) != 0 {
+		v10 := r.Intn(5)
+		this.Vec = make([]*VTIntDbl, v10)
+		for i := 0; i < v10; i++ {
+			this.Vec[i] = NewPopulatedVTIntDbl(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVLDblStr(r randyFvec, easy bool) *VLDblStr {
+	this := &VLDblStr{}
+	if r.Intn(10) != 0 {
+		v11 := r.Intn(5)
+		this.Vec = make([]*VTDblStr, v11)
+		for i := 0; i < v11; i++ {
+			this.Vec[i] = NewPopulatedVTDblStr(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVLDblInt(r randyFvec, easy bool) *VLDblInt {
+	this := &VLDblInt{}
+	if r.Intn(10) != 0 {
+		v12 := r.Intn(5)
+		this.Vec = make([]*VTDblInt, v12)
+		for i := 0; i < v12; i++ {
+			this.Vec[i] = NewPopulatedVTDblInt(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVLDblDbl(r randyFvec, easy bool) *VLDblDbl {
+	this := &VLDblDbl{}
+	if r.Intn(10) != 0 {
+		v13 := r.Intn(5)
+		this.Vec = make([]*VTDblDbl, v13)
+		for i := 0; i < v13; i++ {
+			this.Vec[i] = NewPopulatedVTDblDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3348,9 +3333,9 @@ func NewPopulatedVSDbl(r randyFvec, easy bool) *VSDbl {
 
 func NewPopulatedVSStr(r randyFvec, easy bool) *VSStr {
 	this := &VSStr{}
-	v15 := r.Intn(10)
-	this.Vec = make([]string, v15)
-	for i := 0; i < v15; i++ {
+	v14 := r.Intn(10)
+	this.Vec = make([]string, v14)
+	for i := 0; i < v14; i++ {
 		this.Vec[i] = randStringFvec(r)
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3360,9 +3345,9 @@ func NewPopulatedVSStr(r randyFvec, easy bool) *VSStr {
 
 func NewPopulatedVSInt(r randyFvec, easy bool) *VSInt {
 	this := &VSInt{}
-	v16 := r.Intn(10)
-	this.Vec = make([]int64, v16)
-	for i := 0; i < v16; i++ {
+	v15 := r.Intn(10)
+	this.Vec = make([]int64, v15)
+	for i := 0; i < v15; i++ {
 		this.Vec[i] = int64(r.Int63())
 		if r.Intn(2) == 0 {
 			this.Vec[i] *= -1
@@ -3373,55 +3358,14 @@ func NewPopulatedVSInt(r randyFvec, easy bool) *VSInt {
 	return this
 }
 
-func NewPopulatedVSDblDbl(r randyFvec, easy bool) *VSDblDbl {
-	this := &VSDblDbl{}
-	if r.Intn(10) != 0 {
-		v17 := r.Intn(5)
-		this.Vec = make([]*VTDblDbl, v17)
-		for i := 0; i < v17; i++ {
-			this.Vec[i] = NewPopulatedVTDblDbl(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVSDblStr(r randyFvec, easy bool) *VSDblStr {
-	this := &VSDblStr{}
-	if r.Intn(10) != 0 {
-		v18 := r.Intn(5)
-		this.Vec = make([]*VTDblStr, v18)
-		for i := 0; i < v18; i++ {
-			this.Vec[i] = NewPopulatedVTDblStr(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVSDblInt(r randyFvec, easy bool) *VSDblInt {
-	this := &VSDblInt{}
-	if r.Intn(10) != 0 {
-		v19 := r.Intn(5)
-		this.Vec = make([]*VTDblInt, v19)
-		for i := 0; i < v19; i++ {
-			this.Vec[i] = NewPopulatedVTDblInt(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVSStrDbl(r randyFvec, easy bool) *VSStrDbl {
-	this := &VSStrDbl{}
-	if r.Intn(10) != 0 {
-		v20 := r.Intn(5)
-		this.Vec = make([]*VTStrDbl, v20)
-		for i := 0; i < v20; i++ {
-			this.Vec[i] = NewPopulatedVTStrDbl(r, easy)
+func NewPopulatedVSDbl(r randyFvec, easy bool) *VSDbl {
+	this := &VSDbl{}
+	v16 := r.Intn(10)
+	this.Vec = make([]float64, v16)
+	for i := 0; i < v16; i++ {
+		this.Vec[i] = float64(r.Float64())
+		if r.Intn(2) == 0 {
+			this.Vec[i] *= -1
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3432,9 +3376,9 @@ func NewPopulatedVSStrDbl(r randyFvec, easy bool) *VSStrDbl {
 func NewPopulatedVSStrStr(r randyFvec, easy bool) *VSStrStr {
 	this := &VSStrStr{}
 	if r.Intn(10) != 0 {
-		v21 := r.Intn(5)
-		this.Vec = make([]*VTStrStr, v21)
-		for i := 0; i < v21; i++ {
+		v17 := r.Intn(5)
+		this.Vec = make([]*VTStrStr, v17)
+		for i := 0; i < v17; i++ {
 			this.Vec[i] = NewPopulatedVTStrStr(r, easy)
 		}
 	}
@@ -3446,9 +3390,9 @@ func NewPopulatedVSStrStr(r randyFvec, easy bool) *VSStrStr {
 func NewPopulatedVSStrInt(r randyFvec, easy bool) *VSStrInt {
 	this := &VSStrInt{}
 	if r.Intn(10) != 0 {
-		v22 := r.Intn(5)
-		this.Vec = make([]*VTStrInt, v22)
-		for i := 0; i < v22; i++ {
+		v18 := r.Intn(5)
+		this.Vec = make([]*VTStrInt, v18)
+		for i := 0; i < v18; i++ {
 			this.Vec[i] = NewPopulatedVTStrInt(r, easy)
 		}
 	}
@@ -3457,13 +3401,13 @@ func NewPopulatedVSStrInt(r randyFvec, easy bool) *VSStrInt {
 	return this
 }
 
-func NewPopulatedVSIntDbl(r randyFvec, easy bool) *VSIntDbl {
-	this := &VSIntDbl{}
+func NewPopulatedVSStrDbl(r randyFvec, easy bool) *VSStrDbl {
+	this := &VSStrDbl{}
 	if r.Intn(10) != 0 {
-		v23 := r.Intn(5)
-		this.Vec = make([]*VTIntDbl, v23)
-		for i := 0; i < v23; i++ {
-			this.Vec[i] = NewPopulatedVTIntDbl(r, easy)
+		v19 := r.Intn(5)
+		this.Vec = make([]*VTStrDbl, v19)
+		for i := 0; i < v19; i++ {
+			this.Vec[i] = NewPopulatedVTStrDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3474,9 +3418,9 @@ func NewPopulatedVSIntDbl(r randyFvec, easy bool) *VSIntDbl {
 func NewPopulatedVSIntStr(r randyFvec, easy bool) *VSIntStr {
 	this := &VSIntStr{}
 	if r.Intn(10) != 0 {
-		v24 := r.Intn(5)
-		this.Vec = make([]*VTIntStr, v24)
-		for i := 0; i < v24; i++ {
+		v20 := r.Intn(5)
+		this.Vec = make([]*VTIntStr, v20)
+		for i := 0; i < v20; i++ {
 			this.Vec[i] = NewPopulatedVTIntStr(r, easy)
 		}
 	}
@@ -3488,9 +3432,9 @@ func NewPopulatedVSIntStr(r randyFvec, easy bool) *VSIntStr {
 func NewPopulatedVSIntInt(r randyFvec, easy bool) *VSIntInt {
 	this := &VSIntInt{}
 	if r.Intn(10) != 0 {
-		v25 := r.Intn(5)
-		this.Vec = make([]*VTIntInt, v25)
-		for i := 0; i < v25; i++ {
+		v21 := r.Intn(5)
+		this.Vec = make([]*VTIntInt, v21)
+		for i := 0; i < v21; i++ {
 			this.Vec[i] = NewPopulatedVTIntInt(r, easy)
 		}
 	}
@@ -3499,17 +3443,55 @@ func NewPopulatedVSIntInt(r randyFvec, easy bool) *VSIntInt {
 	return this
 }
 
-func NewPopulatedVMStrDbl(r randyFvec, easy bool) *VMStrDbl {
-	this := &VMStrDbl{}
+func NewPopulatedVSIntDbl(r randyFvec, easy bool) *VSIntDbl {
+	this := &VSIntDbl{}
 	if r.Intn(10) != 0 {
-		v26 := r.Intn(10)
-		this.Vec = make(map[string]float64)
-		for i := 0; i < v26; i++ {
-			v27 := randStringFvec(r)
-			this.Vec[v27] = float64(r.Float64())
-			if r.Intn(2) == 0 {
-				this.Vec[v27] *= -1
-			}
+		v22 := r.Intn(5)
+		this.Vec = make([]*VTIntDbl, v22)
+		for i := 0; i < v22; i++ {
+			this.Vec[i] = NewPopulatedVTIntDbl(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVSDblStr(r randyFvec, easy bool) *VSDblStr {
+	this := &VSDblStr{}
+	if r.Intn(10) != 0 {
+		v23 := r.Intn(5)
+		this.Vec = make([]*VTDblStr, v23)
+		for i := 0; i < v23; i++ {
+			this.Vec[i] = NewPopulatedVTDblStr(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVSDblInt(r randyFvec, easy bool) *VSDblInt {
+	this := &VSDblInt{}
+	if r.Intn(10) != 0 {
+		v24 := r.Intn(5)
+		this.Vec = make([]*VTDblInt, v24)
+		for i := 0; i < v24; i++ {
+			this.Vec[i] = NewPopulatedVTDblInt(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVSDblDbl(r randyFvec, easy bool) *VSDblDbl {
+	this := &VSDblDbl{}
+	if r.Intn(10) != 0 {
+		v25 := r.Intn(5)
+		this.Vec = make([]*VTDblDbl, v25)
+		for i := 0; i < v25; i++ {
+			this.Vec[i] = NewPopulatedVTDblDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3520,9 +3502,9 @@ func NewPopulatedVMStrDbl(r randyFvec, easy bool) *VMStrDbl {
 func NewPopulatedVMStrStr(r randyFvec, easy bool) *VMStrStr {
 	this := &VMStrStr{}
 	if r.Intn(10) != 0 {
-		v28 := r.Intn(10)
+		v26 := r.Intn(10)
 		this.Vec = make(map[string]string)
-		for i := 0; i < v28; i++ {
+		for i := 0; i < v26; i++ {
 			this.Vec[randStringFvec(r)] = randStringFvec(r)
 		}
 	}
@@ -3534,13 +3516,13 @@ func NewPopulatedVMStrStr(r randyFvec, easy bool) *VMStrStr {
 func NewPopulatedVMStrInt(r randyFvec, easy bool) *VMStrInt {
 	this := &VMStrInt{}
 	if r.Intn(10) != 0 {
-		v29 := r.Intn(10)
+		v27 := r.Intn(10)
 		this.Vec = make(map[string]int64)
-		for i := 0; i < v29; i++ {
-			v30 := randStringFvec(r)
-			this.Vec[v30] = int64(r.Int63())
+		for i := 0; i < v27; i++ {
+			v28 := randStringFvec(r)
+			this.Vec[v28] = int64(r.Int63())
 			if r.Intn(2) == 0 {
-				this.Vec[v30] *= -1
+				this.Vec[v28] *= -1
 			}
 		}
 	}
@@ -3549,16 +3531,16 @@ func NewPopulatedVMStrInt(r randyFvec, easy bool) *VMStrInt {
 	return this
 }
 
-func NewPopulatedVMIntDbl(r randyFvec, easy bool) *VMIntDbl {
-	this := &VMIntDbl{}
+func NewPopulatedVMStrDbl(r randyFvec, easy bool) *VMStrDbl {
+	this := &VMStrDbl{}
 	if r.Intn(10) != 0 {
-		v31 := r.Intn(10)
-		this.Vec = make(map[int64]float64)
-		for i := 0; i < v31; i++ {
-			v32 := int64(r.Int63())
-			this.Vec[v32] = float64(r.Float64())
+		v29 := r.Intn(10)
+		this.Vec = make(map[string]float64)
+		for i := 0; i < v29; i++ {
+			v30 := randStringFvec(r)
+			this.Vec[v30] = float64(r.Float64())
 			if r.Intn(2) == 0 {
-				this.Vec[v32] *= -1
+				this.Vec[v30] *= -1
 			}
 		}
 	}
@@ -3570,9 +3552,9 @@ func NewPopulatedVMIntDbl(r randyFvec, easy bool) *VMIntDbl {
 func NewPopulatedVMIntStr(r randyFvec, easy bool) *VMIntStr {
 	this := &VMIntStr{}
 	if r.Intn(10) != 0 {
-		v33 := r.Intn(10)
+		v31 := r.Intn(10)
 		this.Vec = make(map[int64]string)
-		for i := 0; i < v33; i++ {
+		for i := 0; i < v31; i++ {
 			this.Vec[int64(r.Int63())] = randStringFvec(r)
 		}
 	}
@@ -3584,11 +3566,29 @@ func NewPopulatedVMIntStr(r randyFvec, easy bool) *VMIntStr {
 func NewPopulatedVMIntInt(r randyFvec, easy bool) *VMIntInt {
 	this := &VMIntInt{}
 	if r.Intn(10) != 0 {
-		v34 := r.Intn(10)
+		v32 := r.Intn(10)
 		this.Vec = make(map[int64]int64)
+		for i := 0; i < v32; i++ {
+			v33 := int64(r.Int63())
+			this.Vec[v33] = int64(r.Int63())
+			if r.Intn(2) == 0 {
+				this.Vec[v33] *= -1
+			}
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVMIntDbl(r randyFvec, easy bool) *VMIntDbl {
+	this := &VMIntDbl{}
+	if r.Intn(10) != 0 {
+		v34 := r.Intn(10)
+		this.Vec = make(map[int64]float64)
 		for i := 0; i < v34; i++ {
 			v35 := int64(r.Int63())
-			this.Vec[v35] = int64(r.Int63())
+			this.Vec[v35] = float64(r.Float64())
 			if r.Intn(2) == 0 {
 				this.Vec[v35] *= -1
 			}
@@ -3599,68 +3599,12 @@ func NewPopulatedVMIntInt(r randyFvec, easy bool) *VMIntInt {
 	return this
 }
 
-func NewPopulatedVMStrTPDblDbl(r randyFvec, easy bool) *VMStrTPDblDbl {
-	this := &VMStrTPDblDbl{}
-	if r.Intn(10) != 0 {
-		v36 := r.Intn(10)
-		this.Vec = make(map[string]*VTDblDbl)
-		for i := 0; i < v36; i++ {
-			this.Vec[randStringFvec(r)] = NewPopulatedVTDblDbl(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVMStrTPDblStr(r randyFvec, easy bool) *VMStrTPDblStr {
-	this := &VMStrTPDblStr{}
-	if r.Intn(10) != 0 {
-		v37 := r.Intn(10)
-		this.Vec = make(map[string]*VTDblStr)
-		for i := 0; i < v37; i++ {
-			this.Vec[randStringFvec(r)] = NewPopulatedVTDblStr(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVMStrTPDblInt(r randyFvec, easy bool) *VMStrTPDblInt {
-	this := &VMStrTPDblInt{}
-	if r.Intn(10) != 0 {
-		v38 := r.Intn(10)
-		this.Vec = make(map[string]*VTDblInt)
-		for i := 0; i < v38; i++ {
-			this.Vec[randStringFvec(r)] = NewPopulatedVTDblInt(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
-func NewPopulatedVMStrTPStrDbl(r randyFvec, easy bool) *VMStrTPStrDbl {
-	this := &VMStrTPStrDbl{}
-	if r.Intn(10) != 0 {
-		v39 := r.Intn(10)
-		this.Vec = make(map[string]*VTStrDbl)
-		for i := 0; i < v39; i++ {
-			this.Vec[randStringFvec(r)] = NewPopulatedVTStrDbl(r, easy)
-		}
-	}
-	if !easy && r.Intn(10) != 0 {
-	}
-	return this
-}
-
 func NewPopulatedVMStrTPStrStr(r randyFvec, easy bool) *VMStrTPStrStr {
 	this := &VMStrTPStrStr{}
 	if r.Intn(10) != 0 {
-		v40 := r.Intn(10)
+		v36 := r.Intn(10)
 		this.Vec = make(map[string]*VTStrStr)
-		for i := 0; i < v40; i++ {
+		for i := 0; i < v36; i++ {
 			this.Vec[randStringFvec(r)] = NewPopulatedVTStrStr(r, easy)
 		}
 	}
@@ -3672,9 +3616,9 @@ func NewPopulatedVMStrTPStrStr(r randyFvec, easy bool) *VMStrTPStrStr {
 func NewPopulatedVMStrTPStrInt(r randyFvec, easy bool) *VMStrTPStrInt {
 	this := &VMStrTPStrInt{}
 	if r.Intn(10) != 0 {
-		v41 := r.Intn(10)
+		v37 := r.Intn(10)
 		this.Vec = make(map[string]*VTStrInt)
-		for i := 0; i < v41; i++ {
+		for i := 0; i < v37; i++ {
 			this.Vec[randStringFvec(r)] = NewPopulatedVTStrInt(r, easy)
 		}
 	}
@@ -3683,13 +3627,13 @@ func NewPopulatedVMStrTPStrInt(r randyFvec, easy bool) *VMStrTPStrInt {
 	return this
 }
 
-func NewPopulatedVMStrTPIntDbl(r randyFvec, easy bool) *VMStrTPIntDbl {
-	this := &VMStrTPIntDbl{}
+func NewPopulatedVMStrTPStrDbl(r randyFvec, easy bool) *VMStrTPStrDbl {
+	this := &VMStrTPStrDbl{}
 	if r.Intn(10) != 0 {
-		v42 := r.Intn(10)
-		this.Vec = make(map[string]*VTIntDbl)
-		for i := 0; i < v42; i++ {
-			this.Vec[randStringFvec(r)] = NewPopulatedVTIntDbl(r, easy)
+		v38 := r.Intn(10)
+		this.Vec = make(map[string]*VTStrDbl)
+		for i := 0; i < v38; i++ {
+			this.Vec[randStringFvec(r)] = NewPopulatedVTStrDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3700,9 +3644,9 @@ func NewPopulatedVMStrTPIntDbl(r randyFvec, easy bool) *VMStrTPIntDbl {
 func NewPopulatedVMStrTPIntStr(r randyFvec, easy bool) *VMStrTPIntStr {
 	this := &VMStrTPIntStr{}
 	if r.Intn(10) != 0 {
-		v43 := r.Intn(10)
+		v39 := r.Intn(10)
 		this.Vec = make(map[string]*VTIntStr)
-		for i := 0; i < v43; i++ {
+		for i := 0; i < v39; i++ {
 			this.Vec[randStringFvec(r)] = NewPopulatedVTIntStr(r, easy)
 		}
 	}
@@ -3714,9 +3658,9 @@ func NewPopulatedVMStrTPIntStr(r randyFvec, easy bool) *VMStrTPIntStr {
 func NewPopulatedVMStrTPIntInt(r randyFvec, easy bool) *VMStrTPIntInt {
 	this := &VMStrTPIntInt{}
 	if r.Intn(10) != 0 {
-		v44 := r.Intn(10)
+		v40 := r.Intn(10)
 		this.Vec = make(map[string]*VTIntInt)
-		for i := 0; i < v44; i++ {
+		for i := 0; i < v40; i++ {
 			this.Vec[randStringFvec(r)] = NewPopulatedVTIntInt(r, easy)
 		}
 	}
@@ -3725,13 +3669,13 @@ func NewPopulatedVMStrTPIntInt(r randyFvec, easy bool) *VMStrTPIntInt {
 	return this
 }
 
-func NewPopulatedVMIntTPDblDbl(r randyFvec, easy bool) *VMIntTPDblDbl {
-	this := &VMIntTPDblDbl{}
+func NewPopulatedVMStrTPIntDbl(r randyFvec, easy bool) *VMStrTPIntDbl {
+	this := &VMStrTPIntDbl{}
 	if r.Intn(10) != 0 {
-		v45 := r.Intn(10)
-		this.Vec = make(map[int64]*VTDblDbl)
-		for i := 0; i < v45; i++ {
-			this.Vec[int64(r.Int63())] = NewPopulatedVTDblDbl(r, easy)
+		v41 := r.Intn(10)
+		this.Vec = make(map[string]*VTIntDbl)
+		for i := 0; i < v41; i++ {
+			this.Vec[randStringFvec(r)] = NewPopulatedVTIntDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3739,13 +3683,13 @@ func NewPopulatedVMIntTPDblDbl(r randyFvec, easy bool) *VMIntTPDblDbl {
 	return this
 }
 
-func NewPopulatedVMIntTPDblStr(r randyFvec, easy bool) *VMIntTPDblStr {
-	this := &VMIntTPDblStr{}
+func NewPopulatedVMStrTPDblStr(r randyFvec, easy bool) *VMStrTPDblStr {
+	this := &VMStrTPDblStr{}
 	if r.Intn(10) != 0 {
-		v46 := r.Intn(10)
-		this.Vec = make(map[int64]*VTDblStr)
-		for i := 0; i < v46; i++ {
-			this.Vec[int64(r.Int63())] = NewPopulatedVTDblStr(r, easy)
+		v42 := r.Intn(10)
+		this.Vec = make(map[string]*VTDblStr)
+		for i := 0; i < v42; i++ {
+			this.Vec[randStringFvec(r)] = NewPopulatedVTDblStr(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3753,13 +3697,13 @@ func NewPopulatedVMIntTPDblStr(r randyFvec, easy bool) *VMIntTPDblStr {
 	return this
 }
 
-func NewPopulatedVMIntTPDblInt(r randyFvec, easy bool) *VMIntTPDblInt {
-	this := &VMIntTPDblInt{}
+func NewPopulatedVMStrTPDblInt(r randyFvec, easy bool) *VMStrTPDblInt {
+	this := &VMStrTPDblInt{}
 	if r.Intn(10) != 0 {
-		v47 := r.Intn(10)
-		this.Vec = make(map[int64]*VTDblInt)
-		for i := 0; i < v47; i++ {
-			this.Vec[int64(r.Int63())] = NewPopulatedVTDblInt(r, easy)
+		v43 := r.Intn(10)
+		this.Vec = make(map[string]*VTDblInt)
+		for i := 0; i < v43; i++ {
+			this.Vec[randStringFvec(r)] = NewPopulatedVTDblInt(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3767,13 +3711,13 @@ func NewPopulatedVMIntTPDblInt(r randyFvec, easy bool) *VMIntTPDblInt {
 	return this
 }
 
-func NewPopulatedVMIntTPStrDbl(r randyFvec, easy bool) *VMIntTPStrDbl {
-	this := &VMIntTPStrDbl{}
+func NewPopulatedVMStrTPDblDbl(r randyFvec, easy bool) *VMStrTPDblDbl {
+	this := &VMStrTPDblDbl{}
 	if r.Intn(10) != 0 {
-		v48 := r.Intn(10)
-		this.Vec = make(map[int64]*VTStrDbl)
-		for i := 0; i < v48; i++ {
-			this.Vec[int64(r.Int63())] = NewPopulatedVTStrDbl(r, easy)
+		v44 := r.Intn(10)
+		this.Vec = make(map[string]*VTDblDbl)
+		for i := 0; i < v44; i++ {
+			this.Vec[randStringFvec(r)] = NewPopulatedVTDblDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3784,9 +3728,9 @@ func NewPopulatedVMIntTPStrDbl(r randyFvec, easy bool) *VMIntTPStrDbl {
 func NewPopulatedVMIntTPStrStr(r randyFvec, easy bool) *VMIntTPStrStr {
 	this := &VMIntTPStrStr{}
 	if r.Intn(10) != 0 {
-		v49 := r.Intn(10)
+		v45 := r.Intn(10)
 		this.Vec = make(map[int64]*VTStrStr)
-		for i := 0; i < v49; i++ {
+		for i := 0; i < v45; i++ {
 			this.Vec[int64(r.Int63())] = NewPopulatedVTStrStr(r, easy)
 		}
 	}
@@ -3798,9 +3742,9 @@ func NewPopulatedVMIntTPStrStr(r randyFvec, easy bool) *VMIntTPStrStr {
 func NewPopulatedVMIntTPStrInt(r randyFvec, easy bool) *VMIntTPStrInt {
 	this := &VMIntTPStrInt{}
 	if r.Intn(10) != 0 {
-		v50 := r.Intn(10)
+		v46 := r.Intn(10)
 		this.Vec = make(map[int64]*VTStrInt)
-		for i := 0; i < v50; i++ {
+		for i := 0; i < v46; i++ {
 			this.Vec[int64(r.Int63())] = NewPopulatedVTStrInt(r, easy)
 		}
 	}
@@ -3809,13 +3753,13 @@ func NewPopulatedVMIntTPStrInt(r randyFvec, easy bool) *VMIntTPStrInt {
 	return this
 }
 
-func NewPopulatedVMIntTPIntDbl(r randyFvec, easy bool) *VMIntTPIntDbl {
-	this := &VMIntTPIntDbl{}
+func NewPopulatedVMIntTPStrDbl(r randyFvec, easy bool) *VMIntTPStrDbl {
+	this := &VMIntTPStrDbl{}
 	if r.Intn(10) != 0 {
-		v51 := r.Intn(10)
-		this.Vec = make(map[int64]*VTIntDbl)
-		for i := 0; i < v51; i++ {
-			this.Vec[int64(r.Int63())] = NewPopulatedVTIntDbl(r, easy)
+		v47 := r.Intn(10)
+		this.Vec = make(map[int64]*VTStrDbl)
+		for i := 0; i < v47; i++ {
+			this.Vec[int64(r.Int63())] = NewPopulatedVTStrDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3826,9 +3770,9 @@ func NewPopulatedVMIntTPIntDbl(r randyFvec, easy bool) *VMIntTPIntDbl {
 func NewPopulatedVMIntTPIntStr(r randyFvec, easy bool) *VMIntTPIntStr {
 	this := &VMIntTPIntStr{}
 	if r.Intn(10) != 0 {
-		v52 := r.Intn(10)
+		v48 := r.Intn(10)
 		this.Vec = make(map[int64]*VTIntStr)
-		for i := 0; i < v52; i++ {
+		for i := 0; i < v48; i++ {
 			this.Vec[int64(r.Int63())] = NewPopulatedVTIntStr(r, easy)
 		}
 	}
@@ -3840,10 +3784,66 @@ func NewPopulatedVMIntTPIntStr(r randyFvec, easy bool) *VMIntTPIntStr {
 func NewPopulatedVMIntTPIntInt(r randyFvec, easy bool) *VMIntTPIntInt {
 	this := &VMIntTPIntInt{}
 	if r.Intn(10) != 0 {
-		v53 := r.Intn(10)
+		v49 := r.Intn(10)
 		this.Vec = make(map[int64]*VTIntInt)
-		for i := 0; i < v53; i++ {
+		for i := 0; i < v49; i++ {
 			this.Vec[int64(r.Int63())] = NewPopulatedVTIntInt(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVMIntTPIntDbl(r randyFvec, easy bool) *VMIntTPIntDbl {
+	this := &VMIntTPIntDbl{}
+	if r.Intn(10) != 0 {
+		v50 := r.Intn(10)
+		this.Vec = make(map[int64]*VTIntDbl)
+		for i := 0; i < v50; i++ {
+			this.Vec[int64(r.Int63())] = NewPopulatedVTIntDbl(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVMIntTPDblStr(r randyFvec, easy bool) *VMIntTPDblStr {
+	this := &VMIntTPDblStr{}
+	if r.Intn(10) != 0 {
+		v51 := r.Intn(10)
+		this.Vec = make(map[int64]*VTDblStr)
+		for i := 0; i < v51; i++ {
+			this.Vec[int64(r.Int63())] = NewPopulatedVTDblStr(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVMIntTPDblInt(r randyFvec, easy bool) *VMIntTPDblInt {
+	this := &VMIntTPDblInt{}
+	if r.Intn(10) != 0 {
+		v52 := r.Intn(10)
+		this.Vec = make(map[int64]*VTDblInt)
+		for i := 0; i < v52; i++ {
+			this.Vec[int64(r.Int63())] = NewPopulatedVTDblInt(r, easy)
+		}
+	}
+	if !easy && r.Intn(10) != 0 {
+	}
+	return this
+}
+
+func NewPopulatedVMIntTPDblDbl(r randyFvec, easy bool) *VMIntTPDblDbl {
+	this := &VMIntTPDblDbl{}
+	if r.Intn(10) != 0 {
+		v53 := r.Intn(10)
+		this.Vec = make(map[int64]*VTDblDbl)
+		for i := 0; i < v53; i++ {
+			this.Vec[int64(r.Int63())] = NewPopulatedVTDblDbl(r, easy)
 		}
 	}
 	if !easy && r.Intn(10) != 0 {
@@ -3966,56 +3966,6 @@ func (m *VName) Size() (n int) {
 	return n
 }
 
-func (m *VTDblDbl) Size() (n int) {
-	var l int
-	_ = l
-	if m.Key != 0 {
-		n += 9
-	}
-	if m.Value != 0 {
-		n += 9
-	}
-	return n
-}
-
-func (m *VTDblStr) Size() (n int) {
-	var l int
-	_ = l
-	if m.Key != 0 {
-		n += 9
-	}
-	l = len(m.Value)
-	if l > 0 {
-		n += 1 + l + sovFvec(uint64(l))
-	}
-	return n
-}
-
-func (m *VTDblInt) Size() (n int) {
-	var l int
-	_ = l
-	if m.Key != 0 {
-		n += 9
-	}
-	if m.Value != 0 {
-		n += 1 + sovFvec(uint64(m.Value))
-	}
-	return n
-}
-
-func (m *VTStrDbl) Size() (n int) {
-	var l int
-	_ = l
-	l = len(m.Key)
-	if l > 0 {
-		n += 1 + l + sovFvec(uint64(l))
-	}
-	if m.Value != 0 {
-		n += 9
-	}
-	return n
-}
-
 func (m *VTStrStr) Size() (n int) {
 	var l int
 	_ = l
@@ -4043,11 +3993,12 @@ func (m *VTStrInt) Size() (n int) {
 	return n
 }
 
-func (m *VTIntDbl) Size() (n int) {
+func (m *VTStrDbl) Size() (n int) {
 	var l int
 	_ = l
-	if m.Key != 0 {
-		n += 1 + sovFvec(uint64(m.Key))
+	l = len(m.Key)
+	if l > 0 {
+		n += 1 + l + sovFvec(uint64(l))
 	}
 	if m.Value != 0 {
 		n += 9
@@ -4080,11 +4031,51 @@ func (m *VTIntInt) Size() (n int) {
 	return n
 }
 
-func (m *VLDbl) Size() (n int) {
+func (m *VTIntDbl) Size() (n int) {
 	var l int
 	_ = l
-	if len(m.Vec) > 0 {
-		n += 1 + sovFvec(uint64(len(m.Vec)*8)) + len(m.Vec)*8
+	if m.Key != 0 {
+		n += 1 + sovFvec(uint64(m.Key))
+	}
+	if m.Value != 0 {
+		n += 9
+	}
+	return n
+}
+
+func (m *VTDblStr) Size() (n int) {
+	var l int
+	_ = l
+	if m.Key != 0 {
+		n += 9
+	}
+	l = len(m.Value)
+	if l > 0 {
+		n += 1 + l + sovFvec(uint64(l))
+	}
+	return n
+}
+
+func (m *VTDblInt) Size() (n int) {
+	var l int
+	_ = l
+	if m.Key != 0 {
+		n += 9
+	}
+	if m.Value != 0 {
+		n += 1 + sovFvec(uint64(m.Value))
+	}
+	return n
+}
+
+func (m *VTDblDbl) Size() (n int) {
+	var l int
+	_ = l
+	if m.Key != 0 {
+		n += 9
+	}
+	if m.Value != 0 {
+		n += 9
 	}
 	return n
 }
@@ -4114,50 +4105,11 @@ func (m *VLInt) Size() (n int) {
 	return n
 }
 
-func (m *VLDblDbl) Size() (n int) {
+func (m *VLDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VLDblStr) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VLDblInt) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VLStrDbl) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
+		n += 1 + sovFvec(uint64(len(m.Vec)*8)) + len(m.Vec)*8
 	}
 	return n
 }
@@ -4186,7 +4138,7 @@ func (m *VLStrInt) Size() (n int) {
 	return n
 }
 
-func (m *VLIntDbl) Size() (n int) {
+func (m *VLStrDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
@@ -4222,11 +4174,50 @@ func (m *VLIntInt) Size() (n int) {
 	return n
 }
 
-func (m *VSDbl) Size() (n int) {
+func (m *VLIntDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		n += 1 + sovFvec(uint64(len(m.Vec)*8)) + len(m.Vec)*8
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VLDblStr) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VLDblInt) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VLDblDbl) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
 	}
 	return n
 }
@@ -4256,50 +4247,11 @@ func (m *VSInt) Size() (n int) {
 	return n
 }
 
-func (m *VSDblDbl) Size() (n int) {
+func (m *VSDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VSDblStr) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VSDblInt) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *VSStrDbl) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for _, e := range m.Vec {
-			l = e.Size()
-			n += 1 + l + sovFvec(uint64(l))
-		}
+		n += 1 + sovFvec(uint64(len(m.Vec)*8)) + len(m.Vec)*8
 	}
 	return n
 }
@@ -4328,7 +4280,7 @@ func (m *VSStrInt) Size() (n int) {
 	return n
 }
 
-func (m *VSIntDbl) Size() (n int) {
+func (m *VSStrDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
@@ -4364,15 +4316,49 @@ func (m *VSIntInt) Size() (n int) {
 	return n
 }
 
-func (m *VMStrDbl) Size() (n int) {
+func (m *VSIntDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + 1 + 8
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VSDblStr) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VSDblInt) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *VSDblDbl) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for _, e := range m.Vec {
+			l = e.Size()
+			n += 1 + l + sovFvec(uint64(l))
 		}
 	}
 	return n
@@ -4406,14 +4392,14 @@ func (m *VMStrInt) Size() (n int) {
 	return n
 }
 
-func (m *VMIntDbl) Size() (n int) {
+func (m *VMStrDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
 		for k, v := range m.Vec {
 			_ = k
 			_ = v
-			mapEntrySize := 1 + sovFvec(uint64(k)) + 1 + 8
+			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + 1 + 8
 			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
 		}
 	}
@@ -4448,76 +4434,14 @@ func (m *VMIntInt) Size() (n int) {
 	return n
 }
 
-func (m *VMStrTPDblDbl) Size() (n int) {
+func (m *VMIntDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
 		for k, v := range m.Vec {
 			_ = k
 			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMStrTPDblStr) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMStrTPDblInt) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMStrTPStrDbl) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
+			mapEntrySize := 1 + sovFvec(uint64(k)) + 1 + 8
 			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
 		}
 	}
@@ -4562,7 +4486,7 @@ func (m *VMStrTPStrInt) Size() (n int) {
 	return n
 }
 
-func (m *VMStrTPIntDbl) Size() (n int) {
+func (m *VMStrTPStrDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
@@ -4619,7 +4543,178 @@ func (m *VMStrTPIntInt) Size() (n int) {
 	return n
 }
 
-func (m *VMIntTPDblDbl) Size() (n int) {
+func (m *VMStrTPIntDbl) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMStrTPDblStr) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMStrTPDblInt) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMStrTPDblDbl) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + len(k) + sovFvec(uint64(len(k))) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPStrStr) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + sovFvec(uint64(k)) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPStrInt) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + sovFvec(uint64(k)) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPStrDbl) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + sovFvec(uint64(k)) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPIntStr) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + sovFvec(uint64(k)) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPIntInt) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Vec) > 0 {
+		for k, v := range m.Vec {
+			_ = k
+			_ = v
+			l = 0
+			if v != nil {
+				l = v.Size()
+				l += 1 + sovFvec(uint64(l))
+			}
+			mapEntrySize := 1 + sovFvec(uint64(k)) + l
+			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func (m *VMIntTPIntDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
@@ -4676,102 +4771,7 @@ func (m *VMIntTPDblInt) Size() (n int) {
 	return n
 }
 
-func (m *VMIntTPStrDbl) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + sovFvec(uint64(k)) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMIntTPStrStr) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + sovFvec(uint64(k)) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMIntTPStrInt) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + sovFvec(uint64(k)) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMIntTPIntDbl) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + sovFvec(uint64(k)) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMIntTPIntStr) Size() (n int) {
-	var l int
-	_ = l
-	if len(m.Vec) > 0 {
-		for k, v := range m.Vec {
-			_ = k
-			_ = v
-			l = 0
-			if v != nil {
-				l = v.Size()
-				l += 1 + sovFvec(uint64(l))
-			}
-			mapEntrySize := 1 + sovFvec(uint64(k)) + l
-			n += mapEntrySize + 1 + sovFvec(uint64(mapEntrySize))
-		}
-	}
-	return n
-}
-
-func (m *VMIntTPIntInt) Size() (n int) {
+func (m *VMIntTPDblDbl) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Vec) > 0 {
@@ -5107,373 +5107,6 @@ func (m *VName) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VTDblDbl) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VTDblDbl: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VTDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += 8
-			v = uint64(data[iNdEx-8])
-			v |= uint64(data[iNdEx-7]) << 8
-			v |= uint64(data[iNdEx-6]) << 16
-			v |= uint64(data[iNdEx-5]) << 24
-			v |= uint64(data[iNdEx-4]) << 32
-			v |= uint64(data[iNdEx-3]) << 40
-			v |= uint64(data[iNdEx-2]) << 48
-			v |= uint64(data[iNdEx-1]) << 56
-			m.Key = float64(math.Float64frombits(v))
-		case 2:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += 8
-			v = uint64(data[iNdEx-8])
-			v |= uint64(data[iNdEx-7]) << 8
-			v |= uint64(data[iNdEx-6]) << 16
-			v |= uint64(data[iNdEx-5]) << 24
-			v |= uint64(data[iNdEx-4]) << 32
-			v |= uint64(data[iNdEx-3]) << 40
-			v |= uint64(data[iNdEx-2]) << 48
-			v |= uint64(data[iNdEx-1]) << 56
-			m.Value = float64(math.Float64frombits(v))
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VTDblStr) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VTDblStr: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VTDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += 8
-			v = uint64(data[iNdEx-8])
-			v |= uint64(data[iNdEx-7]) << 8
-			v |= uint64(data[iNdEx-6]) << 16
-			v |= uint64(data[iNdEx-5]) << 24
-			v |= uint64(data[iNdEx-4]) << 32
-			v |= uint64(data[iNdEx-3]) << 40
-			v |= uint64(data[iNdEx-2]) << 48
-			v |= uint64(data[iNdEx-1]) << 56
-			m.Key = float64(math.Float64frombits(v))
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Value = string(data[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VTDblInt) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VTDblInt: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VTDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += 8
-			v = uint64(data[iNdEx-8])
-			v |= uint64(data[iNdEx-7]) << 8
-			v |= uint64(data[iNdEx-6]) << 16
-			v |= uint64(data[iNdEx-5]) << 24
-			v |= uint64(data[iNdEx-4]) << 32
-			v |= uint64(data[iNdEx-3]) << 40
-			v |= uint64(data[iNdEx-2]) << 48
-			v |= uint64(data[iNdEx-1]) << 56
-			m.Key = float64(math.Float64frombits(v))
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
-			}
-			m.Value = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				m.Value |= (int64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VTStrDbl) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VTStrDbl: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VTStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Key = string(data[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += 8
-			v = uint64(data[iNdEx-8])
-			v |= uint64(data[iNdEx-7]) << 8
-			v |= uint64(data[iNdEx-6]) << 16
-			v |= uint64(data[iNdEx-5]) << 24
-			v |= uint64(data[iNdEx-4]) << 32
-			v |= uint64(data[iNdEx-3]) << 40
-			v |= uint64(data[iNdEx-2]) << 48
-			v |= uint64(data[iNdEx-1]) << 56
-			m.Value = float64(math.Float64frombits(v))
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
 func (m *VTStrStr) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
@@ -5680,7 +5313,7 @@ func (m *VTStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VTIntDbl) Unmarshal(data []byte) error {
+func (m *VTStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -5703,17 +5336,17 @@ func (m *VTIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VTIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VTStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VTIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VTStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 0 {
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
 			}
-			m.Key = 0
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -5723,11 +5356,21 @@ func (m *VTIntDbl) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				m.Key |= (int64(b) & 0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Key = string(data[iNdEx:postIndex])
+			iNdEx = postIndex
 		case 2:
 			if wireType != 1 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
@@ -5953,7 +5596,7 @@ func (m *VTIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VLDbl) Unmarshal(data []byte) error {
+func (m *VTIntDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -5976,72 +5619,319 @@ func (m *VLDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VLDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VTIntDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VTIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					if (iNdEx + 8) > l {
-						return io.ErrUnexpectedEOF
-					}
-					iNdEx += 8
-					v = uint64(data[iNdEx-8])
-					v |= uint64(data[iNdEx-7]) << 8
-					v |= uint64(data[iNdEx-6]) << 16
-					v |= uint64(data[iNdEx-5]) << 24
-					v |= uint64(data[iNdEx-4]) << 32
-					v |= uint64(data[iNdEx-3]) << 40
-					v |= uint64(data[iNdEx-2]) << 48
-					v |= uint64(data[iNdEx-1]) << 56
-					v2 := float64(math.Float64frombits(v))
-					m.Vec = append(m.Vec, v2)
-				}
-			} else if wireType == 1 {
-				var v uint64
-				if (iNdEx + 8) > l {
-					return io.ErrUnexpectedEOF
-				}
-				iNdEx += 8
-				v = uint64(data[iNdEx-8])
-				v |= uint64(data[iNdEx-7]) << 8
-				v |= uint64(data[iNdEx-6]) << 16
-				v |= uint64(data[iNdEx-5]) << 24
-				v |= uint64(data[iNdEx-4]) << 32
-				v |= uint64(data[iNdEx-3]) << 40
-				v |= uint64(data[iNdEx-2]) << 48
-				v |= uint64(data[iNdEx-1]) << 56
-				v2 := float64(math.Float64frombits(v))
-				m.Vec = append(m.Vec, v2)
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
 			}
+			m.Key = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				m.Key |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+			}
+			var v uint64
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += 8
+			v = uint64(data[iNdEx-8])
+			v |= uint64(data[iNdEx-7]) << 8
+			v |= uint64(data[iNdEx-6]) << 16
+			v |= uint64(data[iNdEx-5]) << 24
+			v |= uint64(data[iNdEx-4]) << 32
+			v |= uint64(data[iNdEx-3]) << 40
+			v |= uint64(data[iNdEx-2]) << 48
+			v |= uint64(data[iNdEx-1]) << 56
+			m.Value = float64(math.Float64frombits(v))
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VTDblStr) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VTDblStr: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VTDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
+			}
+			var v uint64
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += 8
+			v = uint64(data[iNdEx-8])
+			v |= uint64(data[iNdEx-7]) << 8
+			v |= uint64(data[iNdEx-6]) << 16
+			v |= uint64(data[iNdEx-5]) << 24
+			v |= uint64(data[iNdEx-4]) << 32
+			v |= uint64(data[iNdEx-3]) << 40
+			v |= uint64(data[iNdEx-2]) << 48
+			v |= uint64(data[iNdEx-1]) << 56
+			m.Key = float64(math.Float64frombits(v))
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Value = string(data[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VTDblInt) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VTDblInt: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VTDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
+			}
+			var v uint64
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += 8
+			v = uint64(data[iNdEx-8])
+			v |= uint64(data[iNdEx-7]) << 8
+			v |= uint64(data[iNdEx-6]) << 16
+			v |= uint64(data[iNdEx-5]) << 24
+			v |= uint64(data[iNdEx-4]) << 32
+			v |= uint64(data[iNdEx-3]) << 40
+			v |= uint64(data[iNdEx-2]) << 48
+			v |= uint64(data[iNdEx-1]) << 56
+			m.Key = float64(math.Float64frombits(v))
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+			}
+			m.Value = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				m.Value |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VTDblDbl) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VTDblDbl: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VTDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Key", wireType)
+			}
+			var v uint64
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += 8
+			v = uint64(data[iNdEx-8])
+			v |= uint64(data[iNdEx-7]) << 8
+			v |= uint64(data[iNdEx-6]) << 16
+			v |= uint64(data[iNdEx-5]) << 24
+			v |= uint64(data[iNdEx-4]) << 32
+			v |= uint64(data[iNdEx-3]) << 40
+			v |= uint64(data[iNdEx-2]) << 48
+			v |= uint64(data[iNdEx-1]) << 56
+			m.Key = float64(math.Float64frombits(v))
+		case 2:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+			}
+			var v uint64
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += 8
+			v = uint64(data[iNdEx-8])
+			v |= uint64(data[iNdEx-7]) << 8
+			v |= uint64(data[iNdEx-6]) << 16
+			v |= uint64(data[iNdEx-5]) << 24
+			v |= uint64(data[iNdEx-4]) << 32
+			v |= uint64(data[iNdEx-3]) << 40
+			v |= uint64(data[iNdEx-2]) << 48
+			v |= uint64(data[iNdEx-1]) << 56
+			m.Value = float64(math.Float64frombits(v))
 		default:
 			iNdEx = preIndex
 			skippy, err := skipFvec(data[iNdEx:])
@@ -6254,7 +6144,7 @@ func (m *VLInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VLDblDbl) Unmarshal(data []byte) error {
+func (m *VLDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -6277,286 +6167,72 @@ func (m *VLDblDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VLDblDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VLDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VLDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
+			if wireType == 2 {
+				var packedLen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					packedLen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
 				}
-				if iNdEx >= l {
+				if packedLen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postIndex := iNdEx + packedLen
+				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
+				for iNdEx < postIndex {
+					var v uint64
+					if (iNdEx + 8) > l {
+						return io.ErrUnexpectedEOF
+					}
+					iNdEx += 8
+					v = uint64(data[iNdEx-8])
+					v |= uint64(data[iNdEx-7]) << 8
+					v |= uint64(data[iNdEx-6]) << 16
+					v |= uint64(data[iNdEx-5]) << 24
+					v |= uint64(data[iNdEx-4]) << 32
+					v |= uint64(data[iNdEx-3]) << 40
+					v |= uint64(data[iNdEx-2]) << 48
+					v |= uint64(data[iNdEx-1]) << 56
+					v2 := float64(math.Float64frombits(v))
+					m.Vec = append(m.Vec, v2)
 				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblDbl{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VLDblStr) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VLDblStr: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
+			} else if wireType == 1 {
+				var v uint64
+				if (iNdEx + 8) > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblStr{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VLDblInt) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VLDblInt: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
+				iNdEx += 8
+				v = uint64(data[iNdEx-8])
+				v |= uint64(data[iNdEx-7]) << 8
+				v |= uint64(data[iNdEx-6]) << 16
+				v |= uint64(data[iNdEx-5]) << 24
+				v |= uint64(data[iNdEx-4]) << 32
+				v |= uint64(data[iNdEx-3]) << 40
+				v |= uint64(data[iNdEx-2]) << 48
+				v |= uint64(data[iNdEx-1]) << 56
+				v2 := float64(math.Float64frombits(v))
+				m.Vec = append(m.Vec, v2)
+			} else {
 				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
 			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblInt{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VLStrDbl) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VLStrDbl: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTStrDbl{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipFvec(data[iNdEx:])
@@ -6740,7 +6416,7 @@ func (m *VLStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VLIntDbl) Unmarshal(data []byte) error {
+func (m *VLStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -6763,10 +6439,10 @@ func (m *VLIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VLIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VLStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VLIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VLStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -6795,7 +6471,7 @@ func (m *VLIntDbl) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Vec = append(m.Vec, &VTIntDbl{})
+			m.Vec = append(m.Vec, &VTStrDbl{})
 			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -6983,7 +6659,7 @@ func (m *VLIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VSDbl) Unmarshal(data []byte) error {
+func (m *VLIntDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -7006,72 +6682,286 @@ func (m *VSDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VSDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VLIntDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VLIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					if (iNdEx + 8) > l {
-						return io.ErrUnexpectedEOF
-					}
-					iNdEx += 8
-					v = uint64(data[iNdEx-8])
-					v |= uint64(data[iNdEx-7]) << 8
-					v |= uint64(data[iNdEx-6]) << 16
-					v |= uint64(data[iNdEx-5]) << 24
-					v |= uint64(data[iNdEx-4]) << 32
-					v |= uint64(data[iNdEx-3]) << 40
-					v |= uint64(data[iNdEx-2]) << 48
-					v |= uint64(data[iNdEx-1]) << 56
-					v2 := float64(math.Float64frombits(v))
-					m.Vec = append(m.Vec, v2)
-				}
-			} else if wireType == 1 {
-				var v uint64
-				if (iNdEx + 8) > l {
-					return io.ErrUnexpectedEOF
-				}
-				iNdEx += 8
-				v = uint64(data[iNdEx-8])
-				v |= uint64(data[iNdEx-7]) << 8
-				v |= uint64(data[iNdEx-6]) << 16
-				v |= uint64(data[iNdEx-5]) << 24
-				v |= uint64(data[iNdEx-4]) << 32
-				v |= uint64(data[iNdEx-3]) << 40
-				v |= uint64(data[iNdEx-2]) << 48
-				v |= uint64(data[iNdEx-1]) << 56
-				v2 := float64(math.Float64frombits(v))
-				m.Vec = append(m.Vec, v2)
-			} else {
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
 			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTIntDbl{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VLDblStr) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VLDblStr: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VLDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblStr{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VLDblInt) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VLDblInt: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VLDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblInt{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VLDblDbl) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VLDblDbl: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VLDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblDbl{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipFvec(data[iNdEx:])
@@ -7284,7 +7174,7 @@ func (m *VSInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VSDblDbl) Unmarshal(data []byte) error {
+func (m *VSDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -7307,286 +7197,72 @@ func (m *VSDblDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VSDblDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VSDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VSDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
+			if wireType == 2 {
+				var packedLen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					packedLen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
 				}
-				if iNdEx >= l {
+				if packedLen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postIndex := iNdEx + packedLen
+				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
+				for iNdEx < postIndex {
+					var v uint64
+					if (iNdEx + 8) > l {
+						return io.ErrUnexpectedEOF
+					}
+					iNdEx += 8
+					v = uint64(data[iNdEx-8])
+					v |= uint64(data[iNdEx-7]) << 8
+					v |= uint64(data[iNdEx-6]) << 16
+					v |= uint64(data[iNdEx-5]) << 24
+					v |= uint64(data[iNdEx-4]) << 32
+					v |= uint64(data[iNdEx-3]) << 40
+					v |= uint64(data[iNdEx-2]) << 48
+					v |= uint64(data[iNdEx-1]) << 56
+					v2 := float64(math.Float64frombits(v))
+					m.Vec = append(m.Vec, v2)
 				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblDbl{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VSDblStr) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VSDblStr: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
+			} else if wireType == 1 {
+				var v uint64
+				if (iNdEx + 8) > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblStr{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VSDblInt) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VSDblInt: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
+				iNdEx += 8
+				v = uint64(data[iNdEx-8])
+				v |= uint64(data[iNdEx-7]) << 8
+				v |= uint64(data[iNdEx-6]) << 16
+				v |= uint64(data[iNdEx-5]) << 24
+				v |= uint64(data[iNdEx-4]) << 32
+				v |= uint64(data[iNdEx-3]) << 40
+				v |= uint64(data[iNdEx-2]) << 48
+				v |= uint64(data[iNdEx-1]) << 56
+				v2 := float64(math.Float64frombits(v))
+				m.Vec = append(m.Vec, v2)
+			} else {
 				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
 			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTDblInt{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VSStrDbl) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VSStrDbl: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Vec = append(m.Vec, &VTStrDbl{})
-			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipFvec(data[iNdEx:])
@@ -7770,7 +7446,7 @@ func (m *VSStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VSIntDbl) Unmarshal(data []byte) error {
+func (m *VSStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -7793,10 +7469,10 @@ func (m *VSIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VSIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VSStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VSIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VSStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -7825,7 +7501,7 @@ func (m *VSIntDbl) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Vec = append(m.Vec, &VTIntDbl{})
+			m.Vec = append(m.Vec, &VTStrDbl{})
 			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -8013,7 +7689,7 @@ func (m *VSIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMStrDbl) Unmarshal(data []byte) error {
+func (m *VSIntDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -8036,10 +7712,10 @@ func (m *VMStrDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VSIntDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VSIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -8068,83 +7744,252 @@ func (m *VMStrDbl) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			var keykey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				keykey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
+			m.Vec = append(m.Vec, &VTIntDbl{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
 			}
-			var stringLenmapkey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLenmapkey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
 			}
-			intStringLenmapkey := int(stringLenmapkey)
-			if intStringLenmapkey < 0 {
+			if skippy < 0 {
 				return ErrInvalidLengthFvec
 			}
-			postStringIndexmapkey := iNdEx + intStringLenmapkey
-			if postStringIndexmapkey > l {
+			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
-			iNdEx = postStringIndexmapkey
-			if m.Vec == nil {
-				m.Vec = make(map[string]float64)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VSDblStr) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
 			}
-			if iNdEx < postIndex {
-				var valuekey uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					valuekey |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VSDblStr: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VSDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
 				}
-				var mapvaluetemp uint64
-				if (iNdEx + 8) > l {
+				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				iNdEx += 8
-				mapvaluetemp = uint64(data[iNdEx-8])
-				mapvaluetemp |= uint64(data[iNdEx-7]) << 8
-				mapvaluetemp |= uint64(data[iNdEx-6]) << 16
-				mapvaluetemp |= uint64(data[iNdEx-5]) << 24
-				mapvaluetemp |= uint64(data[iNdEx-4]) << 32
-				mapvaluetemp |= uint64(data[iNdEx-3]) << 40
-				mapvaluetemp |= uint64(data[iNdEx-2]) << 48
-				mapvaluetemp |= uint64(data[iNdEx-1]) << 56
-				mapvalue := math.Float64frombits(mapvaluetemp)
-				m.Vec[mapkey] = mapvalue
-			} else {
-				var mapvalue float64
-				m.Vec[mapkey] = mapvalue
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblStr{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VSDblInt) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VSDblInt: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VSDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblInt{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VSDblDbl) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VSDblDbl: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VSDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vec = append(m.Vec, &VTDblDbl{})
+			if err := m.Vec[len(m.Vec)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+				return err
 			}
 			iNdEx = postIndex
 		default:
@@ -8490,7 +8335,7 @@ func (m *VMStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntDbl) Unmarshal(data []byte) error {
+func (m *VMStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -8513,10 +8358,10 @@ func (m *VMIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -8560,7 +8405,7 @@ func (m *VMIntDbl) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var mapkey int64
+			var stringLenmapkey uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -8570,13 +8415,23 @@ func (m *VMIntDbl) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				mapkey |= (int64(b) & 0x7F) << shift
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[int64]float64)
+				m.Vec = make(map[string]float64)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -8937,7 +8792,7 @@ func (m *VMIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
+func (m *VMIntDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -8960,10 +8815,10 @@ func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrTPDblDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMIntDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrTPDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -9007,7 +8862,7 @@ func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var stringLenmapkey uint64
+			var mapkey int64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -9017,23 +8872,13 @@ func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				stringLenmapkey |= (uint64(b) & 0x7F) << shift
+				mapkey |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLenmapkey := int(stringLenmapkey)
-			if intStringLenmapkey < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postStringIndexmapkey := iNdEx + intStringLenmapkey
-			if postStringIndexmapkey > l {
-				return io.ErrUnexpectedEOF
-			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
-			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[string]*VTDblDbl)
+				m.Vec = make(map[int64]float64)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -9051,552 +8896,23 @@ func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
 						break
 					}
 				}
-				var mapmsglen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					mapmsglen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postmsgIndex := iNdEx + mapmsglen
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				if postmsgIndex > l {
+				var mapvaluetemp uint64
+				if (iNdEx + 8) > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := &VTDblDbl{}
-				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
-					return err
-				}
-				iNdEx = postmsgIndex
+				iNdEx += 8
+				mapvaluetemp = uint64(data[iNdEx-8])
+				mapvaluetemp |= uint64(data[iNdEx-7]) << 8
+				mapvaluetemp |= uint64(data[iNdEx-6]) << 16
+				mapvaluetemp |= uint64(data[iNdEx-5]) << 24
+				mapvaluetemp |= uint64(data[iNdEx-4]) << 32
+				mapvaluetemp |= uint64(data[iNdEx-3]) << 40
+				mapvaluetemp |= uint64(data[iNdEx-2]) << 48
+				mapvaluetemp |= uint64(data[iNdEx-1]) << 56
+				mapvalue := math.Float64frombits(mapvaluetemp)
 				m.Vec[mapkey] = mapvalue
 			} else {
-				var mapvalue *VTDblDbl
-				m.Vec[mapkey] = mapvalue
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VMStrTPDblStr) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrTPDblStr: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrTPDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			var keykey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				keykey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			var stringLenmapkey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLenmapkey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLenmapkey := int(stringLenmapkey)
-			if intStringLenmapkey < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postStringIndexmapkey := iNdEx + intStringLenmapkey
-			if postStringIndexmapkey > l {
-				return io.ErrUnexpectedEOF
-			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
-			iNdEx = postStringIndexmapkey
-			if m.Vec == nil {
-				m.Vec = make(map[string]*VTDblStr)
-			}
-			if iNdEx < postIndex {
-				var valuekey uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					valuekey |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				var mapmsglen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					mapmsglen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postmsgIndex := iNdEx + mapmsglen
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				if postmsgIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				mapvalue := &VTDblStr{}
-				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
-					return err
-				}
-				iNdEx = postmsgIndex
-				m.Vec[mapkey] = mapvalue
-			} else {
-				var mapvalue *VTDblStr
-				m.Vec[mapkey] = mapvalue
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VMStrTPDblInt) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrTPDblInt: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrTPDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			var keykey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				keykey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			var stringLenmapkey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLenmapkey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLenmapkey := int(stringLenmapkey)
-			if intStringLenmapkey < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postStringIndexmapkey := iNdEx + intStringLenmapkey
-			if postStringIndexmapkey > l {
-				return io.ErrUnexpectedEOF
-			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
-			iNdEx = postStringIndexmapkey
-			if m.Vec == nil {
-				m.Vec = make(map[string]*VTDblInt)
-			}
-			if iNdEx < postIndex {
-				var valuekey uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					valuekey |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				var mapmsglen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					mapmsglen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postmsgIndex := iNdEx + mapmsglen
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				if postmsgIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				mapvalue := &VTDblInt{}
-				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
-					return err
-				}
-				iNdEx = postmsgIndex
-				m.Vec[mapkey] = mapvalue
-			} else {
-				var mapvalue *VTDblInt
-				m.Vec[mapkey] = mapvalue
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFvec(data[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthFvec
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *VMStrTPStrDbl) Unmarshal(data []byte) error {
-	l := len(data)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFvec
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := data[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrTPStrDbl: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrTPStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postIndex := iNdEx + msglen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			var keykey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				keykey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			var stringLenmapkey uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFvec
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := data[iNdEx]
-				iNdEx++
-				stringLenmapkey |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLenmapkey := int(stringLenmapkey)
-			if intStringLenmapkey < 0 {
-				return ErrInvalidLengthFvec
-			}
-			postStringIndexmapkey := iNdEx + intStringLenmapkey
-			if postStringIndexmapkey > l {
-				return io.ErrUnexpectedEOF
-			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
-			iNdEx = postStringIndexmapkey
-			if m.Vec == nil {
-				m.Vec = make(map[string]*VTStrDbl)
-			}
-			if iNdEx < postIndex {
-				var valuekey uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					valuekey |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				var mapmsglen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFvec
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := data[iNdEx]
-					iNdEx++
-					mapmsglen |= (int(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				postmsgIndex := iNdEx + mapmsglen
-				if mapmsglen < 0 {
-					return ErrInvalidLengthFvec
-				}
-				if postmsgIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				mapvalue := &VTStrDbl{}
-				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
-					return err
-				}
-				iNdEx = postmsgIndex
-				m.Vec[mapkey] = mapvalue
-			} else {
-				var mapvalue *VTStrDbl
+				var mapvalue float64
 				m.Vec[mapkey] = mapvalue
 			}
 			iNdEx = postIndex
@@ -9963,7 +9279,7 @@ func (m *VMStrTPStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMStrTPIntDbl) Unmarshal(data []byte) error {
+func (m *VMStrTPStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -9986,10 +9302,10 @@ func (m *VMStrTPIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMStrTPIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrTPStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMStrTPIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrTPStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -10059,7 +9375,7 @@ func (m *VMStrTPIntDbl) Unmarshal(data []byte) error {
 			mapkey := string(data[iNdEx:postStringIndexmapkey])
 			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[string]*VTIntDbl)
+				m.Vec = make(map[string]*VTStrDbl)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -10102,14 +9418,14 @@ func (m *VMStrTPIntDbl) Unmarshal(data []byte) error {
 				if postmsgIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := &VTIntDbl{}
+				mapvalue := &VTStrDbl{}
 				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
 					return err
 				}
 				iNdEx = postmsgIndex
 				m.Vec[mapkey] = mapvalue
 			} else {
-				var mapvalue *VTIntDbl
+				var mapvalue *VTStrDbl
 				m.Vec[mapkey] = mapvalue
 			}
 			iNdEx = postIndex
@@ -10476,7 +9792,7 @@ func (m *VMStrTPIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
+func (m *VMStrTPIntDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -10499,10 +9815,10 @@ func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntTPDblDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrTPIntDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntTPDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrTPIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -10546,7 +9862,7 @@ func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var mapkey int64
+			var stringLenmapkey uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -10556,13 +9872,23 @@ func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				mapkey |= (int64(b) & 0x7F) << shift
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[int64]*VTDblDbl)
+				m.Vec = make(map[string]*VTIntDbl)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -10605,14 +9931,14 @@ func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
 				if postmsgIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := &VTDblDbl{}
+				mapvalue := &VTIntDbl{}
 				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
 					return err
 				}
 				iNdEx = postmsgIndex
 				m.Vec[mapkey] = mapvalue
 			} else {
-				var mapvalue *VTDblDbl
+				var mapvalue *VTIntDbl
 				m.Vec[mapkey] = mapvalue
 			}
 			iNdEx = postIndex
@@ -10637,7 +9963,7 @@ func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
+func (m *VMStrTPDblStr) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -10660,10 +9986,10 @@ func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntTPDblStr: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrTPDblStr: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntTPDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrTPDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -10707,7 +10033,7 @@ func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var mapkey int64
+			var stringLenmapkey uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -10717,13 +10043,23 @@ func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				mapkey |= (int64(b) & 0x7F) << shift
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[int64]*VTDblStr)
+				m.Vec = make(map[string]*VTDblStr)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -10798,7 +10134,7 @@ func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
+func (m *VMStrTPDblInt) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -10821,10 +10157,10 @@ func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntTPDblInt: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrTPDblInt: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntTPDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrTPDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -10868,7 +10204,7 @@ func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var mapkey int64
+			var stringLenmapkey uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -10878,13 +10214,23 @@ func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				mapkey |= (int64(b) & 0x7F) << shift
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[int64]*VTDblInt)
+				m.Vec = make(map[string]*VTDblInt)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -10959,7 +10305,7 @@ func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
+func (m *VMStrTPDblDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -10982,10 +10328,10 @@ func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntTPStrDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMStrTPDblDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntTPStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMStrTPDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -11029,7 +10375,7 @@ func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
 					break
 				}
 			}
-			var mapkey int64
+			var stringLenmapkey uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowFvec
@@ -11039,13 +10385,23 @@ func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
 				}
 				b := data[iNdEx]
 				iNdEx++
-				mapkey |= (int64(b) & 0x7F) << shift
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
 			if m.Vec == nil {
-				m.Vec = make(map[int64]*VTStrDbl)
+				m.Vec = make(map[string]*VTDblDbl)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -11088,14 +10444,14 @@ func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
 				if postmsgIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := &VTStrDbl{}
+				mapvalue := &VTDblDbl{}
 				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
 					return err
 				}
 				iNdEx = postmsgIndex
 				m.Vec[mapkey] = mapvalue
 			} else {
-				var mapvalue *VTStrDbl
+				var mapvalue *VTDblDbl
 				m.Vec[mapkey] = mapvalue
 			}
 			iNdEx = postIndex
@@ -11442,7 +10798,7 @@ func (m *VMIntTPStrInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *VMIntTPIntDbl) Unmarshal(data []byte) error {
+func (m *VMIntTPStrDbl) Unmarshal(data []byte) error {
 	l := len(data)
 	iNdEx := 0
 	for iNdEx < l {
@@ -11465,10 +10821,10 @@ func (m *VMIntTPIntDbl) Unmarshal(data []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: VMIntTPIntDbl: wiretype end group for non-group")
+			return fmt.Errorf("proto: VMIntTPStrDbl: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: VMIntTPIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: VMIntTPStrDbl: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -11528,7 +10884,7 @@ func (m *VMIntTPIntDbl) Unmarshal(data []byte) error {
 				}
 			}
 			if m.Vec == nil {
-				m.Vec = make(map[int64]*VTIntDbl)
+				m.Vec = make(map[int64]*VTStrDbl)
 			}
 			if iNdEx < postIndex {
 				var valuekey uint64
@@ -11571,14 +10927,14 @@ func (m *VMIntTPIntDbl) Unmarshal(data []byte) error {
 				if postmsgIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := &VTIntDbl{}
+				mapvalue := &VTStrDbl{}
 				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
 					return err
 				}
 				iNdEx = postmsgIndex
 				m.Vec[mapkey] = mapvalue
 			} else {
-				var mapvalue *VTIntDbl
+				var mapvalue *VTStrDbl
 				m.Vec[mapkey] = mapvalue
 			}
 			iNdEx = postIndex
@@ -11925,6 +11281,650 @@ func (m *VMIntTPIntInt) Unmarshal(data []byte) error {
 	}
 	return nil
 }
+func (m *VMIntTPIntDbl) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VMIntTPIntDbl: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VMIntTPIntDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			var keykey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				keykey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			var mapkey int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				mapkey |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if m.Vec == nil {
+				m.Vec = make(map[int64]*VTIntDbl)
+			}
+			if iNdEx < postIndex {
+				var valuekey uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					valuekey |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				var mapmsglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					mapmsglen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postmsgIndex := iNdEx + mapmsglen
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				if postmsgIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				mapvalue := &VTIntDbl{}
+				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
+					return err
+				}
+				iNdEx = postmsgIndex
+				m.Vec[mapkey] = mapvalue
+			} else {
+				var mapvalue *VTIntDbl
+				m.Vec[mapkey] = mapvalue
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VMIntTPDblStr) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VMIntTPDblStr: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VMIntTPDblStr: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			var keykey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				keykey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			var mapkey int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				mapkey |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if m.Vec == nil {
+				m.Vec = make(map[int64]*VTDblStr)
+			}
+			if iNdEx < postIndex {
+				var valuekey uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					valuekey |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				var mapmsglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					mapmsglen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postmsgIndex := iNdEx + mapmsglen
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				if postmsgIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				mapvalue := &VTDblStr{}
+				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
+					return err
+				}
+				iNdEx = postmsgIndex
+				m.Vec[mapkey] = mapvalue
+			} else {
+				var mapvalue *VTDblStr
+				m.Vec[mapkey] = mapvalue
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VMIntTPDblInt) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VMIntTPDblInt: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VMIntTPDblInt: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			var keykey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				keykey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			var mapkey int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				mapkey |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if m.Vec == nil {
+				m.Vec = make(map[int64]*VTDblInt)
+			}
+			if iNdEx < postIndex {
+				var valuekey uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					valuekey |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				var mapmsglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					mapmsglen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postmsgIndex := iNdEx + mapmsglen
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				if postmsgIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				mapvalue := &VTDblInt{}
+				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
+					return err
+				}
+				iNdEx = postmsgIndex
+				m.Vec[mapkey] = mapvalue
+			} else {
+				var mapvalue *VTDblInt
+				m.Vec[mapkey] = mapvalue
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *VMIntTPDblDbl) Unmarshal(data []byte) error {
+	l := len(data)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowFvec
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := data[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: VMIntTPDblDbl: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: VMIntTPDblDbl: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vec", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthFvec
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			var keykey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				keykey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			var mapkey int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowFvec
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := data[iNdEx]
+				iNdEx++
+				mapkey |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if m.Vec == nil {
+				m.Vec = make(map[int64]*VTDblDbl)
+			}
+			if iNdEx < postIndex {
+				var valuekey uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					valuekey |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				var mapmsglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowFvec
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := data[iNdEx]
+					iNdEx++
+					mapmsglen |= (int(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				postmsgIndex := iNdEx + mapmsglen
+				if mapmsglen < 0 {
+					return ErrInvalidLengthFvec
+				}
+				if postmsgIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				mapvalue := &VTDblDbl{}
+				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
+					return err
+				}
+				iNdEx = postmsgIndex
+				m.Vec[mapkey] = mapvalue
+			} else {
+				var mapvalue *VTDblDbl
+				m.Vec[mapkey] = mapvalue
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipFvec(data[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthFvec
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func skipFvec(data []byte) (n int, err error) {
 	l := len(data)
 	iNdEx := 0
@@ -12033,62 +12033,62 @@ var (
 func init() { proto.RegisterFile("fvec.proto", fileDescriptorFvec) }
 
 var fileDescriptorFvec = []byte{
-	// 909 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x99, 0x41, 0x8b, 0xd3, 0x4e,
-	0x18, 0xc6, 0x77, 0x76, 0xda, 0x3f, 0xcd, 0x2c, 0xfb, 0x47, 0xa2, 0x87, 0xb8, 0x60, 0xb7, 0xf4,
-	0x54, 0x58, 0x36, 0xd5, 0x2a, 0xb2, 0x08, 0x82, 0x94, 0x15, 0x0c, 0xa8, 0x48, 0xa7, 0x16, 0xd9,
-	0x8b, 0xb4, 0xdd, 0x6c, 0xb7, 0xd8, 0x4d, 0x35, 0x9d, 0x54, 0xf6, 0xe8, 0x07, 0x10, 0xfc, 0x26,
-	0x7e, 0x05, 0x8f, 0x7b, 0xf4, 0x13, 0x2c, 0x6e, 0xbd, 0xf9, 0x09, 0x3c, 0xca, 0x24, 0x33, 0xdb,
-	0x49, 0x9a, 0xd9, 0x64, 0x92, 0xf4, 0x96, 0x74, 0xf2, 0x3c, 0xf3, 0xcb, 0xbc, 0x0f, 0xef, 0x1b,
-	0x28, 0x42, 0x27, 0x73, 0x7b, 0x68, 0x7e, 0x74, 0xa7, 0x64, 0xaa, 0x1b, 0xa3, 0x31, 0x39, 0xf5,
-	0x06, 0xe6, 0x70, 0x7a, 0x66, 0x7e, 0x3e, 0x77, 0x8e, 0x4f, 0x07, 0x93, 0x81, 0x49, 0xd7, 0x77,
-	0xf6, 0x97, 0x2b, 0xcd, 0xd1, 0x74, 0x34, 0x6d, 0xfa, 0x82, 0x81, 0x77, 0xe2, 0xdf, 0xf9, 0x37,
-	0xfe, 0x55, 0x60, 0xb4, 0xb3, 0x27, 0x3c, 0xce, 0x8d, 0x9a, 0x64, 0x7c, 0x66, 0xcf, 0x26, 0xfd,
-	0xe5, 0x45, 0xf0, 0x70, 0xbd, 0x89, 0x60, 0xb7, 0x3f, 0xd2, 0x75, 0x54, 0x72, 0xfa, 0x67, 0xb6,
-	0x01, 0x6a, 0xa0, 0xa1, 0x75, 0xfc, 0x6b, 0xfd, 0x0e, 0x2a, 0xcf, 0xfb, 0x13, 0xcf, 0x36, 0x36,
-	0xfd, 0x1f, 0x83, 0x9b, 0xfa, 0xd7, 0x4d, 0x54, 0xee, 0xbd, 0xa6, 0xeb, 0xb7, 0x10, 0xfc, 0x60,
-	0x9f, 0x33, 0x09, 0xbd, 0xd4, 0x5f, 0x20, 0xe4, 0xda, 0xb3, 0xe9, 0xc4, 0x23, 0xe3, 0xa9, 0xe3,
-	0xcb, 0xfe, 0x6f, 0x35, 0xcc, 0xb8, 0xf7, 0xba, 0xa6, 0xe8, 0x5c, 0x3f, 0xdf, 0x11, 0xb4, 0xd4,
-	0x9b, 0x90, 0x89, 0x01, 0x6b, 0xa0, 0xb1, 0xdd, 0xa1, 0x97, 0x7a, 0x13, 0x69, 0x9e, 0x33, 0xfe,
-	0xe4, 0xd9, 0xef, 0xc7, 0xc7, 0x46, 0xa9, 0x06, 0x1a, 0xa5, 0xb6, 0xbe, 0xb8, 0xdc, 0xd5, 0xde,
-	0xbd, 0xf5, 0x7f, 0xb5, 0x8e, 0xff, 0x5c, 0xee, 0x82, 0xfd, 0x4e, 0xc5, 0x63, 0xb7, 0x7a, 0x0b,
-	0x21, 0x26, 0x98, 0x11, 0xd7, 0x28, 0x53, 0xca, 0xf6, 0xed, 0xc5, 0xe5, 0x2e, 0x62, 0x0a, 0x4c,
-	0xdc, 0x40, 0xc2, 0x7c, 0x31, 0x71, 0xf5, 0x07, 0xa8, 0x44, 0xfa, 0xa3, 0x99, 0xb1, 0x55, 0x83,
-	0x8d, 0xad, 0xd6, 0x3d, 0x53, 0x56, 0x12, 0xb3, 0xdb, 0x1f, 0x75, 0xfc, 0x47, 0xeb, 0x2d, 0x54,
-	0xe9, 0x75, 0x0f, 0x07, 0x93, 0xc3, 0xc1, 0x44, 0x3c, 0x11, 0x10, 0x9c, 0x48, 0xe8, 0x0c, 0x01,
-	0x3f, 0x43, 0xae, 0xa1, 0x5b, 0x26, 0x68, 0xb4, 0xa8, 0xc6, 0x72, 0x48, 0x92, 0x06, 0x86, 0x34,
-	0x98, 0xb8, 0x11, 0x36, 0x2d, 0x91, 0x0d, 0x13, 0x37, 0xc2, 0xa6, 0x25, 0xb2, 0x61, 0xe2, 0x46,
-	0xd8, 0xb4, 0x44, 0x36, 0xcb, 0x21, 0x11, 0x36, 0x98, 0xc8, 0x66, 0x39, 0x24, 0xc2, 0x06, 0x13,
-	0xd9, 0x2c, 0x87, 0x44, 0xd8, 0xe0, 0x4d, 0x6c, 0x77, 0x51, 0xb9, 0xf7, 0x92, 0x81, 0xcd, 0xed,
-	0xa1, 0x01, 0x6a, 0x90, 0x1e, 0xf4, 0xdc, 0x1e, 0x06, 0x4b, 0x6c, 0x7f, 0xbe, 0xa4, 0x09, 0x4b,
-	0x6c, 0x1b, 0xbe, 0x04, 0x83, 0xa5, 0x67, 0xa8, 0xe2, 0x1b, 0x52, 0xcf, 0x47, 0xcb, 0xd5, 0xad,
-	0x56, 0x5d, 0x1e, 0x31, 0x9e, 0xaa, 0xb0, 0x03, 0xdd, 0x5a, 0xc9, 0x01, 0x13, 0x37, 0xec, 0x40,
-	0x09, 0x95, 0x1c, 0x2c, 0x87, 0x08, 0x0e, 0x2c, 0x4e, 0xe9, 0x1d, 0x02, 0x41, 0xd8, 0x41, 0xed,
-	0x2d, 0x02, 0x41, 0xd8, 0x41, 0xed, 0x2d, 0x02, 0x81, 0xe0, 0xc0, 0x82, 0x97, 0xde, 0x21, 0x10,
-	0x84, 0x1d, 0xd4, 0xde, 0x22, 0x10, 0x84, 0x1d, 0xd4, 0xde, 0x22, 0x10, 0x2c, 0xc3, 0x86, 0xe5,
-	0x11, 0xc5, 0xf2, 0x88, 0x62, 0x79, 0x44, 0x71, 0xee, 0x88, 0xe2, 0xdc, 0x11, 0xc5, 0xb9, 0x23,
-	0x8a, 0x73, 0x47, 0x14, 0xe7, 0x8e, 0x28, 0xce, 0x1d, 0x51, 0x9c, 0x3b, 0xa2, 0x38, 0x77, 0x44,
-	0x71, 0xae, 0x88, 0x7e, 0x01, 0xa8, 0xd2, 0x7b, 0xc5, 0x8a, 0xf1, 0x54, 0xb4, 0xd8, 0xbb, 0xc1,
-	0x82, 0x09, 0xcc, 0x9e, 0x3d, 0x7c, 0xee, 0x10, 0xf7, 0xdc, 0xf7, 0xda, 0x79, 0x8c, 0x2a, 0xfc,
-	0x87, 0xb4, 0x93, 0xec, 0xc9, 0xe6, 0x01, 0x58, 0x32, 0xd0, 0x83, 0x50, 0x62, 0xc0, 0xc4, 0xcd,
-	0xce, 0xa0, 0xc5, 0x32, 0xd0, 0xa3, 0x54, 0x62, 0xb0, 0x1c, 0x92, 0x9d, 0x01, 0xae, 0x32, 0xb0,
-	0x48, 0xa5, 0x67, 0x08, 0x04, 0xe9, 0x18, 0x60, 0xba, 0x5a, 0xb0, 0x50, 0x2a, 0x31, 0xa4, 0xae,
-	0x05, 0x4c, 0x57, 0x0b, 0x16, 0x6b, 0x25, 0x86, 0xd4, 0xb5, 0x80, 0x49, 0xb5, 0xf8, 0x0e, 0xd0,
-	0xb6, 0x5f, 0xde, 0xee, 0x1b, 0xd6, 0x6f, 0xdb, 0x22, 0xc8, 0xfd, 0x84, 0x50, 0x70, 0x55, 0x84,
-	0xe6, 0xe8, 0xc6, 0x64, 0x1c, 0x88, 0x34, 0xe9, 0x7a, 0xba, 0x94, 0x98, 0x96, 0x4f, 0x9d, 0x78,
-	0xb5, 0x86, 0x85, 0x12, 0xd3, 0xbe, 0x25, 0x25, 0xa6, 0xc5, 0x56, 0x27, 0x5e, 0xad, 0x78, 0xa1,
-	0xc4, 0xb4, 0x4f, 0xc6, 0x13, 0xb3, 0x96, 0xa9, 0x48, 0x1c, 0xdb, 0x37, 0x8b, 0x23, 0x66, 0x33,
-	0x52, 0x4a, 0x9c, 0x21, 0x15, 0xb1, 0x5d, 0xb6, 0x50, 0x62, 0x79, 0x2a, 0x58, 0x3b, 0x56, 0x27,
-	0x5e, 0x67, 0x2a, 0xd8, 0x37, 0x40, 0x3c, 0x31, 0x6b, 0xde, 0x8a, 0xc4, 0xb1, 0x1d, 0xbc, 0x38,
-	0x62, 0xf6, 0xcd, 0x21, 0x25, 0xce, 0x90, 0x8a, 0xd8, 0x7e, 0x5f, 0x28, 0xb1, 0x3c, 0x15, 0x6c,
-	0x30, 0xa8, 0x13, 0xaf, 0x33, 0x15, 0xec, 0x9b, 0x6a, 0x85, 0xd8, 0x72, 0x48, 0x86, 0x09, 0x22,
-	0xa8, 0xd2, 0x11, 0xc3, 0xe2, 0x26, 0x08, 0xdf, 0x5b, 0x2d, 0x15, 0x82, 0x6a, 0x9d, 0xc4, 0xb1,
-	0xa9, 0xe0, 0x7b, 0xab, 0xa5, 0x42, 0x50, 0xad, 0x93, 0x58, 0x9e, 0x0a, 0xe5, 0x09, 0x22, 0xa8,
-	0xd6, 0x46, 0x2c, 0x9b, 0x20, 0x7c, 0xef, 0x0c, 0xa9, 0x50, 0x99, 0x20, 0xb0, 0xb8, 0x09, 0xc2,
-	0xf7, 0xce, 0x90, 0x0a, 0x95, 0x09, 0x02, 0x8b, 0x9b, 0x20, 0xfe, 0xde, 0xca, 0x13, 0x44, 0x50,
-	0xad, 0x8d, 0x58, 0x36, 0x41, 0xf8, 0xde, 0x19, 0x52, 0xa1, 0x32, 0x41, 0x60, 0x71, 0x13, 0x84,
-	0xef, 0x9d, 0x21, 0x15, 0x2a, 0x13, 0x04, 0x16, 0x30, 0x41, 0xda, 0xf5, 0x8b, 0xab, 0xea, 0xc6,
-	0xdf, 0xab, 0x2a, 0xf8, 0xb1, 0xa8, 0x82, 0x8b, 0x45, 0x15, 0xfc, 0x5c, 0x54, 0xc1, 0xaf, 0x45,
-	0x15, 0x7c, 0xfb, 0x5d, 0xdd, 0x38, 0x2a, 0x51, 0xdd, 0xe0, 0x3f, 0xff, 0x1f, 0x82, 0x87, 0xff,
-	0x02, 0x00, 0x00, 0xff, 0xff, 0x81, 0x17, 0xd7, 0xd3, 0xa5, 0x18, 0x00, 0x00,
+	// 903 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x99, 0x5f, 0x6b, 0xd3, 0x5e,
+	0x18, 0xc7, 0x77, 0x76, 0xda, 0x1f, 0xdd, 0x19, 0xfb, 0x21, 0xd1, 0x8b, 0x38, 0xb0, 0x2b, 0xbd,
+	0x2a, 0x8c, 0xa5, 0x5a, 0x45, 0x86, 0x20, 0x48, 0xa9, 0x60, 0x40, 0x45, 0x7a, 0x6a, 0x91, 0xdd,
+	0x48, 0xd3, 0x65, 0x5d, 0x31, 0x4b, 0xb5, 0x3d, 0xad, 0xec, 0xd2, 0x17, 0x20, 0xf8, 0x4e, 0x7c,
+	0x0b, 0x5e, 0xee, 0xd2, 0x57, 0x30, 0x5c, 0xbd, 0xf3, 0x15, 0x78, 0x29, 0xe7, 0x4f, 0xd6, 0x24,
+	0xcd, 0x59, 0x72, 0xf2, 0xe7, 0x2e, 0xe9, 0xc9, 0xf7, 0xfb, 0x7c, 0x92, 0xe7, 0x7b, 0xf2, 0x04,
+	0x8a, 0xd0, 0xc9, 0xc2, 0x1e, 0x1a, 0x1f, 0xa7, 0x13, 0x32, 0xd1, 0xf4, 0xd1, 0x98, 0x9c, 0xce,
+	0x2d, 0x63, 0x38, 0x39, 0x33, 0x3e, 0x9f, 0xbb, 0xc7, 0xa7, 0x96, 0x63, 0x19, 0x74, 0x7d, 0xf7,
+	0x60, 0xb5, 0xd2, 0x1c, 0x4d, 0x46, 0x93, 0x26, 0x13, 0x58, 0xf3, 0x13, 0x76, 0xc6, 0x4e, 0xd8,
+	0x11, 0x37, 0xda, 0xdd, 0xf7, 0x5d, 0xee, 0x19, 0x35, 0xc9, 0xf8, 0xcc, 0x9e, 0x39, 0x83, 0xd5,
+	0x01, 0xbf, 0xb8, 0xde, 0x44, 0xb0, 0x37, 0x18, 0x69, 0x1a, 0x2a, 0xb9, 0x83, 0x33, 0x5b, 0x07,
+	0x35, 0xd0, 0xd8, 0xea, 0xb2, 0x63, 0xed, 0x0e, 0x2a, 0x2f, 0x06, 0xce, 0xdc, 0xd6, 0x37, 0xd9,
+	0x8f, 0xfc, 0xa4, 0xfe, 0x75, 0x13, 0x95, 0xfb, 0xaf, 0xe9, 0xfa, 0x2d, 0x04, 0x3f, 0xd8, 0xe7,
+	0x42, 0x42, 0x0f, 0xb5, 0x17, 0x08, 0x4d, 0xed, 0xd9, 0xc4, 0x99, 0x93, 0xf1, 0xc4, 0x65, 0xb2,
+	0xff, 0x5b, 0x0d, 0x23, 0xea, 0xbe, 0xae, 0x29, 0xba, 0xd7, 0xd7, 0x77, 0x7d, 0x5a, 0xea, 0x4d,
+	0x88, 0xa3, 0xc3, 0x1a, 0x68, 0xec, 0x74, 0xe9, 0xa1, 0xd6, 0x44, 0x5b, 0x73, 0x77, 0xfc, 0x69,
+	0x6e, 0xbf, 0x1f, 0x1f, 0xeb, 0xa5, 0x1a, 0x68, 0x94, 0xda, 0xda, 0xf2, 0x72, 0x6f, 0xeb, 0xdd,
+	0x5b, 0xf6, 0xab, 0x79, 0xfc, 0xe7, 0x72, 0x0f, 0x1c, 0x74, 0x2b, 0x73, 0x71, 0xaa, 0xb5, 0x10,
+	0x12, 0x82, 0x19, 0x99, 0xea, 0x65, 0x4a, 0xd9, 0xbe, 0xbd, 0xbc, 0xdc, 0x43, 0x42, 0x81, 0xc9,
+	0x94, 0x4b, 0x84, 0x2f, 0x26, 0x53, 0xed, 0x01, 0x2a, 0x91, 0xc1, 0x68, 0xa6, 0x6f, 0xd7, 0x60,
+	0x63, 0xbb, 0x75, 0xcf, 0x90, 0xb5, 0xc4, 0xe8, 0x0d, 0x46, 0x5d, 0x76, 0x69, 0xbd, 0x85, 0x2a,
+	0xfd, 0x1e, 0x26, 0x53, 0x2a, 0x5f, 0x7f, 0x22, 0xd1, 0xcf, 0xd0, 0xd3, 0x98, 0x2e, 0x89, 0xd3,
+	0xc0, 0xb0, 0xa6, 0x63, 0x39, 0x71, 0x1a, 0x10, 0xd0, 0x98, 0x2e, 0x09, 0xb1, 0xc1, 0x58, 0x36,
+	0xd3, 0x25, 0x21, 0x36, 0x18, 0xcb, 0x66, 0xba, 0x24, 0xc4, 0x06, 0x63, 0xd9, 0x3a, 0x96, 0x13,
+	0x62, 0x03, 0xb1, 0x6c, 0x1d, 0xcb, 0x09, 0xb1, 0x81, 0x58, 0xb6, 0x8e, 0xe5, 0x84, 0xd8, 0xc0,
+	0x4d, 0x6c, 0x77, 0x51, 0xb9, 0xff, 0x52, 0x80, 0x2d, 0xec, 0xa1, 0x0e, 0x6a, 0x90, 0x3e, 0xe8,
+	0x85, 0x3d, 0xe4, 0x4b, 0xa2, 0xbe, 0xb7, 0x04, 0x7d, 0x4b, 0xa2, 0x8c, 0xb7, 0x04, 0xf8, 0xd2,
+	0x33, 0x54, 0x61, 0x86, 0xd4, 0xf3, 0xd1, 0x6a, 0x75, 0xbb, 0x55, 0x97, 0x47, 0xcc, 0x4b, 0x55,
+	0xd0, 0x81, 0x96, 0x56, 0x72, 0x30, 0x5d, 0x12, 0x74, 0xa0, 0x84, 0x4a, 0x0e, 0x1d, 0xcb, 0xf1,
+	0x39, 0x88, 0x38, 0x25, 0x77, 0xe0, 0x82, 0xa0, 0x83, 0xda, 0x5d, 0x70, 0x41, 0xd0, 0x41, 0xed,
+	0x2e, 0xb8, 0xc0, 0xe7, 0x20, 0x82, 0x97, 0xdc, 0x81, 0x0b, 0x82, 0x0e, 0x6a, 0x77, 0xc1, 0x05,
+	0x41, 0x07, 0xb5, 0xbb, 0xe0, 0x82, 0x55, 0xd8, 0xb0, 0x3c, 0xa2, 0x58, 0x1e, 0x51, 0x2c, 0x8f,
+	0x28, 0xce, 0x1c, 0x51, 0x9c, 0x39, 0xa2, 0x38, 0x73, 0x44, 0x71, 0xe6, 0x88, 0xe2, 0xcc, 0x11,
+	0xc5, 0x99, 0x23, 0x8a, 0x33, 0x47, 0x14, 0x67, 0x8e, 0x28, 0xce, 0x14, 0xd1, 0x2f, 0x00, 0x55,
+	0xfa, 0xaf, 0x44, 0xa4, 0x9e, 0xfa, 0x2d, 0xf6, 0x6f, 0xb0, 0x10, 0x02, 0xa3, 0x6f, 0x0f, 0x9f,
+	0xbb, 0x64, 0x7a, 0xce, 0xbc, 0x76, 0x1f, 0xa3, 0x8a, 0xf7, 0x43, 0xd2, 0x29, 0xfb, 0x64, 0xf3,
+	0x10, 0xac, 0x18, 0xe8, 0x83, 0x50, 0x62, 0x30, 0x5d, 0x92, 0x9e, 0x01, 0x46, 0x32, 0xd0, 0x47,
+	0xa9, 0xc4, 0xd0, 0xb1, 0x9c, 0xf4, 0x0c, 0x60, 0x9d, 0x41, 0x6c, 0x8c, 0xe4, 0x0c, 0x5c, 0x90,
+	0x8c, 0x01, 0x26, 0xeb, 0x85, 0xd8, 0x5a, 0x4a, 0x0c, 0x89, 0x7b, 0x01, 0x93, 0xf5, 0x42, 0x6c,
+	0x4e, 0x25, 0x86, 0xc4, 0xbd, 0x80, 0x71, 0xbd, 0xf8, 0x0e, 0xd0, 0x0e, 0x6b, 0x6f, 0xef, 0x8d,
+	0xd8, 0x1c, 0x6d, 0x3f, 0xc8, 0xfd, 0x98, 0x50, 0x78, 0xaa, 0x10, 0xcd, 0xd1, 0x8d, 0xc9, 0x38,
+	0xf4, 0xd3, 0x24, 0x7b, 0xa7, 0x4b, 0x89, 0x69, 0xfb, 0xd4, 0x89, 0xd7, 0x7b, 0x98, 0x2b, 0x31,
+	0x7d, 0x6f, 0x49, 0x89, 0x69, 0xb3, 0xd5, 0x89, 0xd7, 0x3b, 0x9e, 0x2b, 0x31, 0x7d, 0x4f, 0x46,
+	0x13, 0x8b, 0x6d, 0xaa, 0x48, 0x1c, 0xb9, 0x57, 0xf3, 0x23, 0x16, 0x33, 0x52, 0x4a, 0x9c, 0x22,
+	0x15, 0x91, 0x3b, 0x3b, 0x57, 0x62, 0x79, 0x2a, 0xc4, 0x2b, 0x40, 0x9d, 0xb8, 0xc8, 0x54, 0x88,
+	0x6f, 0x80, 0x68, 0x62, 0xf1, 0x3d, 0xa0, 0x48, 0xcc, 0x55, 0x85, 0x11, 0x8b, 0x6f, 0x0e, 0x29,
+	0x71, 0x8a, 0x54, 0x70, 0x55, 0x91, 0xc4, 0xf2, 0x54, 0x88, 0xef, 0x1d, 0x75, 0xe2, 0x22, 0x53,
+	0x21, 0xbe, 0xa9, 0xd6, 0x88, 0x4d, 0x97, 0xa4, 0x98, 0x20, 0x3e, 0x55, 0x32, 0x62, 0x98, 0xdf,
+	0x04, 0xf1, 0x6a, 0xab, 0xa5, 0xc2, 0xa7, 0x2a, 0x92, 0x38, 0x32, 0x15, 0x5e, 0x6d, 0xb5, 0x54,
+	0xf8, 0x54, 0x45, 0x12, 0xcb, 0x53, 0xa1, 0x3c, 0x41, 0x7c, 0xaa, 0xc2, 0x88, 0x65, 0x13, 0xc4,
+	0xab, 0x9d, 0x22, 0x15, 0x2a, 0x13, 0x04, 0xe6, 0x37, 0x41, 0xbc, 0xda, 0x29, 0x52, 0xa1, 0x32,
+	0x41, 0x60, 0x7e, 0x13, 0x84, 0xd5, 0x56, 0x9e, 0x20, 0x3e, 0x55, 0x61, 0xc4, 0xb2, 0x09, 0xe2,
+	0xd5, 0x4e, 0x91, 0x0a, 0x95, 0x09, 0x02, 0xf3, 0x9b, 0x20, 0x5e, 0xed, 0x14, 0xa9, 0x50, 0x99,
+	0x20, 0x30, 0x87, 0x09, 0xd2, 0xae, 0x5f, 0x5c, 0x55, 0x37, 0xfe, 0x5e, 0x55, 0xc1, 0x8f, 0x65,
+	0x15, 0x5c, 0x2c, 0xab, 0xe0, 0xe7, 0xb2, 0x0a, 0x7e, 0x2d, 0xab, 0xe0, 0xdb, 0xef, 0xea, 0xc6,
+	0x51, 0x89, 0xea, 0xac, 0xff, 0xd8, 0x3f, 0x04, 0x0f, 0xff, 0x05, 0x00, 0x00, 0xff, 0xff, 0x1a,
+	0xc7, 0xee, 0xcb, 0xa5, 0x18, 0x00, 0x00,
 }

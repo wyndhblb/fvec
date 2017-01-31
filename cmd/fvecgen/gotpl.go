@@ -17,7 +17,7 @@ import (
 type {{.ClassName}} struct {
 	Name *fvec.VName
 {{ range .Fields }}
-	{{.FieldName}} fvec.{{.FieldType}} ` + "`" + `json:"{{.ColumnName}}" cql:"{{.ColumnName}}" msg:"{{.ColumnName}}"` + "`" + `
+	{{.FieldName}} *fvec.{{.FieldType}} ` + "`" + `json:"{{.ColumnName}}" cql:"{{.ColumnName}}" msg:"{{.ColumnName}}"` + "`" + `
 {{ end }}
 
 }
@@ -26,6 +26,9 @@ type {{.ClassName}} struct {
 func New{{.ClassName}}() *{{.ClassName}}{
 	n := new({{.ClassName}})
 	n.Name = new(fvec.VName)
+	{{ range .Fields }}
+	n.{{.FieldName}} = new(fvec.{{.FieldType}})
+	{{ end }}
 	return n
 }
 
@@ -90,11 +93,11 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 	haveC := false
 	haveA := false
 	{{ range .Fields }}
-	if len(f.{{.FieldName}}.CassandraCreateType()) > 0{
-		queries = append(queries, f.{{.FieldName}}.CassandraCreateType())
+	if len(f.{{.FieldName}}.CassandraCreateType(keyspace)) > 0{
+		queries = append(queries, f.{{.FieldName}}.CassandraCreateType(keyspace))
 	}
 	{{ if .IsCounter }}
-	cSubs = append(subs, "{{.ColumnName}} " + f.{{.FieldName}}.CassandraType())
+	cSubs = append(cSubs, "{{.ColumnName}} " + f.{{.FieldName}}.CassandraType())
 	haveC = true
 	{{ else }}
 	subs = append(subs, "{{.ColumnName}} " + f.{{.FieldName}}.CassandraType())
@@ -103,9 +106,9 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 	{{ end }}
 
 	createSQL := "CREATE TABLE IF NOT EXISTS " + keyspace + "." + table + "("
-	createSQL += strings.Join(", ", subs)
+	createSQL += strings.Join(subs, ", ")
 	createSQL += ` + "`" + `
-		PRIMARY KEY ((uid, slab), ord)
+		, PRIMARY KEY ((uid, slab), ord)
 		) WITH CLUSTERING ORDER BY (ord ASC) AND
 		compaction = {
 		'class': 'TimeWindowCompactionStrategy',
@@ -116,9 +119,9 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 	` + "`" + `
 
 	counterSQL := "CREATE TABLE IF NOT EXISTS " + keyspace + "." + table + "_counters("
-	counterSQL += strings.Join(", ", subs)
+	counterSQL += strings.Join(cSubs, ", ")
 	counterSQL += ` + "`" + `
-		PRIMARY KEY ((uid, slab), ord)
+		, PRIMARY KEY ((uid, slab), ord)
 		) WITH compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
 		AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'};
 	` + "`" + `
@@ -130,6 +133,18 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 		queries = append(queries, counterSQL)
 	}
 	return queries
+}
+
+// CassandraSelectQueries the set of queries to get the full object
+// this does not include a where clause just the SELECT (stuff, stuff, ...) FROM {table}
+// if there are counters there will be 2 queries for the counters table
+func (f *{{.ClassName}}) CassandraSelectQueries(table string) []string {
+	return []string{
+		"SELECT " + strings.Join(f.DBColumns(), ",") + " FROM " + table,
+		{{ if .HaveCounters }}
+		"SELECT " + strings.Join(f.DBCounterColumns(), ",") + " FROM " + table,
+		{{ end }}
+	}
 }
 
 // GetName return the name object

@@ -244,24 +244,74 @@ The `VarName` will end as a public struct attribute (CamelCase) and the name of 
 
 For example
 
-    fvecgen --classname=MyClass --pkgname=mypackge --format=col1=s,col2=mssi,col3=c,col4=f,col5=si
+    fvecgen --classname=GenTT --pkgname=main --format=col1=s,col2=mssi,col3=c,col4=f,col5=si,col6=msss,col7=li,col8=b,col9=ss,col10=msd,col11=c,col12=sid 
     
 Will generate a struct that looks like
     
-    package mypackage
+    type GenTT struct {
+    	Name *fvec.VName
     
-    type MyClass struct {
-            Name *fvec.VName
+    	Col1 *fvec.StringType `json:"col1" cql:"col1" msg:"col1"`
     
-            Col1 fvec.StringType `json:"col1" cql:"col1" msg:"col1"`
+    	Col2 *fvec.VMStrTPStrInt `json:"col2" cql:"col2" msg:"col2"`
     
-            Col2 fvec.VMStrTPStrInt `json:"col2" cql:"col2" msg:"col2"`
+    	Col3 *fvec.CounterType `json:"col3" cql:"col3" msg:"col3"`
     
-            Col3 fvec.CounterType `json:"col3" cql:"col3" msg:"col3"`
+    	Col4 *fvec.DoubleType `json:"col4" cql:"col4" msg:"col4"`
     
-            Col4 fvec.FloatType `json:"col4" cql:"col4" msg:"col4"`
+    	Col5 *fvec.VSInt `json:"col5" cql:"col5" msg:"col5"`
     
-            Col5 fvec.VSInt `json:"col5" cql:"col5" msg:"col5"`
+    	Col6 *fvec.VMStrTPStrStr `json:"col6" cql:"col6" msg:"col6"`
+    
+    	Col7 *fvec.VLInt `json:"col7" cql:"col7" msg:"col7"`
+    
+    	Col8 *fvec.ByteType `json:"col8" cql:"col8" msg:"col8"`
+    
+    	Col9 *fvec.VSStr `json:"col9" cql:"col9" msg:"col9"`
+    
+    	Col10 *fvec.VMStrDbl `json:"col10" cql:"col10" msg:"col10"`
+    
+    	Col11 *fvec.CounterType `json:"col11" cql:"col11" msg:"col11"`
+    
+    	Col12 *fvec.VSIntDbl `json:"col12" cql:"col12" msg:"col12"`
     }
 
-and come with a bunch of helper functions.
+and come with a bunch of helper functions.  Since there are counters here, the generated cassandra "create" structure will 
+actually have 2 tables, one for the counters and one for everything else.  the counter table is prefixed with `_counters`
+
+    CREATE TYPE IF NOT EXISTS mykey.VTStrInt ( k varchar, v bigint );
+    CREATE TYPE IF NOT EXISTS mykey.VTStrStr ( k varchar, v varchar );
+    CREATE TYPE IF NOT EXISTS mykey.VTIntDbl ( k bigint, v double );
+    CREATE TABLE IF NOT EXISTS mykey.mtable(
+        uid ascii, 
+        slab ascii, 
+        ord ascii, 
+        col1 varchar, 
+        col2 map<varchar,frozen<VTStrInt>>, 
+        col4 double, 
+        col5 set<bigint>, 
+        col6 map<varchar,frozen<VTStrStr>>, 
+        col7 list<bigint>, 
+        col8 blob, 
+        col9 set<varchar>, 
+        col10 map<varchar,double>, 
+        col12 set<frozen<VTIntDbl>>,
+        PRIMARY KEY ((uid, slab), ord)
+        ) WITH CLUSTERING ORDER BY (ord ASC) AND
+            compaction = {
+            'class': 'TimeWindowCompactionStrategy',
+            'compaction_window_unit': 'DAYS',
+            'compaction_window_size': '1'
+        }
+        AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'};
+            
+    CREATE TABLE IF NOT EXISTS mykey.mtable_counters(
+        uid ascii, 
+        slab ascii, 
+        ord ascii, 
+        col3 counter, 
+        col11 counter, 
+        PRIMARY KEY ((uid, slab), ord)
+        ) WITH compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+        AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'};
+

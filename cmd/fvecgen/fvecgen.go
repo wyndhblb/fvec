@@ -21,6 +21,7 @@ import (
 	"regexp"
 	"strings"
 	"text/template"
+	"reflect"
 )
 
 var FVEC_PACKAGE string = "fvec"
@@ -58,6 +59,7 @@ type GoTpl struct {
 	ClassName   string
 	PackageName string
 	FieldStr    string
+	HaveCounters bool
 
 	Fields []GoFieldVars
 	tpl    *template.Template
@@ -67,7 +69,13 @@ func (g *GoTpl) ComposeVars() {
 	g.Fields = make([]GoFieldVars, 0)
 	g.ClassName = ToCamelCase(g.ClassName)
 
-	g.tpl = template.Must(template.New("go-lang-fvec-gen").Parse(GOLANG_TEMPLATE))
+	var fns = template.FuncMap{
+		"last": func(x int, a interface{}) bool {
+			return x == reflect.ValueOf(a).Len() - 1
+		},
+	}
+
+	g.tpl = template.Must(template.New("go-lang-fvec-gen").Funcs(fns).Parse(GOLANG_TEMPLATE))
 
 	for _, s := range strings.Split(g.FieldStr, ",") {
 		nmv := strings.Split(strings.Replace(s, " ", "", -1), "=")
@@ -79,6 +87,9 @@ func (g *GoTpl) ComposeVars() {
 			if ftype, ok = fvec.SHORT_NAME_MAP[nmv[1]]; !ok {
 				panic(nmv[1] + " is not valid type")
 			}
+		}
+		if fvec.IsCounter(ftype){
+			g.HaveCounters = true
 		}
 		g.Fields = append(g.Fields, GoFieldVars{
 			FieldName:  ToCamelCase(nmv[0]),
@@ -115,6 +126,7 @@ func main() {
 		PackageName: *pkgname,
 		ClassName:   *clsname,
 		FieldStr:    *pstr,
+		HaveCounters: false,
 	}
 
 	goGen.ComposeVars()

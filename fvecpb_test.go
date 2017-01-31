@@ -11,63 +11,63 @@ It is generated from these files:
 It has these top-level messages:
 	Tag
 	VName
-	VTDblDbl
-	VTDblStr
-	VTDblInt
-	VTStrDbl
 	VTStrStr
 	VTStrInt
-	VTIntDbl
+	VTStrDbl
 	VTIntStr
 	VTIntInt
-	VLDbl
+	VTIntDbl
+	VTDblStr
+	VTDblInt
+	VTDblDbl
 	VLStr
 	VLInt
-	VLDblDbl
-	VLDblStr
-	VLDblInt
-	VLStrDbl
+	VLDbl
 	VLStrStr
 	VLStrInt
-	VLIntDbl
+	VLStrDbl
 	VLIntStr
 	VLIntInt
-	VSDbl
+	VLIntDbl
+	VLDblStr
+	VLDblInt
+	VLDblDbl
 	VSStr
 	VSInt
-	VSDblDbl
-	VSDblStr
-	VSDblInt
-	VSStrDbl
+	VSDbl
 	VSStrStr
 	VSStrInt
-	VSIntDbl
+	VSStrDbl
 	VSIntStr
 	VSIntInt
-	VMStrDbl
+	VSIntDbl
+	VSDblStr
+	VSDblInt
+	VSDblDbl
 	VMStrStr
 	VMStrInt
-	VMIntDbl
+	VMStrDbl
 	VMIntStr
 	VMIntInt
-	VMStrTPDblDbl
-	VMStrTPDblStr
-	VMStrTPDblInt
-	VMStrTPStrDbl
+	VMIntDbl
 	VMStrTPStrStr
 	VMStrTPStrInt
-	VMStrTPIntDbl
+	VMStrTPStrDbl
 	VMStrTPIntStr
 	VMStrTPIntInt
-	VMIntTPDblDbl
-	VMIntTPDblStr
-	VMIntTPDblInt
-	VMIntTPStrDbl
+	VMStrTPIntDbl
+	VMStrTPDblStr
+	VMStrTPDblInt
+	VMStrTPDblDbl
 	VMIntTPStrStr
 	VMIntTPStrInt
-	VMIntTPIntDbl
+	VMIntTPStrDbl
 	VMIntTPIntStr
 	VMIntTPIntInt
+	VMIntTPIntDbl
+	VMIntTPDblStr
+	VMIntTPDblInt
+	VMIntTPDblDbl
 */
 package fvec
 
@@ -165,166 +165,6 @@ func BenchmarkVNameProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVTDblDblProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblDbl, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVTDblDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblDblProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblDbl(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VTDblDbl{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblStrProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblStr, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVTDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblStrProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblStr(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VTDblStr{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblIntProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblInt, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVTDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblIntProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblInt(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VTDblInt{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTStrDblProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTStrDbl, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVTStrDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTStrDblProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTStrDbl(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VTStrDbl{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
 func BenchmarkVTStrStrProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
@@ -405,12 +245,12 @@ func BenchmarkVTStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVTIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVTStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VTIntDbl, 10000)
+	pops := make([]*VTStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVTIntDbl(popr, false)
+		pops[i] = NewPopulatedVTStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -423,18 +263,18 @@ func BenchmarkVTIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVTIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVTStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VTIntDbl{}
+	msg := &VTStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -525,12 +365,12 @@ func BenchmarkVTIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblProtoMarshal(b *testing.B) {
+func BenchmarkVTIntDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLDbl, 10000)
+	pops := make([]*VTIntDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLDbl(popr, false)
+		pops[i] = NewPopulatedVTIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -543,18 +383,138 @@ func BenchmarkVLDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVTIntDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTIntDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VLDbl{}
+	msg := &VTIntDbl{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblStrProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblStr, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVTDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblStrProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblStr(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VTDblStr{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblIntProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblInt, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVTDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblIntProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblInt(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VTDblInt{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblDblProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblDbl, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVTDblDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblDblProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVTDblDbl(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VTDblDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -645,12 +605,12 @@ func BenchmarkVLIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblDblProtoMarshal(b *testing.B) {
+func BenchmarkVLDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLDblDbl, 10000)
+	pops := make([]*VLDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLDblDbl(popr, false)
+		pops[i] = NewPopulatedVLDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -663,138 +623,18 @@ func BenchmarkVLDblDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVLDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VLDblDbl{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblStrProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLDblStr, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblStrProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblStr(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VLDblStr{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblIntProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLDblInt, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblIntProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblInt(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VLDblInt{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLStrDblProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLStrDbl, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLStrDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLStrDblProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLStrDbl(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VLStrDbl{}
+	msg := &VLDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -885,12 +725,12 @@ func BenchmarkVLStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVLStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLIntDbl, 10000)
+	pops := make([]*VLStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVLIntDbl(popr, false)
+		pops[i] = NewPopulatedVLStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -903,18 +743,18 @@ func BenchmarkVLIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVLStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VLIntDbl{}
+	msg := &VLStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1005,12 +845,12 @@ func BenchmarkVLIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblProtoMarshal(b *testing.B) {
+func BenchmarkVLIntDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSDbl, 10000)
+	pops := make([]*VLIntDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSDbl(popr, false)
+		pops[i] = NewPopulatedVLIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1023,18 +863,138 @@ func BenchmarkVSDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVLIntDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLIntDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VSDbl{}
+	msg := &VLIntDbl{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblStrProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblStr, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVLDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblStrProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblStr(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VLDblStr{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblIntProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblInt, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVLDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblIntProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblInt(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VLDblInt{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblDblProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblDbl, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVLDblDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblDblProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVLDblDbl(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VLDblDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1125,12 +1085,12 @@ func BenchmarkVSIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblDblProtoMarshal(b *testing.B) {
+func BenchmarkVSDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSDblDbl, 10000)
+	pops := make([]*VSDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSDblDbl(popr, false)
+		pops[i] = NewPopulatedVSDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1143,138 +1103,18 @@ func BenchmarkVSDblDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVSDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VSDblDbl{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblStrProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSDblStr, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblStrProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblStr(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VSDblStr{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblIntProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSDblInt, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblIntProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblInt(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VSDblInt{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSStrDblProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSStrDbl, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSStrDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSStrDblProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSStrDbl(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VSStrDbl{}
+	msg := &VSDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1365,12 +1205,12 @@ func BenchmarkVSStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVSStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSIntDbl, 10000)
+	pops := make([]*VSStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVSIntDbl(popr, false)
+		pops[i] = NewPopulatedVSStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1383,18 +1223,18 @@ func BenchmarkVSIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVSStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VSIntDbl{}
+	msg := &VSStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1485,12 +1325,12 @@ func BenchmarkVSIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrDblProtoMarshal(b *testing.B) {
+func BenchmarkVSIntDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrDbl, 10000)
+	pops := make([]*VSIntDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrDbl(popr, false)
+		pops[i] = NewPopulatedVSIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1503,18 +1343,138 @@ func BenchmarkVMStrDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVSIntDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSIntDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMStrDbl{}
+	msg := &VSIntDbl{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblStrProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblStr, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVSDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblStrProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblStr(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VSDblStr{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblIntProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblInt, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVSDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblIntProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblInt(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VSDblInt{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblDblProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblDbl, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVSDblDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblDblProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVSDblDbl(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VSDblDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1605,12 +1565,12 @@ func BenchmarkVMStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVMStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntDbl, 10000)
+	pops := make([]*VMStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntDbl(popr, false)
+		pops[i] = NewPopulatedVMStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1623,18 +1583,18 @@ func BenchmarkVMIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntDbl{}
+	msg := &VMStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1725,12 +1685,12 @@ func BenchmarkVMIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPDblDblProtoMarshal(b *testing.B) {
+func BenchmarkVMIntDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrTPDblDbl, 10000)
+	pops := make([]*VMIntDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblDbl(popr, false)
+		pops[i] = NewPopulatedVMIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1743,138 +1703,18 @@ func BenchmarkVMStrTPDblDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPDblDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMIntDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMStrTPDblDbl{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblStrProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPDblStr, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblStrProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblStr(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VMStrTPDblStr{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblIntProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPDblInt, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblIntProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblInt(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VMStrTPDblInt{}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += len(datas[i%10000])
-		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
-			panic(err)
-		}
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPStrDblProtoMarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPStrDbl, 10000)
-	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrTPStrDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
-		if err != nil {
-			panic(err)
-		}
-		total += len(data)
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPStrDblProtoUnmarshal(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	datas := make([][]byte, 10000)
-	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPStrDbl(popr, false))
-		if err != nil {
-			panic(err)
-		}
-		datas[i] = data
-	}
-	msg := &VMStrTPStrDbl{}
+	msg := &VMIntDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -1965,12 +1805,12 @@ func BenchmarkVMStrTPStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVMStrTPStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrTPIntDbl, 10000)
+	pops := make([]*VMStrTPStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMStrTPIntDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -1983,18 +1823,18 @@ func BenchmarkVMStrTPIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrTPStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMStrTPIntDbl{}
+	msg := &VMStrTPStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2085,12 +1925,12 @@ func BenchmarkVMStrTPIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblDblProtoMarshal(b *testing.B) {
+func BenchmarkVMStrTPIntDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblDbl, 10000)
+	pops := make([]*VMStrTPIntDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2103,18 +1943,18 @@ func BenchmarkVMIntTPDblDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrTPIntDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPIntDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntTPDblDbl{}
+	msg := &VMStrTPIntDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2125,12 +1965,12 @@ func BenchmarkVMIntTPDblDblProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblStrProtoMarshal(b *testing.B) {
+func BenchmarkVMStrTPDblStrProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblStr, 10000)
+	pops := make([]*VMStrTPDblStr, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblStr(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblStr(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2143,18 +1983,18 @@ func BenchmarkVMIntTPDblStrProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblStrProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrTPDblStrProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblStr(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblStr(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntTPDblStr{}
+	msg := &VMStrTPDblStr{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2165,12 +2005,12 @@ func BenchmarkVMIntTPDblStrProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblIntProtoMarshal(b *testing.B) {
+func BenchmarkVMStrTPDblIntProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblInt, 10000)
+	pops := make([]*VMStrTPDblInt, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblInt(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblInt(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2183,18 +2023,18 @@ func BenchmarkVMIntTPDblIntProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblIntProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrTPDblIntProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblInt(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblInt(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntTPDblInt{}
+	msg := &VMStrTPDblInt{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2205,12 +2045,12 @@ func BenchmarkVMIntTPDblIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPStrDblProtoMarshal(b *testing.B) {
+func BenchmarkVMStrTPDblDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPStrDbl, 10000)
+	pops := make([]*VMStrTPDblDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntTPStrDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2223,18 +2063,18 @@ func BenchmarkVMIntTPStrDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPStrDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMStrTPDblDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPStrDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMStrTPDblDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntTPStrDbl{}
+	msg := &VMStrTPDblDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2325,12 +2165,12 @@ func BenchmarkVMIntTPStrIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPIntDblProtoMarshal(b *testing.B) {
+func BenchmarkVMIntTPStrDblProtoMarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPIntDbl, 10000)
+	pops := make([]*VMIntTPStrDbl, 10000)
 	for i := 0; i < 10000; i++ {
-		pops[i] = NewPopulatedVMIntTPIntDbl(popr, false)
+		pops[i] = NewPopulatedVMIntTPStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2343,18 +2183,18 @@ func BenchmarkVMIntTPIntDblProtoMarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPIntDblProtoUnmarshal(b *testing.B) {
+func BenchmarkVMIntTPStrDblProtoUnmarshal(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
 	datas := make([][]byte, 10000)
 	for i := 0; i < 10000; i++ {
-		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPIntDbl(popr, false))
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPStrDbl(popr, false))
 		if err != nil {
 			panic(err)
 		}
 		datas[i] = data
 	}
-	msg := &VMIntTPIntDbl{}
+	msg := &VMIntTPStrDbl{}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		total += len(datas[i%10000])
@@ -2445,6 +2285,166 @@ func BenchmarkVMIntTPIntIntProtoUnmarshal(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
+func BenchmarkVMIntTPIntDblProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPIntDbl, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVMIntTPIntDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPIntDblProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPIntDbl(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VMIntTPIntDbl{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblStrProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblStr, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblStrProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblStr(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VMIntTPDblStr{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblIntProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblInt, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblIntProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblInt(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VMIntTPDblInt{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblDblProtoMarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblDbl, 10000)
+	for i := 0; i < 10000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(pops[i%10000])
+		if err != nil {
+			panic(err)
+		}
+		total += len(data)
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblDblProtoUnmarshal(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	datas := make([][]byte, 10000)
+	for i := 0; i < 10000; i++ {
+		data, err := github_com_gogo_protobuf_proto.Marshal(NewPopulatedVMIntTPDblDbl(popr, false))
+		if err != nil {
+			panic(err)
+		}
+		datas[i] = data
+	}
+	msg := &VMIntTPDblDbl{}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += len(datas[i%10000])
+		if err := github_com_gogo_protobuf_proto.Unmarshal(datas[i%10000], msg); err != nil {
+			panic(err)
+		}
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
 func BenchmarkTagSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
@@ -2465,62 +2465,6 @@ func BenchmarkVNameSize(b *testing.B) {
 	pops := make([]*VName, 1000)
 	for i := 0; i < 1000; i++ {
 		pops[i] = NewPopulatedVName(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblDblSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblDbl, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVTDblDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblStrSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblStr, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVTDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTDblIntSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTDblInt, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVTDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVTStrDblSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VTStrDbl, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVTStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2557,12 +2501,12 @@ func BenchmarkVTStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVTIntDblSize(b *testing.B) {
+func BenchmarkVTStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VTIntDbl, 1000)
+	pops := make([]*VTStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVTIntDbl(popr, false)
+		pops[i] = NewPopulatedVTStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2599,12 +2543,54 @@ func BenchmarkVTIntIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblSize(b *testing.B) {
+func BenchmarkVTIntDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLDbl, 1000)
+	pops := make([]*VTIntDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLDbl(popr, false)
+		pops[i] = NewPopulatedVTIntDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblStrSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblStr, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVTDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblIntSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblInt, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVTDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVTDblDblSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VTDblDbl, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVTDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2641,54 +2627,12 @@ func BenchmarkVLIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLDblDblSize(b *testing.B) {
+func BenchmarkVLDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLDblDbl, 1000)
+	pops := make([]*VLDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLDblDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblStrSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLDblStr, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLDblIntSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLDblInt, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVLStrDblSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VLStrDbl, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLStrDbl(popr, false)
+		pops[i] = NewPopulatedVLDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2725,12 +2669,12 @@ func BenchmarkVLStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVLIntDblSize(b *testing.B) {
+func BenchmarkVLStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VLIntDbl, 1000)
+	pops := make([]*VLStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVLIntDbl(popr, false)
+		pops[i] = NewPopulatedVLStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2767,12 +2711,54 @@ func BenchmarkVLIntIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblSize(b *testing.B) {
+func BenchmarkVLIntDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSDbl, 1000)
+	pops := make([]*VLIntDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSDbl(popr, false)
+		pops[i] = NewPopulatedVLIntDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblStrSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblStr, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVLDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblIntSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblInt, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVLDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVLDblDblSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VLDblDbl, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVLDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2809,54 +2795,12 @@ func BenchmarkVSIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSDblDblSize(b *testing.B) {
+func BenchmarkVSDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSDblDbl, 1000)
+	pops := make([]*VSDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSDblDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblStrSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSDblStr, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSDblIntSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSDblInt, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVSStrDblSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VSStrDbl, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSStrDbl(popr, false)
+		pops[i] = NewPopulatedVSDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2893,12 +2837,12 @@ func BenchmarkVSStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVSIntDblSize(b *testing.B) {
+func BenchmarkVSStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VSIntDbl, 1000)
+	pops := make([]*VSStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVSIntDbl(popr, false)
+		pops[i] = NewPopulatedVSStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2935,12 +2879,54 @@ func BenchmarkVSIntIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrDblSize(b *testing.B) {
+func BenchmarkVSIntDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrDbl, 1000)
+	pops := make([]*VSIntDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrDbl(popr, false)
+		pops[i] = NewPopulatedVSIntDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblStrSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblStr, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVSDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblIntSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblInt, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVSDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVSDblDblSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VSDblDbl, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVSDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -2977,12 +2963,12 @@ func BenchmarkVMStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntDblSize(b *testing.B) {
+func BenchmarkVMStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntDbl, 1000)
+	pops := make([]*VMStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntDbl(popr, false)
+		pops[i] = NewPopulatedVMStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3019,54 +3005,12 @@ func BenchmarkVMIntIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPDblDblSize(b *testing.B) {
+func BenchmarkVMIntDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrTPDblDbl, 1000)
+	pops := make([]*VMIntDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblDbl(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblStrSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPDblStr, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblStr(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPDblIntSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPDblInt, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrTPDblInt(popr, false)
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		total += pops[i%1000].Size()
-	}
-	b.SetBytes(int64(total / b.N))
-}
-
-func BenchmarkVMStrTPStrDblSize(b *testing.B) {
-	popr := math_rand.New(math_rand.NewSource(616))
-	total := 0
-	pops := make([]*VMStrTPStrDbl, 1000)
-	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrTPStrDbl(popr, false)
+		pops[i] = NewPopulatedVMIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3103,12 +3047,12 @@ func BenchmarkVMStrTPStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMStrTPIntDblSize(b *testing.B) {
+func BenchmarkVMStrTPStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMStrTPIntDbl, 1000)
+	pops := make([]*VMStrTPStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMStrTPIntDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3145,12 +3089,12 @@ func BenchmarkVMStrTPIntIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblDblSize(b *testing.B) {
+func BenchmarkVMStrTPIntDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblDbl, 1000)
+	pops := make([]*VMStrTPIntDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPIntDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3159,12 +3103,12 @@ func BenchmarkVMIntTPDblDblSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblStrSize(b *testing.B) {
+func BenchmarkVMStrTPDblStrSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblStr, 1000)
+	pops := make([]*VMStrTPDblStr, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblStr(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblStr(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3173,12 +3117,12 @@ func BenchmarkVMIntTPDblStrSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPDblIntSize(b *testing.B) {
+func BenchmarkVMStrTPDblIntSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPDblInt, 1000)
+	pops := make([]*VMStrTPDblInt, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntTPDblInt(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblInt(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3187,12 +3131,12 @@ func BenchmarkVMIntTPDblIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPStrDblSize(b *testing.B) {
+func BenchmarkVMStrTPDblDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPStrDbl, 1000)
+	pops := make([]*VMStrTPDblDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntTPStrDbl(popr, false)
+		pops[i] = NewPopulatedVMStrTPDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3229,12 +3173,12 @@ func BenchmarkVMIntTPStrIntSize(b *testing.B) {
 	b.SetBytes(int64(total / b.N))
 }
 
-func BenchmarkVMIntTPIntDblSize(b *testing.B) {
+func BenchmarkVMIntTPStrDblSize(b *testing.B) {
 	popr := math_rand.New(math_rand.NewSource(616))
 	total := 0
-	pops := make([]*VMIntTPIntDbl, 1000)
+	pops := make([]*VMIntTPStrDbl, 1000)
 	for i := 0; i < 1000; i++ {
-		pops[i] = NewPopulatedVMIntTPIntDbl(popr, false)
+		pops[i] = NewPopulatedVMIntTPStrDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -3263,6 +3207,62 @@ func BenchmarkVMIntTPIntIntSize(b *testing.B) {
 	pops := make([]*VMIntTPIntInt, 1000)
 	for i := 0; i < 1000; i++ {
 		pops[i] = NewPopulatedVMIntTPIntInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPIntDblSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPIntDbl, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVMIntTPIntDbl(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblStrSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblStr, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblStr(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblIntSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblInt, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblInt(popr, false)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		total += pops[i%1000].Size()
+	}
+	b.SetBytes(int64(total / b.N))
+}
+
+func BenchmarkVMIntTPDblDblSize(b *testing.B) {
+	popr := math_rand.New(math_rand.NewSource(616))
+	total := 0
+	pops := make([]*VMIntTPDblDbl, 1000)
+	for i := 0; i < 1000; i++ {
+		pops[i] = NewPopulatedVMIntTPDblDbl(popr, false)
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {

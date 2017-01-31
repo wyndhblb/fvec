@@ -8,6 +8,7 @@
 // XX:generate easyjson -all fvec_list_msgp.go
 //go:generate easyjson fvec.pb.go
 //go:generate easyjson fvec.go
+//go:generate easyjson -all scalar.go
 //go:generate gofmt -w -s .
 
 package fvec
