@@ -7,11 +7,14 @@
 package fvec
 
 import (
+	"encoding/json"
 	"strings"
 )
 
-// VectorType interface
-type VectorType interface {
+// VECTORS
+
+// GeneratorType interface so we can "generate" things from the base objects
+type GeneratorType interface {
 
 	// CassandraCreateType string for the create type (if nessesary)
 	// the string will be blank if no create is needed
@@ -19,6 +22,12 @@ type VectorType interface {
 
 	// CassandraType the matching types in cassandra for the tuple
 	CassandraType() string
+
+	// JavaType the string of the "type" in Java
+	JavaType() string
+
+	// GoType the string of the "type" in go
+	GoType() string
 }
 
 // Vector interface
@@ -32,20 +41,14 @@ type Vector interface {
 	// CassandraType the type in cassandra
 	CassandraType() string
 
-	// Key key name
-	Key() string
-
-	// GetName get the name object
-	GetName() *VName
-
-	// UniqueId unique id of the vector
-	UniqueId() uint64
-
-	// UniqueIdString unique id as a base36 string of the vector
-	UniqueIdString() string
-
 	// TypeName the type name of the vector
 	TypeName() string
+
+	// JavaType the string of the "type" in Java
+	JavaType() string
+
+	// GoType the string of the "type" in go
+	GoType() string
 }
 
 type VectorMap interface {
@@ -63,14 +66,111 @@ type VectorSet interface {
 	IsSet() bool
 }
 
-// list objects sorts by the key name
-type VectorSlice []Vector
+// NamedVector a vector with a name interface
+type NamedVector interface {
 
-func (p VectorSlice) Len() int { return len(p) }
-func (p VectorSlice) Less(i, j int) bool {
+	// GetVector
+	GetVector() Vector
+
+	// Key key name
+	Key() string
+
+	// GetName get the name object
+	GetName() *VName
+
+	// UniqueId unique id of the vector
+	UniqueId() uint64
+
+	// UniqueIdString unique id as a base36 string of the vector
+	UniqueIdString() string
+}
+
+// MultiNamedVector interface for a multi-vector, multi scalar named object
+type MultiNamedVector interface {
+
+	// GetVectors get all the vectors as a list
+	GetVectors() []Vector
+
+	// GetScalars get all the scalars as a list
+	GetScalars() []Scalar
+
+	// Key key name
+	Key() string
+
+	// GetName get the name object
+	GetName() *VName
+
+	// UniqueId unique id of the vector
+	UniqueId() uint64
+
+	// UniqueIdString unique id as a base36 string of the vector
+	UniqueIdString() string
+}
+
+// SingleVector a vector with a name
+type SingleVector struct {
+	V    Vector
+	Name *VName
+}
+
+// GetName returns the Name of the vector
+func (t *SingleVector) GetVector() Vector {
+	return t.V
+}
+
+// GetName returns the Name of the vector
+func (t *SingleVector) GetName() *VName {
+	return t.Name
+}
+
+// Key returns the key of the vector
+func (t *SingleVector) Key() string {
+	return t.Name.Key
+}
+
+// Tags returns the tags of the vector
+func (t SingleVector) Tags() Tags {
+	return t.Name.Tags
+}
+
+// UniqueId returns the tags of the vector
+func (t *SingleVector) UniqueId() uint64 {
+	return t.Name.UniqueId()
+}
+
+// UniqueIdString returns the tags of the vector
+func (t *SingleVector) UniqueIdString() string {
+	return t.Name.UniqueIdString()
+}
+
+// MarshalJSON
+func (t SingleVector) MarshalJSON() ([]byte, error) {
+	bs := []byte(`{"name":`)
+	b, err := t.Name.MarshalJSON()
+	if err != nil {
+		return bs, err
+	}
+	bs = append(bs, b...)
+
+	bv, err := json.Marshal(t.GetVector())
+	if err != nil {
+		return bs, err
+	}
+	bs = append(bs, []byte(`,"v":`)...)
+	bs = append(bs, bv...)
+	bs = append(bs, '}')
+	return bs, nil
+
+}
+
+// list objects sorts by the key name
+type SingleVectorSlice []SingleVector
+
+func (p SingleVectorSlice) Len() int { return len(p) }
+func (p SingleVectorSlice) Less(i, j int) bool {
 	return strings.Compare(p[i].GetName().Key, p[j].GetName().Key) < 0
 }
-func (p VectorSlice) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
+func (p SingleVectorSlice) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
 
 // GetVector
 // based on a short hand notation l,s,m (list, set, map) + combos of s,i,d (string, int, double)

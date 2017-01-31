@@ -172,7 +172,7 @@ When reading in a `set type` from cassandra/redis one can save many CPU cycles a
 ### Maps
 
 Have a 3rd dimension, the `map key`, so they expand larger, but note that json + protobufs cannot encode "doubles" as keys (by their spec), so there are no
-`map[double]stuff` types.
+`map[double]stuff` types.  Also not json and msgpack cannot encode `int` based map keys either, however protobufs can.
 
     VM{Str|Int}{Str|Int|Dbl} + VM{Str|Int}TP{Str|Int|Dbl}{Str|Int|Dbl}
 
@@ -226,3 +226,42 @@ If the volume is low (1000s/Second) the extra GC/CPU cycles is probably ok.
 The basic interface is a `Vector` which can be used as the basis for usage in other things.
 
 Other interfaces are `VectorMap`, `VectorList`, `VectorSet` for each sub type.
+
+The basic interface for scalar values is a `Scalar`, these are effectively wrappers around the base types (int64, string, float64)
+with a special struct for Counters as they are treated very differently in cassandra then the other types
+
+## FVecGen
+
+I included a simple golang class generator for creating "complex" objects.  The basic idea is that in a cassandra table, we collect
+a bunch of "vectors and scalars" together as a typical feature vector can contain many parts and all parts tend to be needed
+for evaluation in models.
+
+THe basic syntax so far is 
+
+    fvecgen --classname=CLASSS --pkgname=PACKAGE --format={VarName}={shorthand},{VarName}={shorthand}...
+    
+The `VarName` will end as a public struct attribute (CamelCase) and the name of a cassandra column (snake_case).
+
+For example
+
+    fvecgen --classname=MyClass --pkgname=mypackge --format=col1=s,col2=mssi,col3=c,col4=f,col5=si
+    
+Will generate a struct that looks like
+    
+    package mypackage
+    
+    type MyClass struct {
+            Name *fvec.VName
+    
+            Col1 fvec.StringType `json:"col1" cql:"col1" msg:"col1"`
+    
+            Col2 fvec.VMStrTPStrInt `json:"col2" cql:"col2" msg:"col2"`
+    
+            Col3 fvec.CounterType `json:"col3" cql:"col3" msg:"col3"`
+    
+            Col4 fvec.FloatType `json:"col4" cql:"col4" msg:"col4"`
+    
+            Col5 fvec.VSInt `json:"col5" cql:"col5" msg:"col5"`
+    }
+
+and come with a bunch of helper functions.

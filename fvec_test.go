@@ -134,7 +134,7 @@ func Test_GetVectorFromCassType(t *testing.T) {
 	}
 	nope := GetVectorFromString("mnkey")
 	if nope != nil {
-		t.Fatal("Shuld have gotten nil for `mnkey`")
+		t.Fatal("Should NOT have gotten nil for `mnkey`")
 	}
 }
 
@@ -149,10 +149,66 @@ func Test_GetVectorFromString(t *testing.T) {
 	}
 }
 
+type testWideCass struct {
+	Vlii  VLIntInt
+	Vssd  VSDbl
+	Vmss  VMStrStr
+	Vmiss VMIntTPStrStr
+	Vmiii VMIntTPIntInt
+}
+
+// simple test to make sure a struct of vectors gets the types properly created
+func Test_CassandraWideRow(t *testing.T) {
+	n := new(testWideCass)
+	keysp := "test"
+
+	should := []string{
+		"CREATE TYPE IF NOT EXISTS test.VTIntInt ( k bigint, v bigint );",
+		"",
+		"",
+		"CREATE TYPE IF NOT EXISTS test.VTStrStr ( k varchar, v varchar );",
+		"CREATE TYPE IF NOT EXISTS test.VTIntInt ( k bigint, v bigint );",
+	}
+
+	data := []string{
+		n.Vlii.CassandraCreateType(keysp),
+		n.Vssd.CassandraCreateType(keysp),
+		n.Vmss.CassandraCreateType(keysp),
+		n.Vmiss.CassandraCreateType(keysp),
+		n.Vmiii.CassandraCreateType(keysp),
+	}
+
+	for i, str := range data {
+		if str != should[i] {
+			t.Fatalf("Invalid create type %s != %s", str, should[i])
+		}
+	}
+
+	data = []string{
+		n.Vlii.CassandraType(),
+		n.Vssd.CassandraType(),
+		n.Vmss.CassandraType(),
+		n.Vmiss.CassandraType(),
+		n.Vmiii.CassandraType(),
+	}
+	should = []string{
+		"list<frozen<VTIntInt>>",
+		"set<double>",
+		"map<varchar,varchar>",
+		"map<bigint,frozen<VTStrStr>>",
+		"map<bigint,frozen<VTIntInt>>",
+	}
+	for i, str := range data {
+		fmt.Println(i, str)
+		if str != should[i] {
+			t.Fatalf("Invalid create type %s != %s", str, should[i])
+		}
+	}
+}
+
 // benching
 var key string = "stats.cadent-all.all-1-stats-infra-integ.mfpaws.com.reader.cassandra.rawrender.get-time-ns.count"
 var tgs string = "moo=goo,loo=goo,houst=all-1-stats-infra-integ.mfpaws.com"
-var mtgs string = "moo=goo,loo=goo,houst=all-1-stats-infra-integ.mfpaws.com"
 
 var nm VName = VName{
 	Key:  key,
@@ -166,7 +222,7 @@ func Benchmark__FmtF_String(b *testing.B) {
 	b.ReportAllocs()
 	buf := bytes.NewBuffer(nil)
 	for i := 0; i < b.N; i++ {
-		fmt.Fprintf(buf, "%s:%s:%s", key, tgs, mtgs)
+		fmt.Fprintf(buf, "%s:%s:%s", key, tgs)
 	}
 }
 
@@ -177,7 +233,7 @@ func Benchmark__Add_String(b *testing.B) {
 	b.ReportAllocs()
 	buf := bytes.NewBuffer(nil)
 	for i := 0; i < b.N; i++ {
-		buf.Write([]byte(key + ":" + tgs + ":" + mtgs))
+		buf.Write([]byte(key + ":" + tgs))
 	}
 }
 

@@ -61,7 +61,10 @@ message VName {
 print(HEAD, file=PROTOFILE)
 
 MAPTYPES = {"string":"Str", "int64":"Int", "double":"Dbl"}
-SPRINTTYPES = {"string":"%s", "int64":"%d", "double":"%v"}
+GO_TYPES = {"string":"string", "int64":"int64", "double":"float64", "float64":"float64", "Int": "int64", "Dbl":"float64", "Str":"string", "":""}
+CONV_FUNCS = {"string": "stringToString", "float64":"stringToFloat", "double":"stringToFloat", "int64":"stringToInt", "Int": "stringToInt", "Dbl":"stringToFloat", "Str":"stringToString", "":""}
+JAVA_TYPES = {"string":"String", "int64":"Integer", "double":"Double", "varchar":"String", "Dbl": "Double", "bigint":"Integer", "Int":"Integer", "Str":"String", "":""}
+SPRINTTYPES = {"string":"%s", "int64":"%d", "double": "%v", "float64":"%v", "":""}
 CASSTYPES = {"string":"varchar", "int64":"bigint", "double":"double"}
 KEYTYPE = ["string", "int64"]
 
@@ -107,10 +110,8 @@ listOneGen = """
 // VL$fo list
 // easyjson:json
 message VL$fo {
-    // @inject_tag: cql:"name" msg:"name"
-    VName name = 1;
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated $to vec = 2;
+    repeated $to vec = 1;
 }
 """
 for to,fo in MAPTYPES.items():
@@ -128,10 +129,8 @@ listTpGen = """
 // VL$fo$fi list
 // easyjson:json
 message VL$fo$fi {
-    // @inject_tag: cql:"name" msg:"name"
-    VName name = 1;
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated VT$fo$fi vec = 2;
+    repeated VT$fo$fi vec = 1;
 }
 """
 for tps in Tuples:
@@ -145,7 +144,9 @@ for tps in Tuples:
 
 
 
-########### Sets
+################################################################################
+############### SETS
+################################################################################
 
 Sets = []
 
@@ -153,10 +154,8 @@ setOneGen = """
 // VS$fo set
 // easyjson:json
 message VS$fo {
-    // @inject_tag: cql:"name" msg:"name"
-    VName name = 1;
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated $to vec = 2;
+    repeated $to vec = 1;
 }
 """
 for to,fo in MAPTYPES.items():
@@ -173,10 +172,8 @@ setTpGen = """
 // VS${fo}$fi set
 // easyjson:json
 message VS${fo}$fi {
-    // @inject_tag: cql:"name" msg:"name"
-    VName name = 1;
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated VT$fo$fi vec = 2;
+    repeated VT$fo$fi vec = 1;
 }
 """
 for tps in Tuples:
@@ -189,9 +186,12 @@ for tps in Tuples:
     print(tp, file=PROTOFILE)
 
 
-########### Maps
+################################################################################
+############### Maps
+################################################################################
 
 # NOTE: cannot use "doubles" as keys for maps
+# NOTE: a special msgpack encoder is needed for map[int64]
 
 Maps = []
 
@@ -199,10 +199,8 @@ mapSiGen = """
 // VM$fo$fi map of $to -> $ti
 $easyjson
 message VM$fo$fi {
-    // @inject_tag: cql:"name" msg:"name"
-    VName name = 1;
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<$to, $ti> vec = 2;
+    // @inject_tag: cql:"vec" msg:"vec${ext}"
+    map<$to, $ti> vec = 1;
 }
 """
 _mdid = []
@@ -211,13 +209,16 @@ for to,fo in MAPTYPES.items():
     if to == "double":
             continue
     eas ="// easyjson:json"
+    ext =""
     if to == "int64":
         eas = ""
+        ext = ",extention"
+
     for ti, fi in MAPTYPES.items():
 
-        tp = Template(mapSiGen).substitute(fo=fo, fi=fi, to=to, ti=ti, easyjson=eas)
+        tp = Template(mapSiGen).substitute(fo=fo, fi=fi, to=to, ti=ti, easyjson=eas, ext=ext)
         ts={
-            "to": to, "ti": ti, "fo": fo, "fi": fi, "tpl": tp, "co": CASSTYPES[to], "ci":CASSTYPES[ti],
+            "to": to, "ti": ti, "fo": fo, "fi": fi, "tpl": tp, "co": CASSTYPES[to], "ci":CASSTYPES[ti], "mapsing" : True
         }
         ts["name"] = "VM"+fo + fi
         _mdid.append(ts["name"])
@@ -229,10 +230,8 @@ mapTPGen = """
 // VM${bo}TP$fo$fi map of $to -> set($to, $ti)
 $easyjson
 message VM${bo}TP$fo$fi {
-    // @inject_tag: cql:"name", msg:"name"
-    VName name = 1;
-    // @inject_tag: cql:"vec", msg:"vec"
-    map<$t2, VT$fo$fi> vec = 2;
+    // @inject_tag: cql:"vec" msg:"vec${ext}"
+    map<$t2, VT$fo$fi> vec = 1;
 }
 """
 
@@ -242,18 +241,20 @@ for t2,bo in MAPTYPES.items():
         continue
 
     for tps in Tuples:
-
+        ext = ""
         eas ="// easyjson:json"
         if t2 == "int64":
             eas = ""
+            ext = ",extention"
         tpl = tps.copy()
         tpl["bo"] = bo
         tpl["t2"] = t2
         tpl["name"] = "VM"+bo + "TP" + tps['fo'] + tps['fi']
+        tpl["mapsing"] = False
         if tpl["name"] in _mdid:
             continue
 
-        tp = Template(mapTPGen).substitute(**tpl, easyjson=eas)
+        tp = Template(mapTPGen).substitute(**tpl, easyjson=eas, ext=ext)
         tpl["tpl"] = tp
         _mdid.append(ts["name"])
 
@@ -274,36 +275,28 @@ package fvec
 
 import "reflect"
 import "fmt"
+import "strings"
+import "errors"
+import "strconv"
+
+var ErrorInvalidRedisValue = errors.New("Invalid redis value, cannot parse")
+
+func stringToFloat(tp string) (float64, error){
+    return strconv.ParseFloat(tp, 64)
+}
+
+func stringToInt(tp string) (int64, error){
+    return strconv.ParseInt(tp, 10, 64)
+}
+
+func stringToString(tp string) (string, error){
+    return tp, nil
+}
 
 """
 print(BOILHEAD, file=GOFILE)
 
 allBoilTpl = """
-
-// GetName returns the Name of the vector
-func (t *$name) GetName() *VName{
-    return t.Name
-}
-
-// Key returns the key of the vector
-func (t *$name) Key() string{
-    return t.Name.Key
-}
-
-// Tags returns the tags of the vector
-func (t *$name) Tags() Tags{
-    return t.Name.Tags
-}
-
-// UniqueId returns the tags of the vector
-func (t *$name) UniqueId() uint64{
-    return t.Name.UniqueId()
-}
-
-// UniqueIdString returns the tags of the vector
-func (t *$name) UniqueIdString() string{
-    return t.Name.UniqueIdString()
-}
 
 // IsVector more for interface acceptance
 func (t *$name) IsVector() bool{
@@ -312,6 +305,11 @@ func (t *$name) IsVector() bool{
 
 // Name the type name for ease
 func (t *$name) TypeName() string{
+    return "$name"
+}
+
+// GoType the type of object in go
+func (t *$name) GoType() string{
     return "$name"
 }
 """
@@ -343,11 +341,23 @@ func (t *$name) RedisValue() string{
     return fmt.Sprintf("$spr1 $spr2", t.Key, t.Value);
 }
 
-"""
+// JavaType the type of object in java
+// org.apache.commons.lang3.tuple
+func (t *$name) JavaType() string{
+    return "Pair<$jo,$ji>"
+}
+
+""" + allBoilTpl
 
 for tpl in Tuples:
     tpl["spr1"] = SPRINTTYPES[tpl["to"]]
     tpl["spr2"] = SPRINTTYPES[tpl["ti"]]
+    tpl["jo"] = JAVA_TYPES[tpl["to"]]
+    tpl["ji"] = JAVA_TYPES[tpl["ti"]]
+    tpl["go"] = GO_TYPES[tpl["to"]]
+    tpl["gi"] = GO_TYPES[tpl["ti"]]
+    tpl["convo"] = CONV_FUNCS[tpl["to"]]
+    tpl["convi"] = CONV_FUNCS[tpl["ti"]]
 
     tp = Template(tplFuncCassType).substitute(**tpl)
     print(tp, file=GOFILE)
@@ -383,6 +393,32 @@ func (t *$name) CassandraCreateType(keyspace string) string{
 func (t *$name) CassandraType() string{
     return "set<$co>";
 }
+
+// JavaType the type of object in java
+// java.util
+func (t *$name) JavaType() string{
+    return "Set<$jo>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *$name) RedisInsertCmd(key string) string{
+    return "SADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+func (t *$name) RedisRemoveCmd(key string) string{
+    return "SREM " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *$name) RedisValue(v $go) string{
+    return fmt.Sprintf("$spr1", v);
+}
+
+// FromRedisValue given the redis value, make it into a proper $go
+func (t *$name) FromRedisValue(i string) (v $go, err error){
+    return $convo(i)
+}
 """
 
 setTPFuncCassType = """
@@ -398,10 +434,51 @@ func (t *$name) CassandraType() string{
     return "set<frozen<VT$fo$fi>>";
 }
 
+// JavaType the type of object in java
+// java.util
+// org.apache.commons.lang3.tuple
+func (t *$name) JavaType() string{
+    return "Set<Pair<$jo,$ji>>"
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *$name) RedisInsertCmd(key string) string{
+    return "SADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+func (t *$name) RedisRemoveCmd(key string) string{
+    return "SREM " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *$name) RedisInsertValue(v VT$fo$fi) string{
+    return fmt.Sprintf("$spr1:$spr2", v.Key, v.Value);
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *$name) FromRedisValue(i string) (v VT$fo$fi, err error){
+    spl := strings.Split(i, ":")
+    if len(spl) != 2{
+        return v, ErrorInvalidRedisValue
+    }
+    v.Key, err = $convo(spl[0])
+    v.Value, err = $convi(spl[1])
+    return v, err
+}
 """
 
 for tpl in Sets:
     print(Template(setBase).substitute(**tpl), file=GOFILE)
+
+    tpl["jo"] = JAVA_TYPES[tpl["to"]]
+    tpl["ji"] = JAVA_TYPES[tpl["ti"]]
+    tpl["spr1"] = SPRINTTYPES[tpl["to"]]
+    tpl["spr2"] = SPRINTTYPES[tpl["ti"]]
+    tpl["go"] = GO_TYPES[tpl["to"]]
+    tpl["gi"] = GO_TYPES[tpl["ti"]]
+    tpl["convo"] = CONV_FUNCS[tpl["to"]]
+    tpl["convi"] = CONV_FUNCS[tpl["ti"]]
 
     if tpl["ti"] == "":
         CassandraTypes["set<" + tpl['co'] + ">"] = tpl["name"]
@@ -434,7 +511,7 @@ func (t *$name) IsList() bool{
 """ + allBoilTpl
 
 listOneFuncCassType = """
-// CassandraCreateType string for the create type (if nessesary)
+// CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 func (t *$name) CassandraCreateType(keyspace string) string{
     return "";
@@ -445,11 +522,35 @@ func (t *$name) CassandraType() string{
     return "list<$co>";
 }
 
+// JavaType the java type for the object
+func (t* $name) JavaType() string{
+    return "List<$jo>";
+}
 
+// RedisInsertCmd returns the redis add command
+func (t *$name) RedisInsertCmd(key string) string{
+    return "LADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *$name) RedisRemoveCmd(key string) string{
+    return ""
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *$name) RedisInsertValue(v $go) string{
+    return fmt.Sprintf("$spr1", v);
+}
+
+// FromRedisValue given the redis value, make it into a proper $go
+func (t *$name) FromRedisValue(i string) (v $go, err error){
+    return $convo(i)
+}
 """
 
 listTPFuncCassType = """
-// CassandraCreateType string for the create type (if nessesary)
+// CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
 func (t *$name) CassandraCreateType(keyspace string) string{
@@ -461,10 +562,50 @@ func (t *$name) CassandraType() string{
     return "list<frozen<VT$fo$fi>>";
 }
 
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t* $name) JavaType() string{
+    return "List<Pair<$jo,$ji>>";
+}
 
+// RedisInsertCmd returns the redis add command
+func (t *$name) RedisInsertCmd(key string) string{
+    return "LADD " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *$name) RedisRemoveCmd(key string) string{
+    return ""
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *$name) RedisInsertValue(v VT$fo$fi) string{
+    return fmt.Sprintf("$spr1:$spr2", v.Key, v.Value);
+}
+
+// FromRedisValue given the redis value, make it into a proper tuple
+func (t *$name) FromRedisValue(i string) (v VT$fo$fi, err error){
+    spl := strings.Split(i, ":")
+    if len(spl) != 2{
+        return v, ErrorInvalidRedisValue
+    }
+    v.Key, err = $convo(spl[0])
+    v.Value, err = $convi(spl[1])
+    return v, err
+}
 """
 
 for tpl in Lists:
+    tpl["jo"] = JAVA_TYPES[tpl["to"]]
+    tpl["ji"] = JAVA_TYPES[tpl["ti"]]
+    tpl["spr1"] = SPRINTTYPES[tpl["to"]]
+    tpl["spr2"] = SPRINTTYPES[tpl["ti"]]
+    tpl["go"] = GO_TYPES[tpl["to"]]
+    tpl["gi"] = GO_TYPES[tpl["ti"]]
+    tpl["convo"] = CONV_FUNCS[tpl["to"]]
+    tpl["convi"] = CONV_FUNCS[tpl["ti"]]
+
     print(Template(listBase).substitute(**tpl), file=GOFILE)
     if tpl["ti"] == "":
         CassandraTypes["list<" + tpl['co'] + ">"] = tpl["name"]
@@ -482,7 +623,7 @@ for tpl in Lists:
 ########################################################
 
 mapOneFuncCassType = """
-// CassandraCreateType string for the create type (if nessesary)
+// CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 func (t *$name) CassandraCreateType(keyspace string) string{
     return "";
@@ -490,12 +631,39 @@ func (t *$name) CassandraCreateType(keyspace string) string{
 
 // CassandraType the matching types in cassandra for the map
 func (t *$name) CassandraType() string{
-    return "map<$co, $ci>";
+    return "map<$co,$ci>";
+}
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t* $name) JavaType() string{
+    return "Map<$jo,$ji>";
+}
+
+// RedisInsertCmd returns the redis add command
+func (t *$name) RedisInsertCmd(key string) string{
+    return "HMSET " + key
+}
+
+// RedisRemoveCmd returns the redis add command
+// (cannot remove from lists) this is a blank command
+func (t *$name) RedisRemoveCmd(key string) string{
+    return "HDEL " + key
+}
+
+// RedisInsertValue returns what the value string would be for a redis command
+func (t *$name) RedisInsertValue(v $go) string{
+    return fmt.Sprintf("$spr1", v);
+}
+
+// FromRedisValue given the redis value, make it into a proper $go
+func (t *$name) FromRedisValue(i string) (v $go, err error){
+    return $convo(i)
 }
 """
 
 mapTPFuncCassType = """
-// CassandraCreateType string for the create type (if nessesary)
+// CassandraCreateType string for the create type (if necessary)
 // the string will be blank if no create is needed
 // the set of of the tpl types
 func (t *$name) CassandraCreateType(keyspace string) string{
@@ -504,8 +672,15 @@ func (t *$name) CassandraCreateType(keyspace string) string{
 
 // CassandraType the matching types in cassandra for the map
 func (t *$name) CassandraType() string{
-    return "map<$co, frozen<VT$fo$fi>>";
+    return "map<$mtyp,frozen<VT$fo$fi>>";
 }
+
+// JavaType the java type for the object
+// org.apache.commons.lang3.tuple
+func (t* $name) JavaType() string{
+    return "Map<$joo,Pair<$jo,$ji>>";
+}
+
 """
 
 mapBase ="""
@@ -524,8 +699,20 @@ func (t *$name) IsMap() bool{
 """ + allBoilTpl
 
 for tpl in Maps:
+    tpl["jo"] = JAVA_TYPES[tpl["to"]]
+    tpl["ji"] = JAVA_TYPES[tpl["ti"]]
+    tpl["joo"] = JAVA_TYPES[tpl.get('t2', '')]
+    tpl["mtyp"] = CASSTYPES.get(tpl.get('t2', ''), "")
+    tpl["convo"] = CONV_FUNCS[tpl["to"]]
+    tpl["convi"] = CONV_FUNCS[tpl["ti"]]
+    tpl["spr1"] = SPRINTTYPES[tpl["to"]]
+    tpl["spr2"] = SPRINTTYPES[tpl["ti"]]
+    tpl["go"] = GO_TYPES[tpl["to"]]
+    tpl["gi"] = GO_TYPES[tpl["ti"]]
+
+    print(tpl["joo"], tpl["mtyp"])
     print(Template(mapBase).substitute(**tpl), file=GOFILE)
-    if tpl["ti"] == "":
+    if tpl.get("mapsing", False):
         CassandraTypes["map<" + tpl['co'] + "," + tpl['ci'] + ">"] = tpl["name"]
         tp = Template(mapOneFuncCassType).substitute(**tpl)
         print(tp, file=GOFILE)
@@ -636,3 +823,4 @@ for k in ks:
 
 print("}", file=GOFILE)
 
+GOFILE.close()
