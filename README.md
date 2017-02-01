@@ -39,12 +39,12 @@ This forms the basis of a much large vector machine storage engine.
 I do NOT recommend this style for really high velocity distinct time series (aka data that is coming in at or less then 1 sec intervals, every second, all the time
 things like CPU(s) usage for a given machine). 
 
-For such things I recommend cadent (https://github.com/wyndhblb/cadent).
+For such things I recommend cadent (https://github.com/wyndhblb/cadent) or other related projects 
 
 
 ## To Generate
 
-python3 is required for the generation as well, to laydown the inital boilerplate and protobut file, but it's as easy as 
+python3 is required for the generation as well, to laydown the initial boilerplate and protobuf file, but it's as easy as 
 
     cd wyndhblb/fvec
     go generate
@@ -69,14 +69,14 @@ and a Unique "string" format which is
 
     base36(unique_id)
  
-This is needed as many DBs overflow on a `unit64` (the fnv64a type) (aka the DB we're targeting cassandra and redis) only support
+This is needed as many DBs overflow on a `unit64` (the fnv64a type) (aka the DB we're targeting cassandra, elastic, redis) only support
 `int64`, thus a `uint64` will overflow that for 50% of the time.
  
  
 ### Resolution
 
 Resolution is a concept for "time slabbing" things.  A time slab is a string representation of time in 
- various buckets.  
+ various buckets (see https://github.com/wyndhblb/timeslab).  
  
  
         Resolution_MIN: 200601021504
@@ -95,8 +95,7 @@ Resolution is a concept for "time slabbing" things.  A time slab is a string rep
 ## Vector Permutations
 
     Vector{
-        Name
-        {[], or map of things}
+        {list, set, or map of things}
     }
 
 ### Base Types

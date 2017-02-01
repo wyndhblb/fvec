@@ -12,9 +12,12 @@ package {{.PackageName}}
 import (
 	"github.com/wyndhblb/fvec"
 	"strings"
+	"fmt"
 )
 
 type {{.ClassName}} struct {
+	keyspace string
+	table string
 	Name *fvec.VName
 {{ range .Fields }}
 	{{.FieldName}} *fvec.{{.FieldType}} ` + "`" + `json:"{{.ColumnName}}" cql:"{{.ColumnName}}" msg:"{{.ColumnName}}"` + "`" + `
@@ -23,13 +26,25 @@ type {{.ClassName}} struct {
 }
 
 // New{{.ClassName}} a new object
-func New{{.ClassName}}() *{{.ClassName}}{
+func New{{.ClassName}}(keyspace, table string) *{{.ClassName}}{
 	n := new({{.ClassName}})
+	n.keyspace = keyspace
+	n.table = table
 	n.Name = new(fvec.VName)
 	{{ range .Fields }}
 	n.{{.FieldName}} = new(fvec.{{.FieldType}})
 	{{ end }}
 	return n
+}
+
+// Table name of the table
+func (f *{{.ClassName}}) Table() string {
+	return f.table
+}
+
+// Keyspace name of the keyspace
+func (f *{{.ClassName}}) Keyspace() string {
+	return f.keyspace
 }
 
 // DBColumns list of non counter db columns as strings
@@ -74,10 +89,53 @@ func (f *{{.ClassName}}) VarNameStrings() []string {
 	}
 }
 
+// NewVectorFromFieldName return a new vector of the type the column is
+// an error will occur if the type itself is a Scalar
+func (f *{{.ClassName}}) NewVectorFromFieldName(nm string) (fvec.Vector, error) {
+	vmap := map[string]string{
+	{{ range .Fields }}
+		{{ if .IsVector }}
+		"{{ .FieldName }}":"{{.FieldType}}",
+		{{ end }}
+	{{ end }}
+	}
+
+	if got, ok := vmap[nm]; ok{
+		v := fvec.GetVectorFromString(got)
+		if v == nil{
+			return nil, fmt.Errorf("%s is not a vector", nm)
+		}
+		return v, nil
+	}
+	return nil, fmt.Errorf("%s is not a field", nm)
+}
+
+
+// NewScalarFromVarName return a new scalar of the type the column is
+// an error will occur if the type itself is a Scalar
+func (f *{{.ClassName}}) NewScalarFromFieldName(nm string) (fvec.Scalar, error) {
+	vmap := map[string]string{
+	{{ range .Fields }}
+		{{ if .IsScalar }}
+		"{{ .FieldName }}":"{{.FieldType}}",
+		{{ end }}
+	{{ end }}
+	}
+
+	if got, ok := vmap[nm]; ok{
+		v := fvec.GetScalarFromString(got)
+		if v == nil{
+			return nil, fmt.Errorf("%s is not a scalar", nm)
+		}
+		return v, nil
+	}
+	return nil, fmt.Errorf("%s is not a field", nm)
+}
+
 // CassandraCreateStatement the list of cassandra create the table statement
 // if there are counters in the mix, then there will be another table {table}_counters
 // cassandra only allows counters in a table to itself aside from the primary key
-func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string) []string {
+func (f *{{.ClassName}}) CassandraCreateStatement() []string {
 
 	queries := []string{}
 	subs := []string{
@@ -93,8 +151,8 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 	haveC := false
 	haveA := false
 	{{ range .Fields }}
-	if len(f.{{.FieldName}}.CassandraCreateType(keyspace)) > 0{
-		queries = append(queries, f.{{.FieldName}}.CassandraCreateType(keyspace))
+	if len(f.{{.FieldName}}.CassandraCreateType(f.keyspace)) > 0{
+		queries = append(queries, f.{{.FieldName}}.CassandraCreateType(f.keyspace))
 	}
 	{{ if .IsCounter }}
 	cSubs = append(cSubs, "{{.ColumnName}} " + f.{{.FieldName}}.CassandraType())
@@ -105,7 +163,7 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 	{{ end }}
 	{{ end }}
 
-	createSQL := "CREATE TABLE IF NOT EXISTS " + keyspace + "." + table + "("
+	createSQL := "CREATE TABLE IF NOT EXISTS " + f.keyspace + "." + f.table + "("
 	createSQL += strings.Join(subs, ", ")
 	createSQL += ` + "`" + `
 		, PRIMARY KEY ((uid, slab), ord)
@@ -118,7 +176,7 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 		AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'};
 	` + "`" + `
 
-	counterSQL := "CREATE TABLE IF NOT EXISTS " + keyspace + "." + table + "_counters("
+	counterSQL := "CREATE TABLE IF NOT EXISTS " + f.keyspace + "." + f.table + "_counters("
 	counterSQL += strings.Join(cSubs, ", ")
 	counterSQL += ` + "`" + `
 		, PRIMARY KEY ((uid, slab), ord)
@@ -138,11 +196,22 @@ func (f *{{.ClassName}}) CassandraCreateStatement(keyspace string, table string)
 // CassandraSelectQueries the set of queries to get the full object
 // this does not include a where clause just the SELECT (stuff, stuff, ...) FROM {table}
 // if there are counters there will be 2 queries for the counters table
-func (f *{{.ClassName}}) CassandraSelectQueries(table string) []string {
+func (f *{{.ClassName}}) CassandraSelectQueries() []string {
 	return []string{
-		"SELECT " + strings.Join(f.DBColumns(), ",") + " FROM " + table,
+		"SELECT " + strings.Join(f.DBColumns(), ",") + " FROM " + f.table,
 		{{ if .HaveCounters }}
-		"SELECT " + strings.Join(f.DBCounterColumns(), ",") + " FROM " + table,
+		"SELECT " + strings.Join(f.DBCounterColumns(), ",") + " FROM " + f.table,
+		{{ end }}
+	}
+}
+
+// BuildObject given a set of where args (a string that is the WHERE col=? AND col=? and the param arges
+// build the in total, as we may have to find things from a counter table
+func (f *{{.ClassName}}) BuildObject(where string, args ...interface{}) []string {
+	return []string{
+		"SELECT " + strings.Join(f.DBColumns(), ",") + " FROM " + f.table,
+		{{ if .HaveCounters }}
+		"SELECT " + strings.Join(f.DBCounterColumns(), ",") + " FROM " + f.table,
 		{{ end }}
 	}
 }
