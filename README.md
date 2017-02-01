@@ -1,6 +1,6 @@
 # Feature Vectors
 
-    go get github.com/wyndhblb/fvec
+    go get github.com/wyndhblb/go-fvec
     
 ### define: (to quote :: https://en.wikipedia.org/wiki/Feature_vector)
 
