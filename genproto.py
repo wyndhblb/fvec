@@ -50,6 +50,8 @@ message VName {
 	uint64 unique_id = 4 [(gogoproto.customname) = "XUniqueId", (gogoproto.jsontag) = "-"];
     // @inject_tag: cql:"uid" msg:"uid"
 	string unique_str = 5 [(gogoproto.customname) = "XUniqueStr", (gogoproto.jsontag) = "-"];
+    // @inject_tag: cql:"time" msg:"time"
+    int64 time = 6;
     // @inject_tag: cql:"tags" msg:"tags"
 	repeated Tag tags = 11;
 

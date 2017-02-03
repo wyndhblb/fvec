@@ -213,10 +213,10 @@
 			"revisionTime": "2017-01-25T06:49:29Z"
 		},
 		{
-			"checksumSHA1": "dt/7KUXdTucMIKrndBgCeDIA0WA=",
+			"checksumSHA1": "3UMnEuAA2yMGBw9mGi3d1WpZhNA=",
 			"path": "github.com/wyndhblb/timeslab",
-			"revision": "49bbca9c604f8a27cc9aba6ad74f4560a68b45ad",
-			"revisionTime": "2017-01-29T10:25:53Z"
+			"revision": "7d07bd7d82e7fac4b81eee7231d110b08ca9ec89",
+			"revisionTime": "2017-02-02T18:33:18Z"
 		},
 		{
 			"path": "google.golang.org/grpc",
@@ -231,5 +231,5 @@
 			"revision": ""
 		}
 	],
-	"rootPath": "wyndhblb/fvec"
+	"rootPath": "github.com/wyndhblb/fvec"
 }

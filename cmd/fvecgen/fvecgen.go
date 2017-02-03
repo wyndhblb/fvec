@@ -18,10 +18,10 @@ import (
 	"github.com/wyndhblb/fvec"
 	"io"
 	"os"
+	"reflect"
 	"regexp"
 	"strings"
 	"text/template"
-	"reflect"
 )
 
 var FVEC_PACKAGE string = "fvec"
@@ -56,9 +56,9 @@ type GoFieldVars struct {
 }
 
 type GoTpl struct {
-	ClassName   string
-	PackageName string
-	FieldStr    string
+	ClassName    string
+	PackageName  string
+	FieldStr     string
 	HaveCounters bool
 
 	Fields []GoFieldVars
@@ -71,7 +71,7 @@ func (g *GoTpl) ComposeVars() {
 
 	var fns = template.FuncMap{
 		"last": func(x int, a interface{}) bool {
-			return x == reflect.ValueOf(a).Len() - 1
+			return x == reflect.ValueOf(a).Len()-1
 		},
 	}
 
@@ -88,7 +88,7 @@ func (g *GoTpl) ComposeVars() {
 				panic(nmv[1] + " is not valid type")
 			}
 		}
-		if fvec.IsCounter(ftype){
+		if fvec.IsCounter(ftype) {
 			g.HaveCounters = true
 		}
 		g.Fields = append(g.Fields, GoFieldVars{
@@ -123,9 +123,9 @@ func main() {
 	}
 
 	goGen := &GoTpl{
-		PackageName: *pkgname,
-		ClassName:   *clsname,
-		FieldStr:    *pstr,
+		PackageName:  *pkgname,
+		ClassName:    *clsname,
+		FieldStr:     *pstr,
 		HaveCounters: false,
 	}
 

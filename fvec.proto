@@ -38,6 +38,8 @@ message VName {
 	uint64 unique_id = 4 [(gogoproto.customname) = "XUniqueId", (gogoproto.jsontag) = "-"];
     // @inject_tag: cql:"uid" msg:"uid"
 	string unique_str = 5 [(gogoproto.customname) = "XUniqueStr", (gogoproto.jsontag) = "-"];
+    // @inject_tag: cql:"time" msg:"time"
+    int64 time = 6;
     // @inject_tag: cql:"tags" msg:"tags"
 	repeated Tag tags = 11;
 
@@ -46,61 +48,11 @@ message VName {
 
 
 
-// VTStrStr Tuple Type key=string value=string
+// VTDblDbl Tuple Type key=double value=double
 // easyjson:json
-message VTStrStr{
+message VTDblDbl{
     // @inject_tag: cql:"k" msg:"key"
-    string key = 1;
-    // @inject_tag: cql:"v" msg:"value"
-    string value = 2;
-}
-
-
-// VTStrInt Tuple Type key=string value=int64
-// easyjson:json
-message VTStrInt{
-    // @inject_tag: cql:"k" msg:"key"
-    string key = 1;
-    // @inject_tag: cql:"v" msg:"value"
-    int64 value = 2;
-}
-
-
-// VTStrDbl Tuple Type key=string value=double
-// easyjson:json
-message VTStrDbl{
-    // @inject_tag: cql:"k" msg:"key"
-    string key = 1;
-    // @inject_tag: cql:"v" msg:"value"
-    double value = 2;
-}
-
-
-// VTIntStr Tuple Type key=int64 value=string
-// easyjson:json
-message VTIntStr{
-    // @inject_tag: cql:"k" msg:"key"
-    int64 key = 1;
-    // @inject_tag: cql:"v" msg:"value"
-    string value = 2;
-}
-
-
-// VTIntInt Tuple Type key=int64 value=int64
-// easyjson:json
-message VTIntInt{
-    // @inject_tag: cql:"k" msg:"key"
-    int64 key = 1;
-    // @inject_tag: cql:"v" msg:"value"
-    int64 value = 2;
-}
-
-
-// VTIntDbl Tuple Type key=int64 value=double
-// easyjson:json
-message VTIntDbl{
-    // @inject_tag: cql:"k" msg:"key"
-    int64 key = 1;
+    double key = 1;
     // @inject_tag: cql:"v" msg:"value"
     double value = 2;
 }
@@ -126,13 +78,71 @@ message VTDblInt{
 }
 
 
-// VTDblDbl Tuple Type key=double value=double
+// VTStrDbl Tuple Type key=string value=double
 // easyjson:json
-message VTDblDbl{
+message VTStrDbl{
     // @inject_tag: cql:"k" msg:"key"
-    double key = 1;
+    string key = 1;
     // @inject_tag: cql:"v" msg:"value"
     double value = 2;
+}
+
+
+// VTStrStr Tuple Type key=string value=string
+// easyjson:json
+message VTStrStr{
+    // @inject_tag: cql:"k" msg:"key"
+    string key = 1;
+    // @inject_tag: cql:"v" msg:"value"
+    string value = 2;
+}
+
+
+// VTStrInt Tuple Type key=string value=int64
+// easyjson:json
+message VTStrInt{
+    // @inject_tag: cql:"k" msg:"key"
+    string key = 1;
+    // @inject_tag: cql:"v" msg:"value"
+    int64 value = 2;
+}
+
+
+// VTIntDbl Tuple Type key=int64 value=double
+// easyjson:json
+message VTIntDbl{
+    // @inject_tag: cql:"k" msg:"key"
+    int64 key = 1;
+    // @inject_tag: cql:"v" msg:"value"
+    double value = 2;
+}
+
+
+// VTIntStr Tuple Type key=int64 value=string
+// easyjson:json
+message VTIntStr{
+    // @inject_tag: cql:"k" msg:"key"
+    int64 key = 1;
+    // @inject_tag: cql:"v" msg:"value"
+    string value = 2;
+}
+
+
+// VTIntInt Tuple Type key=int64 value=int64
+// easyjson:json
+message VTIntInt{
+    // @inject_tag: cql:"k" msg:"key"
+    int64 key = 1;
+    // @inject_tag: cql:"v" msg:"value"
+    int64 value = 2;
+}
+
+
+// VLDbl list
+// easyjson:json
+message VLDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated double vec = 1;
 }
 
 
@@ -152,59 +162,11 @@ message VLInt {
 }
 
 
-// VLDbl list
+// VLDblDbl list
 // easyjson:json
-message VLDbl {
+message VLDblDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated double vec = 1;
-}
-
-
-// VLStrStr list
-// easyjson:json
-message VLStrStr {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrStr vec = 1;
-}
-
-
-// VLStrInt list
-// easyjson:json
-message VLStrInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrInt vec = 1;
-}
-
-
-// VLStrDbl list
-// easyjson:json
-message VLStrDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrDbl vec = 1;
-}
-
-
-// VLIntStr list
-// easyjson:json
-message VLIntStr {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntStr vec = 1;
-}
-
-
-// VLIntInt list
-// easyjson:json
-message VLIntInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntInt vec = 1;
-}
-
-
-// VLIntDbl list
-// easyjson:json
-message VLIntDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntDbl vec = 1;
+    repeated VTDblDbl vec = 1;
 }
 
 
@@ -224,11 +186,59 @@ message VLDblInt {
 }
 
 
-// VLDblDbl list
+// VLStrDbl list
 // easyjson:json
-message VLDblDbl {
+message VLStrDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTDblDbl vec = 1;
+    repeated VTStrDbl vec = 1;
+}
+
+
+// VLStrStr list
+// easyjson:json
+message VLStrStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTStrStr vec = 1;
+}
+
+
+// VLStrInt list
+// easyjson:json
+message VLStrInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTStrInt vec = 1;
+}
+
+
+// VLIntDbl list
+// easyjson:json
+message VLIntDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntDbl vec = 1;
+}
+
+
+// VLIntStr list
+// easyjson:json
+message VLIntStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntStr vec = 1;
+}
+
+
+// VLIntInt list
+// easyjson:json
+message VLIntInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntInt vec = 1;
+}
+
+
+// VSDbl set
+// easyjson:json
+message VSDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated double vec = 1;
 }
 
 
@@ -248,59 +258,11 @@ message VSInt {
 }
 
 
-// VSDbl set
+// VSDblDbl set
 // easyjson:json
-message VSDbl {
+message VSDblDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated double vec = 1;
-}
-
-
-// VSStrStr set
-// easyjson:json
-message VSStrStr {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrStr vec = 1;
-}
-
-
-// VSStrInt set
-// easyjson:json
-message VSStrInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrInt vec = 1;
-}
-
-
-// VSStrDbl set
-// easyjson:json
-message VSStrDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTStrDbl vec = 1;
-}
-
-
-// VSIntStr set
-// easyjson:json
-message VSIntStr {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntStr vec = 1;
-}
-
-
-// VSIntInt set
-// easyjson:json
-message VSIntInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntInt vec = 1;
-}
-
-
-// VSIntDbl set
-// easyjson:json
-message VSIntDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTIntDbl vec = 1;
+    repeated VTDblDbl vec = 1;
 }
 
 
@@ -320,11 +282,59 @@ message VSDblInt {
 }
 
 
-// VSDblDbl set
+// VSStrDbl set
 // easyjson:json
-message VSDblDbl {
+message VSStrDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    repeated VTDblDbl vec = 1;
+    repeated VTStrDbl vec = 1;
+}
+
+
+// VSStrStr set
+// easyjson:json
+message VSStrStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTStrStr vec = 1;
+}
+
+
+// VSStrInt set
+// easyjson:json
+message VSStrInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTStrInt vec = 1;
+}
+
+
+// VSIntDbl set
+// easyjson:json
+message VSIntDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntDbl vec = 1;
+}
+
+
+// VSIntStr set
+// easyjson:json
+message VSIntStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntStr vec = 1;
+}
+
+
+// VSIntInt set
+// easyjson:json
+message VSIntInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    repeated VTIntInt vec = 1;
+}
+
+
+// VMStrDbl map of string -> double
+// easyjson:json
+message VMStrDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, double> vec = 1;
 }
 
 
@@ -344,11 +354,11 @@ message VMStrInt {
 }
 
 
-// VMStrDbl map of string -> double
-// easyjson:json
-message VMStrDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, double> vec = 1;
+// VMIntDbl map of int64 -> double
+
+message VMIntDbl {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, double> vec = 1;
 }
 
 
@@ -368,59 +378,11 @@ message VMIntInt {
 }
 
 
-// VMIntDbl map of int64 -> double
-
-message VMIntDbl {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, double> vec = 1;
-}
-
-
-// VMStrTPStrStr map of string -> set(string, string)
+// VMStrTPDblDbl map of double -> set(double, double)
 // easyjson:json
-message VMStrTPStrStr {
+message VMStrTPDblDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTStrStr> vec = 1;
-}
-
-
-// VMStrTPStrInt map of string -> set(string, int64)
-// easyjson:json
-message VMStrTPStrInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTStrInt> vec = 1;
-}
-
-
-// VMStrTPStrDbl map of string -> set(string, double)
-// easyjson:json
-message VMStrTPStrDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTStrDbl> vec = 1;
-}
-
-
-// VMStrTPIntStr map of int64 -> set(int64, string)
-// easyjson:json
-message VMStrTPIntStr {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTIntStr> vec = 1;
-}
-
-
-// VMStrTPIntInt map of int64 -> set(int64, int64)
-// easyjson:json
-message VMStrTPIntInt {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTIntInt> vec = 1;
-}
-
-
-// VMStrTPIntDbl map of int64 -> set(int64, double)
-// easyjson:json
-message VMStrTPIntDbl {
-    // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTIntDbl> vec = 1;
+    map<string, VTDblDbl> vec = 1;
 }
 
 
@@ -440,59 +402,59 @@ message VMStrTPDblInt {
 }
 
 
-// VMStrTPDblDbl map of double -> set(double, double)
+// VMStrTPStrDbl map of string -> set(string, double)
 // easyjson:json
-message VMStrTPDblDbl {
+message VMStrTPStrDbl {
     // @inject_tag: cql:"vec" msg:"vec"
-    map<string, VTDblDbl> vec = 1;
+    map<string, VTStrDbl> vec = 1;
 }
 
 
-// VMIntTPStrStr map of string -> set(string, string)
-
-message VMIntTPStrStr {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTStrStr> vec = 1;
+// VMStrTPStrStr map of string -> set(string, string)
+// easyjson:json
+message VMStrTPStrStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, VTStrStr> vec = 1;
 }
 
 
-// VMIntTPStrInt map of string -> set(string, int64)
-
-message VMIntTPStrInt {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTStrInt> vec = 1;
+// VMStrTPStrInt map of string -> set(string, int64)
+// easyjson:json
+message VMStrTPStrInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, VTStrInt> vec = 1;
 }
 
 
-// VMIntTPStrDbl map of string -> set(string, double)
-
-message VMIntTPStrDbl {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTStrDbl> vec = 1;
+// VMStrTPIntDbl map of int64 -> set(int64, double)
+// easyjson:json
+message VMStrTPIntDbl {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, VTIntDbl> vec = 1;
 }
 
 
-// VMIntTPIntStr map of int64 -> set(int64, string)
-
-message VMIntTPIntStr {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTIntStr> vec = 1;
+// VMStrTPIntStr map of int64 -> set(int64, string)
+// easyjson:json
+message VMStrTPIntStr {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, VTIntStr> vec = 1;
 }
 
 
-// VMIntTPIntInt map of int64 -> set(int64, int64)
-
-message VMIntTPIntInt {
-    // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTIntInt> vec = 1;
+// VMStrTPIntInt map of int64 -> set(int64, int64)
+// easyjson:json
+message VMStrTPIntInt {
+    // @inject_tag: cql:"vec" msg:"vec"
+    map<string, VTIntInt> vec = 1;
 }
 
 
-// VMIntTPIntDbl map of int64 -> set(int64, double)
+// VMIntTPDblDbl map of double -> set(double, double)
 
-message VMIntTPIntDbl {
+message VMIntTPDblDbl {
     // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTIntDbl> vec = 1;
+    map<int64, VTDblDbl> vec = 1;
 }
 
 
@@ -512,10 +474,50 @@ message VMIntTPDblInt {
 }
 
 
-// VMIntTPDblDbl map of double -> set(double, double)
+// VMIntTPStrDbl map of string -> set(string, double)
 
-message VMIntTPDblDbl {
+message VMIntTPStrDbl {
     // @inject_tag: cql:"vec" msg:"vec,extention"
-    map<int64, VTDblDbl> vec = 1;
+    map<int64, VTStrDbl> vec = 1;
+}
+
+
+// VMIntTPStrStr map of string -> set(string, string)
+
+message VMIntTPStrStr {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, VTStrStr> vec = 1;
+}
+
+
+// VMIntTPStrInt map of string -> set(string, int64)
+
+message VMIntTPStrInt {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, VTStrInt> vec = 1;
+}
+
+
+// VMIntTPIntDbl map of int64 -> set(int64, double)
+
+message VMIntTPIntDbl {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, VTIntDbl> vec = 1;
+}
+
+
+// VMIntTPIntStr map of int64 -> set(int64, string)
+
+message VMIntTPIntStr {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, VTIntStr> vec = 1;
+}
+
+
+// VMIntTPIntInt map of int64 -> set(int64, int64)
+
+message VMIntTPIntInt {
+    // @inject_tag: cql:"vec" msg:"vec,extention"
+    map<int64, VTIntInt> vec = 1;
 }
 

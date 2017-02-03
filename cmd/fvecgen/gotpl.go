@@ -139,14 +139,18 @@ func (f *{{.ClassName}}) CassandraCreateStatement() []string {
 
 	queries := []string{}
 	subs := []string{
-		"uid ascii",
+		"id ascii",
 		"slab ascii",
 		"ord ascii",
+		"key text",
+		"tags map<text, text>",
 	}
 	cSubs := []string{
-		"uid ascii",
+		"id ascii",
 		"slab ascii",
 		"ord ascii",
+		"key text",
+		"tags map<text, text>",
 	}
 	haveC := false
 	haveA := false

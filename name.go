@@ -25,6 +25,7 @@ func (s *VName) SetKey(name string) {
 }
 
 // ToSlab takes a time and converts into the proper "slab" string for a given resolution
+// note that all times will be converted to UTC
 // min YYYYMMDDHHMM
 // hour YYYYMMDDHH
 // day YYYYMMDD
@@ -39,6 +40,13 @@ func (s *VName) SetKey(name string) {
 // MONTH6 -> YYYYM6{month / 6}
 //
 func (s *VName) ToSlab(t time.Time) string {
+	return timeslab.ToSlab(s.Resolution, t)
+}
+
+// TimeToSlab take the timestamp and make it a slab
+// note that all times will be converted to UTC
+func (s *VName) TimeToSlab() string {
+	t := time.Unix(s.Time, 0)
 	return timeslab.ToSlab(s.Resolution, t)
 }
 
@@ -88,6 +96,19 @@ func (s *VName) SortedTags() Tags {
 		sort.Sort(Tags(s.Tags))
 	}
 	return s.Tags
+}
+
+// AddTag adds a tag to the pile
+func (s *VName) AddTag(tag *Tag) Tags {
+	return s.MergeTags([]*Tag{tag})
+}
+
+// AddTagString adds a tag to the pile by name and value
+func (s *VName) AddTagString(name, value string) Tags {
+	tg := new(Tag)
+	tg.Name = name
+	tg.Value = value
+	return s.MergeTags([]*Tag{tg})
 }
 
 // MergeTags return an array of [ [name, val] ...] sorted by name
@@ -153,3 +174,34 @@ type VNameSlice []*VName
 func (p VNameSlice) Len() int           { return len(p) }
 func (p VNameSlice) Less(i, j int) bool { return strings.Compare(p[i].Key, p[j].Key) < 0 }
 func (p VNameSlice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+// Cassandra base query objects for a VName
+
+// CassUpsertQuery  the partial query for a a name
+// UPDATE {table} tags=?, key=? WHERE id=? AND slab=? AND ord=?
+// tags are map<text, text>
+func (n *VName) CassUpsertQuery() *CassBaseQuery {
+	cb := new(CassBaseQuery)
+	cb.forUpdate = "key=?"
+	cb.updateArgs = []interface{}{
+		n.Key,
+	}
+	if len(n.Tags) > 0 {
+		cb.forUpdate += ", tags=?"
+		tgobj := make(map[string]string)
+		for _, t := range n.Tags {
+			tgobj[t.Name] = t.Value
+		}
+		cb.updateArgs = append(cb.updateArgs, tgobj)
+	}
+
+	cb.where = "id=? AND slab=? AND ord=?"
+	slb := n.TimeToSlab()
+	cb.whereArgs = []interface{}{
+		n.UniqueIdString(),
+		n.Key,
+		slb,
+		slb,
+	}
+	return cb
+}
