@@ -7,6 +7,25 @@ tuples, map, sets of basic object for the many types
 
 from string import Template
 
+## first make the doc.go from the ReadMe
+docFile = open("doc.go", "w")
+readmeFile = open("README.md", "r")
+lines = readmeFile.readlines()
+
+print("/*\n", file=docFile)
+
+for r in lines:
+    print("\t" + r.rstrip("\n"), file=docFile)
+
+print("*/", file=docFile)
+print("package fvec\n", file=docFile)
+
+docFile.close()
+readmeFile.close()
+
+
+
+
 PROTOFILE = open("fvec.proto", "w")
 GOFILE = open("fvec_boiler.go", "w")
 
